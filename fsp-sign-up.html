@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Service Package Sign Up | Your Home Hunter</title>
+  <meta name="description" content="Complete your Full Service Package setup: DocuSign agreements, engagement fee, Request a Search brief, rental documents, and disclosure.">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <link rel="canonical" href="https://www.yourhomehunter.com.au/fsp-sign-up">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="fsp-body">
+
+  <header class="fsp-navbar">
+    <div class="container fsp-nav-inner">
+      <a href="index.html" class="fsp-brand-link brand-lockup" aria-label="Your Home Hunter">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3.2 14.7 15.2 3.8 27.4 14.7"/>
+            <path d="M5.5 12.7v13.3h5.6"/>
+            <circle class="brand-lens-glass" cx="17.9" cy="19.85" r="6.15"/>
+            <path d="m22.01 24.42 2.4 2.65"/>
+          </g>
+        </svg>
+        <span class="brand-text">Your Home Hunter</span>
+        <span class="fsp-nav-tag">Sign-up</span>
+      </a>
+      <a href="tel:1800666944" class="fsp-nav-phone">1800 666 944</a>
+    </div>
+  </header>
+
+  <section class="fsp-hero">
+    <div class="container">
+      <h1>Full Service Package</h1>
+      <p class="fsp-hero-desc">
+        Five things to complete before we start your search. Tick them off as you go. Progress is saved on this device.
+      </p>
+    </div>
+  </section>
+
+  <main class="fsp-main-layout">
+
+    <div class="fsp-privacy-box">
+      We use your details to advocate for your tenancy. We do not sell them. See our
+      <button type="button" class="link-style" data-modal-target="privacyDialog">Privacy Policy</button>
+      and
+      <button type="button" class="link-style" data-modal-target="collectionNoticeModal">Collection Notice</button>.
+    </div>
+
+    <div class="fsp-tracker-card" id="fspTracker">
+      <div class="fsp-tracker-header">
+        <div class="fsp-tracker-title">Checklist</div>
+        <span class="fsp-tracker-badge" id="fspTrackerBadge">0 of 5 done</span>
+      </div>
+      <div class="fsp-progress-bar-bg" aria-hidden="true">
+        <div class="fsp-progress-bar-fill" id="fspProgressFill"></div>
+      </div>
+      <div class="fsp-tracker-steps">
+        <label class="fsp-tracker-step-item">
+          <input type="checkbox" class="fsp-step-checkbox" data-step="1" id="chkStep1">
+          <span>1. Service agreement</span>
+        </label>
+        <label class="fsp-tracker-step-item">
+          <input type="checkbox" class="fsp-step-checkbox" data-step="2" id="chkStep2">
+          <span>2. Engagement fee ($1,100)</span>
+        </label>
+        <label class="fsp-tracker-step-item">
+          <input type="checkbox" class="fsp-step-checkbox" data-step="3" id="chkStep3">
+          <span>3. Request a Search</span>
+        </label>
+        <label class="fsp-tracker-step-item">
+          <input type="checkbox" class="fsp-step-checkbox" data-step="4" id="chkStep4">
+          <span>4. Rental Submission</span>
+        </label>
+        <label class="fsp-tracker-step-item">
+          <input type="checkbox" class="fsp-step-checkbox" data-step="5" id="chkStep5">
+          <span>5. Disclosure &amp; declaration</span>
+        </label>
+      </div>
+    </div>
+
+    <article class="fsp-step-card" id="step-agreement">
+      <div class="fsp-step-card-header">
+        <div class="fsp-step-number-circle">1</div>
+        <div class="fsp-step-title-group">
+          <h2>Service agreement</h2>
+        </div>
+      </div>
+      <p class="fsp-step-desc">
+        Sign the Full Service Package agreement in DocuSign so we can search, inspect, and speak with agents for you. Please read the full agreement before signing.
+      </p>
+      <div class="fsp-action-box">
+        <a href="#docusign-service-agreement"
+           id="fspDocusignAgreement"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="fsp-btn-cta"
+           data-config-url="docusignServiceAgreementUrl"
+           onclick="markStepDone(1)">
+          Sign with DocuSign
+        </a>
+        <span class="fsp-action-meta" id="fspDocusignAgreementMeta">Secure e-signature via DocuSign. Link will be confirmed shortly if this still shows as a placeholder.</span>
+      </div>
+    </article>
+
+    <article class="fsp-step-card" id="step-payment">
+      <div class="fsp-step-card-header">
+        <div class="fsp-step-number-circle">2</div>
+        <div class="fsp-step-title-group">
+          <h2>Engagement fee: $1,100</h2>
+        </div>
+      </div>
+      <p class="fsp-step-desc">
+        The engagement fee is $1,100 including GST. We start the search once this is paid. The remaining service fee is invoiced after you sign a lease. Choose <strong>one</strong> of the payment options below.
+      </p>
+
+      <div class="fsp-payment-options" role="group" aria-label="Payment options">
+        <div class="fsp-payment-card">
+          <div class="fsp-payment-card-title">
+            <span>Option 1 · Pay by card</span>
+            <span class="fsp-payment-card-badge">Stripe</span>
+          </div>
+          <p class="fsp-payment-note">Secure card payment online. Opens Stripe Checkout in a new tab.</p>
+          <a id="fspStripePay"
+             href="https://buy.stripe.com/7sY28k9GE6JvgaS6yM4ZG02"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="fsp-btn-cta fsp-stripe-btn"
+             onclick="markStepDone(2)">
+            Pay $1,100 with card
+          </a>
+        </div>
+
+        <div class="fsp-payment-card">
+          <div class="fsp-payment-card-title">
+            <span>Option 2 · Bank transfer</span>
+            <span class="fsp-payment-card-badge">No surcharge</span>
+          </div>
+          <p class="fsp-payment-note">Use your full name as the payment reference.</p>
+          <div class="fsp-bank-rows">
+            <div class="fsp-bank-row">
+              <span class="fsp-bank-label">Bank</span>
+              <span class="fsp-bank-value fsp-bank-plain">NAB</span>
+            </div>
+            <div class="fsp-bank-row">
+              <span class="fsp-bank-label">Account name</span>
+              <div class="fsp-bank-value-wrap">
+                <span class="fsp-bank-value fsp-bank-plain">YHH Pty Ltd</span>
+                <button type="button" class="fsp-copy-btn" onclick="copyValue('YHH Pty Ltd', this)">Copy</button>
+              </div>
+            </div>
+            <div class="fsp-bank-row">
+              <span class="fsp-bank-label">BSB</span>
+              <div class="fsp-bank-value-wrap">
+                <span class="fsp-bank-value">083-343</span>
+                <button type="button" class="fsp-copy-btn" onclick="copyValue('083-343', this)">Copy</button>
+              </div>
+            </div>
+            <div class="fsp-bank-row">
+              <span class="fsp-bank-label">Account</span>
+              <div class="fsp-bank-value-wrap">
+                <span class="fsp-bank-value">908 684 326</span>
+                <button type="button" class="fsp-copy-btn" onclick="copyValue('908684326', this)">Copy</button>
+              </div>
+            </div>
+            <div class="fsp-bank-row">
+              <span class="fsp-bank-label">SWIFT (overseas)</span>
+              <div class="fsp-bank-value-wrap">
+                <span class="fsp-bank-value">NATAAU3303M</span>
+                <button type="button" class="fsp-copy-btn" onclick="copyValue('NATAAU3303M', this)">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fsp-action-box">
+        <button type="button" class="btn btn-outline btn-sm" onclick="toggleStepDone(2)">Mark payment done</button>
+      </div>
+    </article>
+
+    <article class="fsp-step-card" id="step-search">
+      <div class="fsp-step-card-header">
+        <div class="fsp-step-number-circle">3</div>
+        <div class="fsp-step-title-group">
+          <h2>Request a Search</h2>
+        </div>
+      </div>
+      <p class="fsp-step-desc">
+        Suburbs, budget, bedrooms, parking, pets, timing: whatever matters for the search. Skip this if you already sent a search brief during your call.
+      </p>
+      <div class="fsp-action-box">
+        <a href="request-full-service.html"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="fsp-btn-cta"
+           onclick="markStepDone(3)">
+          Open Request a Search
+        </a>
+      </div>
+    </article>
+
+    <article class="fsp-step-card" id="step-documents">
+      <div class="fsp-step-card-header">
+        <div class="fsp-step-number-circle">4</div>
+        <div class="fsp-step-title-group">
+          <h2>Rental Submission</h2>
+        </div>
+      </div>
+      <p class="fsp-step-desc">
+        We need a completed Rental Submission for each adult who will live at the property. We use it to lodge applications with agents when the right place comes up, and we also run our own reference checks — the same kind of checks you would expect in any standard rental application — so we can advocate for you with confidence.
+      </p>
+      <ul class="fsp-doc-list">
+        <li>ID: passport and/or driver’s licence (front and back), plus Medicare card</li>
+        <li>Income: three recent payslips, or accountant confirmation if self-employed</li>
+        <li>Pets (if any): optional pet resume inside the Rental Submission form</li>
+      </ul>
+      <div class="fsp-action-box">
+        <a href="tenancy-application.html"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="fsp-btn-cta"
+           onclick="markStepDone(4)">
+          Open Rental Submission
+        </a>
+      </div>
+    </article>
+
+    <article class="fsp-step-card" id="step-disclosure">
+      <div class="fsp-step-card-header">
+        <div class="fsp-step-number-circle">5</div>
+        <div class="fsp-step-title-group">
+          <h2>Disclosure &amp; declaration</h2>
+        </div>
+      </div>
+      <p class="fsp-step-desc">
+        Complete the Disclosure and Declaration Statement in DocuSign. This is a legal document and must be signed electronically — it replaces the previous Zoho form.
+      </p>
+      <div class="fsp-action-box">
+        <a href="#docusign-disclosure"
+           id="fspDocusignDisclosure"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="fsp-btn-cta"
+           data-config-url="docusignDisclosureUrl"
+           onclick="markStepDone(5)">
+          Sign disclosure with DocuSign
+        </a>
+        <span class="fsp-action-meta" id="fspDocusignDisclosureMeta">Placeholder until your DocuSign PowerForm link is added in contact-config.js.</span>
+      </div>
+    </article>
+
+    <div class="fsp-support-banner">
+      <h3>Questions?</h3>
+      <p>Call, WhatsApp, or email. Happy to help before or during sign-up.</p>
+      <div class="fsp-support-ctas">
+        <a href="tel:1800666944" class="fsp-support-btn phone">1800 666 944</a>
+        <a href="https://wa.me/61468380944?text=Hi%20Your%20Home%20Hunter%2C%20I%27m%20completing%20Full%20Service%20sign-up%20and%20had%20a%20question." target="_blank" rel="noopener noreferrer" class="fsp-support-btn wa">WhatsApp</a>
+        <a href="mailto:info@yourhomehunter.com.au" class="fsp-support-btn email">info@yourhomehunter.com.au</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="fsp-footer">
+    <div class="container">
+      <p>&copy; <span id="year">2026</span> Your Home Hunter (YHH Pty Ltd)</p>
+    </div>
+  </footer>
+
+  <div class="fsp-toast-notification" id="fspToast">
+    <span id="fspToastText">Copied</span>
+  </div>
+
+  <div id="dialogs-container"></div>
+
+  <script src="contact-config.js"></script>
+  <script defer src="analytics.js"></script>
+  <script src="dialogs-bundle.js"></script>
+  <script src="script.js"></script>
+  <script>
+    function copyValue(text, btnElement) {
+      const done = () => showCopySuccess(btnElement, text);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, btnElement));
+      } else {
+        fallbackCopy(text, btnElement);
+      }
+    }
+
+    function fallbackCopy(text, btnElement) {
+      const tempInput = document.createElement('input');
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      showCopySuccess(btnElement, text);
+    }
+
+    function showCopySuccess(btnElement, text) {
+      if (btnElement) {
+        btnElement.classList.add('copied');
+        const prev = btnElement.textContent;
+        btnElement.textContent = 'Copied';
+        setTimeout(() => {
+          btnElement.classList.remove('copied');
+          btnElement.textContent = prev;
+        }, 1800);
+      }
+      const toast = document.getElementById('fspToast');
+      const toastText = document.getElementById('fspToastText');
+      if (toast && toastText) {
+        toastText.textContent = 'Copied ' + text;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2200);
+      }
+    }
+
+    const checkboxes = document.querySelectorAll('.fsp-step-checkbox');
+    const progressBar = document.getElementById('fspProgressFill');
+    const progressBadge = document.getElementById('fspTrackerBadge');
+    const STORAGE_KEY = 'yhh_fsp_steps_v1';
+
+    function loadSavedSteps() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        checkboxes.forEach(cb => {
+          if (saved[cb.dataset.step]) cb.checked = true;
+        });
+      } catch (e) {}
+      refreshProgressUI();
+    }
+
+    function saveStepState() {
+      try {
+        const state = {};
+        checkboxes.forEach(cb => { state[cb.dataset.step] = cb.checked; });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {}
+    }
+
+    function refreshProgressUI() {
+      const total = checkboxes.length;
+      let checked = 0;
+      checkboxes.forEach(cb => { if (cb.checked) checked++; });
+      const percentage = Math.round((checked / total) * 100);
+      if (progressBar) progressBar.style.width = percentage + '%';
+      if (progressBadge) {
+        if (checked === total) {
+          progressBadge.textContent = 'All done';
+          progressBadge.className = 'fsp-tracker-badge all-done';
+        } else if (checked > 0) {
+          progressBadge.textContent = checked + ' of ' + total + ' done';
+          progressBadge.className = 'fsp-tracker-badge in-progress';
+        } else {
+          progressBadge.textContent = '0 of ' + total + ' done';
+          progressBadge.className = 'fsp-tracker-badge';
+        }
+      }
+    }
+
+    function markStepDone(stepNum) {
+      const cb = document.querySelector('.fsp-step-checkbox[data-step="' + stepNum + '"]');
+      if (cb && !cb.checked) {
+        cb.checked = true;
+        saveStepState();
+        refreshProgressUI();
+      }
+    }
+
+    function toggleStepDone(stepNum) {
+      const cb = document.querySelector('.fsp-step-checkbox[data-step="' + stepNum + '"]');
+      if (cb) {
+        cb.checked = !cb.checked;
+        saveStepState();
+        refreshProgressUI();
+      }
+    }
+
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        saveStepState();
+        refreshProgressUI();
+      });
+    });
+
+    function applyConfigLinks() {
+      const cfg = window.YHH_CONTACT_CONFIG || {};
+      const stripe = String(cfg.stripeEngagementFeeUrl || '').trim();
+      if (stripe) {
+        const pay = document.getElementById('fspStripePay');
+        if (pay) pay.href = stripe;
+      }
+
+      const wireDocusign = (anchorId, metaId, urlKey, readyLabel, placeholderHash) => {
+        const a = document.getElementById(anchorId);
+        const meta = document.getElementById(metaId);
+        if (!a) return;
+        const url = String(cfg[urlKey] || '').trim();
+        if (url) {
+          a.href = url;
+          a.classList.remove('is-placeholder');
+          if (meta) meta.textContent = readyLabel;
+        } else {
+          a.href = placeholderHash;
+          a.classList.add('is-placeholder');
+          a.addEventListener('click', (e) => {
+            if (!String(cfg[urlKey] || '').trim()) {
+              e.preventDefault();
+              alert('DocuSign link not configured yet. We will send you the signing link shortly, or email info@yourhomehunter.com.au.');
+            }
+          });
+          if (meta) {
+            meta.textContent = 'DocuSign link pending — add it in contact-config.js (' + urlKey + '), or we will email it to you.';
+          }
+        }
+      };
+
+      wireDocusign(
+        'fspDocusignAgreement',
+        'fspDocusignAgreementMeta',
+        'docusignServiceAgreementUrl',
+        'Opens DocuSign in a new tab. Sign to authorise the search.',
+        '#docusign-service-agreement'
+      );
+      wireDocusign(
+        'fspDocusignDisclosure',
+        'fspDocusignDisclosureMeta',
+        'docusignDisclosureUrl',
+        'Opens DocuSign in a new tab for the Disclosure and Declaration Statement.',
+        '#docusign-disclosure'
+      );
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      applyConfigLinks();
+      loadSavedSteps();
+    });
+  </script>
+</body>
+</html>

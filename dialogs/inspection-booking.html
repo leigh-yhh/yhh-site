@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Property Review & Inspection Service | Your Home Hunter</title>
+  <meta name="description" content="Book independent rental inspections across Melbourne, Brisbane, Canberra, and Adelaide. Single inspection $275 inc. GST, or Express 3-pack $726 inc. GST.">
+  <link rel="canonical" href="https://www.yourhomehunter.com.au/dialogs/inspection-booking.html">
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet">
+  <style>
+    body.standalone-dialog-page {
+      background: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 16px 60px;
+      margin: 0;
+      font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+      color: var(--text-dark, #2d3748);
+    }
+    .standalone-nav {
+      max-width: 820px;
+      width: 100%;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: #fff;
+      border: 1px solid var(--border, #edf2f7);
+      border-radius: var(--radius, 8px);
+    }
+    .standalone-nav a {
+      color: var(--primary, #1e3a5f);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .standalone-nav a:hover {
+      text-decoration: underline;
+    }
+    body.standalone-dialog-page dialog {
+      position: static;
+      display: block;
+      transform: none;
+      margin: 0 auto;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+      width: 100%;
+      max-width: 820px;
+    }
+  </style>
+</head>
+<body class="standalone-dialog-page">
+  <nav class="standalone-nav">
+    <a href="../index.html">&larr; Return to Your Home Hunter</a>
+    <a href="/the-rental-rap">The Rental Wrap Blog</a>
+  </nav>
+
+<dialog id="inspectionBookingModal">
+    <div class="modal-body modal-body-large">
+      <button type="button" class="modal-close-btn" data-modal-close aria-label="Close dialog">&times;</button>
+      <div class="modal-header">
+        <div>
+          <span class="tier-label">Hands-On Inspection &amp; Shortlist Audit &bull; Paid Upfront</span>
+          <h3>Book Property Review &amp; Inspection</h3>
+          <p class="modal-subtext">Have an independent tenant advocate review your shortlist, attend inspections, stream live walkthroughs, and uncover hidden red flags before you apply.</p>
+        </div>
+      </div>
+
+      <form id="inspection-booking-form" class="lead-form">
+        <!-- Step 1: Package Selection -->
+        <div class="input-group">
+          <label><strong>Select Your Service Package *</strong></label>
+          <div class="package-selector-grid">
+            <label class="package-choice-card active" id="pkg-card-single">
+              <input type="radio" name="inspection_package" value="single" checked style="position: absolute; opacity: 0; pointer-events: none;">
+              <span class="package-badge-tag">Single Inspection</span>
+              <div class="package-card-title">Review &amp; (1) Inspection</div>
+              <div class="package-card-price">$275 AUD <span>inc. GST</span></div>
+              <p class="package-card-desc">Review up to 4 shortlisted properties + 30-min Zoom shortlist review + 1 physical inspection with live video walkthrough &amp; report.</p>
+            </label>
+
+            <label class="package-choice-card" id="pkg-card-express">
+              <input type="radio" name="inspection_package" value="express" style="position: absolute; opacity: 0; pointer-events: none;">
+              <span class="package-badge-tag">Express Package (Popular)</span>
+              <div class="package-card-title">Review &amp; (3) Inspections</div>
+              <div class="package-card-price">$726 AUD <span>inc. GST</span></div>
+              <p class="package-card-desc">Review up to 6 shortlisted properties + 30-min Zoom shortlist review + 3 physical inspections with live video walkthroughs &amp; reports.</p>
+            </label>
+          </div>
+        </div>
+
+        <!-- Optional Extra Inspections -->
+        <div class="form-row" style="align-items: center; background: #fff; border: 1px dashed var(--border); border-radius: var(--radius); padding: 12px 16px; margin-bottom: 20px;">
+          <div style="flex: 1;">
+            <label for="extra_inspections" style="margin-bottom: 2px; font-weight: 600; color: var(--primary);">Need Additional Inspections?</label>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">$220.00 AUD inc. GST per extra property</span>
+          </div>
+          <div style="width: 120px;">
+            <select id="extra_inspections" name="extra_inspections" style="padding: 8px 12px; font-size: 0.95rem;">
+              <option value="0">0 Extra</option>
+              <option value="1">+1 (+$220)</option>
+              <option value="2">+2 (+$440)</option>
+              <option value="3">+3 (+$660)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Step 2: Contact Details -->
+        <h4 style="font-size: 1.05rem; color: var(--primary); margin: 20px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px;">1. Client Contact Details</h4>
+        <div class="form-row">
+          <div class="input-group">
+            <label for="insp_book_first_name">First Name *</label>
+            <input type="text" id="insp_book_first_name" name="Name_First" placeholder="First Name" required>
+          </div>
+          <div class="input-group">
+            <label for="insp_book_last_name">Last Name *</label>
+            <input type="text" id="insp_book_last_name" name="Name_Last" placeholder="Last Name" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="input-group">
+            <label for="insp_book_email">Email Address *</label>
+            <input type="email" id="insp_book_email" name="Email" placeholder="name@domain.com" required>
+          </div>
+          <div class="input-group">
+            <label for="insp_book_phone">Phone Number *</label>
+            <input type="tel" id="insp_book_phone" name="PhoneNumber" placeholder="+61 400 000 000" required>
+          </div>
+        </div>
+
+        <!-- Preferred Video Call Platform -->
+        <div class="input-group">
+          <label>Preferred Video Call Platform for Review &amp; Live Walkthrough *</label>
+          <div class="consult-platform-options">
+            <label class="platform-option">
+              <input type="radio" name="insp_video_platform" value="Zoom" checked required>
+              <span>Zoom</span>
+            </label>
+            <label class="platform-option">
+              <input type="radio" name="insp_video_platform" value="WhatsApp" required>
+              <span>WhatsApp</span>
+            </label>
+            <label class="platform-option">
+              <input type="radio" name="insp_video_platform" value="FaceTime" required>
+              <span>FaceTime</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 3: Location & Search Criteria -->
+        <h4 style="font-size: 1.05rem; color: var(--primary); margin: 24px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px;">2. Search Location &amp; Home Preferences</h4>
+        <div class="form-row">
+          <div class="input-group">
+            <label for="insp_book_city">Search City *</label>
+            <select id="insp_book_city" name="Search_City" required>
+              <option value="">Select Target City</option>
+              <option value="Melbourne">Melbourne (VIC)</option>
+              <option value="Brisbane">Brisbane (QLD)</option>
+              <option value="Canberra">Canberra (ACT)</option>
+              <option value="Adelaide">Adelaide (SA)</option>
+              <option value="Other">Other Region</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="insp_book_suburbs">Preferred Suburb(s) *</label>
+            <input type="text" id="insp_book_suburbs" name="Preferred_Suburbs" placeholder="e.g. Richmond, South Yarra, Hawthorn" list="yhh-au-suburbs-list" autocomplete="address-level2" required>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="insp_book_criteria">What are the key things you're looking for in your new home? *</label>
+          <textarea id="insp_book_criteria" name="Key_Criteria" rows="2" placeholder="e.g. 2 bedrooms, off-street parking, pet-friendly for a dog, quiet street, walking distance to train, good natural light..." required></textarea>
+        </div>
+
+        <!-- Step 4: Shortlisted Properties -->
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin: 24px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px;">
+          <h4 style="font-size: 1.05rem; color: var(--primary); margin: 0;">3. Shortlisted Properties to Review &amp; Inspect</h4>
+          <span id="shortlist-count-badge" style="font-size: 0.8rem; font-weight: 600; color: var(--accent);">Up to 4 properties</span>
+        </div>
+        <p class="modal-subtext" style="margin-bottom: 14px;">Provide the addresses and online listing links (realestate.com.au / Domain) for the properties you want our team to audit.</p>
+
+        <!-- Property 1 -->
+        <div class="property-item-box">
+          <div class="property-item-header">
+            <span>Property #1 (Primary)</span>
+            <span style="color: #dc2626; font-size: 0.78rem;">Required *</span>
+          </div>
+          <div class="form-row">
+            <div class="input-group" style="margin-bottom: 8px;">
+              <input type="text" id="prop_addr_1" name="Property_1_Address" placeholder="Full street address (e.g. 12/45 Smith St, Richmond)" data-address-autocomplete="true" autocomplete="street-address" required>
+            </div>
+            <div class="input-group" style="margin-bottom: 8px;">
+              <input type="url" id="prop_url_1" name="Property_1_URL" placeholder="Listing link (https://www.realestate.com.au/...)" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- Property 2 -->
+        <div class="property-item-box">
+          <div class="property-item-header">
+            <span>Property #2</span>
+            <span style="color: #dc2626; font-size: 0.78rem;">Required *</span>
+          </div>
+          <div class="form-row">
+            <div class="input-group" style="margin-bottom: 8px;">
+              <input type="text" id="prop_addr_2" name="Property_2_Address" placeholder="Full street address" data-address-autocomplete="true" autocomplete="street-address" required>
+            </div>
+            <div class="input-group" style="margin-bottom: 8px;">
+              <input type="url" id="prop_url_2" name="Property_2_URL" placeholder="Listing link" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- Property 3 -->
+        <div class="property-item-box">
+          <div class="property-item-header">
+            <span>Property #3</span>
+            <span style="color: var(--text-muted); font-size: 0.78rem;">Optional (Recommended for Shortlist Review)</span>
+          </div>
+          <div class="form-row">
+            <div class="input-group" style="margin-bottom: 8px;">
+              <input type="text" id="prop_addr_3" name="Property_3_Address" placeholder="Full street address" data-address-autocomplete="true" autocomplete="street-address">
+            </div>
+            <div class="input-group" style="margin-bottom: 8px;">
+              <input type="url" id="prop_url_3" name="Property_3_URL" placeholder="Listing link">
+            </div>
+          </div>
+        </div>
+
+        <!-- Property 4 -->
+        <div class="property-item-box">
+          <div class="property-item-header">
+            <span>Property #4</span>
+            <span style="color: var(--text-muted); font-size: 0.78rem;">Optional</span>
+          </div>
+          <div class="form-row">
+            <div class="input-group" style="margin-bottom: 8px;">
+              <input type="text" id="prop_addr_4" name="Property_4_Address" placeholder="Full street address" data-address-autocomplete="true" autocomplete="street-address">
+            </div>
+            <div class="input-group" style="margin-bottom: 8px;">
+              <input type="url" id="prop_url_4" name="Property_4_URL" placeholder="Listing link">
+            </div>
+          </div>
+        </div>
+
+        <!-- Property 5 & 6 (Shown for Express Package) -->
+        <div id="express-properties-block" style="display: none;">
+          <div class="property-item-box">
+            <div class="property-item-header">
+              <span>Property #5 (Express Package)</span>
+              <span style="color: var(--text-muted); font-size: 0.78rem;">Optional</span>
+            </div>
+            <div class="form-row">
+            <div class="input-group" style="margin-bottom: 8px;">
+                <input type="text" id="prop_addr_5" name="Property_5_Address" placeholder="Full street address" data-address-autocomplete="true" autocomplete="street-address">
+              </div>
+              <div class="input-group" style="margin-bottom: 8px;">
+                <input type="url" id="prop_url_5" name="Property_5_URL" placeholder="Listing link">
+              </div>
+            </div>
+          </div>
+
+          <div class="property-item-box">
+            <div class="property-item-header">
+              <span>Property #6 (Express Package)</span>
+              <span style="color: var(--text-muted); font-size: 0.78rem;">Optional</span>
+            </div>
+            <div class="form-row">
+              <div class="input-group" style="margin-bottom: 8px;">
+                <input type="text" id="prop_addr_6" name="Property_6_Address" placeholder="Full street address" data-address-autocomplete="true" autocomplete="street-address">
+              </div>
+              <div class="input-group" style="margin-bottom: 8px;">
+                <input type="url" id="prop_url_6" name="Property_6_URL" placeholder="Listing link">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5: Service Agreement & Terms Container -->
+        <div class="consult-terms-container">
+          <h4 class="terms-title">Service Agreement &amp; The Fine Print</h4>
+          <div class="terms-scroll-box">
+            <p><strong>Parties &amp; Purpose:</strong> This Service Agreement is made between Your Home Hunter Pty Ltd (ACN 700 927 000, "YHH") and the Client named above. The Client engages YHH to provide independent Property Review &amp; Inspection Services on the terms set out herein.</p>
+            <p><strong>Services Undertaken:</strong> YHH will: (a) take instructions regarding size, amenities, and criteria; (b) undertake a preliminary due diligence review of properties identified by the Client (up to 4 for Single Package, up to 6 for Express Package); (c) provide advice on which property(s) are the best match; (d) arrange for curated properties to be physically inspected on the Client's behalf with a live video walkthrough tour and condition report.</p>
+            <p><strong>Client Acknowledgements:</strong> The Client agrees: (a) While YHH provides guidance and recommendations, the Client is solely responsible for carrying out any tenancy application steps; (b) YHH is neither a lawyer nor accountant and advice is not legal or financial advice; (c) Nothing in this Agreement results in YHH being considered a co-applicant on any tenancy lease.</p>
+            <p><strong>Fees &amp; Invoicing:</strong> Fees are invoiced upon booking review via secure payment link. Minimum 48 hours notice is required between booking and the first physical inspection.</p>
+            <p><strong>Red-Flag Protection Guarantee:</strong> If, based on our preliminary research and due diligence, you choose not to proceed with the physical inspection of a property, a partial refund of $132.00 AUD inc. GST will be provided. This can be refunded or credited toward another property inspection.</p>
+            <p><strong>Limitations of Liability:</strong> To the maximum extent permitted by Australian law, YHH's total liability arising out of or in connection with this Agreement is strictly limited to the aggregate value of Fees paid by the Client. Neither Party will be liable for indirect, incidental, special or consequential losses.</p>
+            <p><strong>Zero Tolerance Policy:</strong> YHH is committed to supporting a culture of respect and well-being for our employees. Rude or abusive behaviour will not be tolerated. YHH reserves the right to terminate an engagement should this occur, with no refund payable.</p>
+            <p><strong>Governing Law &amp; Privacy:</strong> Governed by the laws of the State of Victoria. Personal data is handled in strict accordance with the Australian Privacy Principles (APP) and our Privacy Policy.</p>
+          </div>
+
+          <div class="terms-acceptance-box">
+            <label class="terms-checkbox-label">
+              <input type="checkbox" id="insp_terms_accept" required>
+              <span><strong>I have read and understood the Service Agreement and agree to the Privacy Statement *</strong></span>
+            </label>
+          </div>
+
+          <div class="form-row" style="margin-top: 12px;">
+            <div class="input-group" style="margin-bottom: 0;">
+              <label for="insp_signature">Client Digital Signature (Full Legal Name) *</label>
+              <input type="text" id="insp_signature" placeholder="Type your full legal name" required>
+            </div>
+            <div class="input-group" style="margin-bottom: 0;">
+              <label for="insp_agreement_date">Agreement Date</label>
+              <input type="text" id="insp_agreement_date" value="20-Sep-2026" readonly style="background: #f8fafc; color: var(--text-muted);">
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 6: Upfront Fee Summary Box (Live Calculated) -->
+        <div class="consult-fee-box">
+          <div class="fee-row">
+            <span id="fee-package-name">Property Review &amp; (1) Inspection Package:</span>
+            <span id="fee-base-amount">$275.00 AUD</span>
+          </div>
+          <div class="fee-row" id="fee-extra-row" style="display: none;">
+            <span id="fee-extra-label">Additional Inspections:</span>
+            <span id="fee-extra-amount">$0.00 AUD</span>
+          </div>
+          <div class="fee-row total">
+            <strong>Total payable (inc. GST):</strong>
+            <strong id="fee-total-amount">$275.00 AUD</strong>
+          </div>
+          <p class="fee-subtext">Includes GST. Includes a 30-min Zoom shortlist review call, physical walkthrough, and a $132 inc. GST red-flag cancellation guarantee. A secure payment link and scheduling calendar will be dispatched upon review.</p>
+        </div>
+
+        <div class="form-privacy-block">
+          <p class="form-collection-notice">
+            <small>YHH Pty Ltd (Your Home Hunter) collects personal information to deliver property review and inspection services. Details are handled under the <em>Privacy Act 1988</em> (Cth) and Australian Privacy Principles. Read our <button type="button" class="link-style" data-modal-target="collectionNoticeModal">Privacy Collection Notice</button> (APP&nbsp;5) and <button type="button" class="link-style" data-modal-target="privacyDialog">Privacy Policy</button>. We never sell your data.</small>
+          </p>
+          <label class="privacy-consent-label">
+            <input type="checkbox" name="privacyConsent" class="privacy-consent-checkbox" value="yes" required>
+            <span>I have read and understand the Privacy Collection Notice and Privacy Policy *</span>
+          </label>
+        </div>
+
+        <button type="submit" id="insp-submit-btn" class="btn btn-primary btn-block" style="padding: 14px; font-size: 1rem; margin-top: 10px;">Accept Terms &amp; Book Inspection Review ($275.00 AUD inc. GST) &rarr;</button>
+        <p id="insp-booking-form-status" style="font-size: 0.9rem; margin-top: 10px; font-weight: 500; text-align: center;"></p>
+      </form>
+
+      <!-- Confirmation Screen -->
+      <div id="inspection-booking-success-view" class="wishlist-success-view" style="display: none;">
+        <div class="success-icon-badge">&#10003;</div>
+        <h3>Property Review &amp; Inspection Booked!</h3>
+        <p>Thank you. Your shortlist details and signed service agreement have been received by our tenant advocacy team.</p>
+        <div class="success-summary-box">
+          <p><strong>What Happens Next:</strong></p>
+          <ul style="text-align: left; margin: 12px 0 16px 20px; font-size: 0.9rem; color: var(--text-dark);">
+            <li>Our advocacy team is conducting preliminary due diligence on your submitted property addresses.</li>
+            <li>We will send your invoice payment link and a calendar invite to schedule your 30-minute Zoom shortlist review with your senior advocate.</li>
+            <li>Upon confirmation, our field inspector will be scheduled to attend the viewings and stream your live walkthrough tour.</li>
+          </ul>
+        </div>
+        <div class="modal-footer-row" style="display: flex; gap: 12px; justify-content: center; margin-top: 20px;">
+          <button type="button" class="btn btn-primary" data-modal-close>Done &amp; Close</button>
+        </div>
+      </div>
+
+      <div class="modal-footer-row" style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border);">
+        <a href="tel:1800666944" class="btn btn-outline btn-sm">Direct Phone: 1800 666 944</a>
+        <button type="button" class="btn btn-outline btn-sm" data-modal-close>Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="../contact-config.js"></script>
+  <script defer src="../analytics.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

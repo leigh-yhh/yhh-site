@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rental Submission Form | Your Home Hunter</title>
+  <meta name="description" content="Complete your rental submission for agent portals (2Apply, Snug, Ignite, and more). Include ID, living history, income, and references.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://www.yourhomehunter.com.au/tenancy-application">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="wishlist-page tenancy-page">
+
+  <header class="wishlist-page-nav">
+    <div class="container wishlist-page-nav-inner">
+      <a href="index.html" class="wishlist-brand brand-lockup" aria-label="Your Home Hunter">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3.2 14.7 15.2 3.8 27.4 14.7"/>
+            <path d="M5.5 12.7v13.3h5.6"/>
+            <circle class="brand-lens-glass" cx="17.9" cy="19.85" r="6.15"/>
+            <path d="m22.01 24.42 2.4 2.65"/>
+          </g>
+        </svg>
+        <span class="brand-text">Your Home Hunter</span>
+      </a>
+      <div class="wishlist-page-nav-links">
+        <a href="fsp-sign-up.html">Full Service sign-up</a>
+        <a href="tel:1800666944">1800 666 944</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wishlist-page-main">
+    <div class="container wishlist-page-shell tenancy-shell" id="tenancy-page-root">
+      <header class="wishlist-page-header">
+        <span class="tier-label">Full Service Package · Step 4</span>
+        <h1>Rental submission form</h1>
+        <p class="wishlist-page-lead">
+          This collects the details agents need for portals such as REA Ignite, 2Apply, Snug, Sorted, and Tenant Options.
+          Complete one form per adult who will live at the property. File uploads: PDF or images, max 8&nbsp;MB each.
+        </p>
+      </header>
+
+      <div class="wishlist-stepper wishlist-stepper-sticky tenancy-stepper" aria-label="Application steps">
+        <div class="step-indicator active" data-tenancy-indicator="1"><span class="step-circle">1</span><span class="step-text">Start</span></div>
+        <div class="step-connector"></div>
+        <div class="step-indicator" data-tenancy-indicator="2"><span class="step-circle">2</span><span class="step-text">ID</span></div>
+        <div class="step-connector"></div>
+        <div class="step-indicator" data-tenancy-indicator="3"><span class="step-circle">3</span><span class="step-text">Household</span></div>
+        <div class="step-connector"></div>
+        <div class="step-indicator" data-tenancy-indicator="4"><span class="step-circle">4</span><span class="step-text">Housing</span></div>
+        <div class="step-connector"></div>
+        <div class="step-indicator" data-tenancy-indicator="5"><span class="step-circle">5</span><span class="step-text">Income</span></div>
+        <div class="step-connector"></div>
+        <div class="step-indicator" data-tenancy-indicator="6"><span class="step-circle">6</span><span class="step-text">Refs</span></div>
+      </div>
+
+      <form id="tenancy-application-form" class="wishlist-wizard-form" novalidate>
+
+        <!-- STEP 1 -->
+        <div class="wizard-step active" data-tenancy-step="1">
+          <div class="step-title-box">
+            <h2>Step 1: Portals &amp; applicant</h2>
+            <p>Lease preferences and your contact details.</p>
+          </div>
+
+          <div class="input-group">
+            <label>Have you recently filled out an online rental application form? *</label>
+            <div class="checkbox-pill-group">
+              <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="REA Ignite"> REA Ignite</label>
+              <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="2Apply"> 2Apply</label>
+              <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="Snug"> Snug</label>
+              <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="Sorted"> Sorted</label>
+              <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="Tenant Options"> Tenant Options</label>
+              <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="No" data-exclusive-portal> No</label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="input-group">
+              <label for="ta_commencement">Preferred commencement date</label>
+              <input type="date" id="ta_commencement" name="commencementDate">
+            </div>
+            <div class="input-group">
+              <label for="ta_lease_term">Term of lease (months)</label>
+              <input type="number" id="ta_lease_term" name="leaseTermMonths" min="1" max="36" placeholder="e.g. 12">
+            </div>
+          </div>
+
+          <div class="form-row form-row-3">
+            <div class="input-group">
+              <label for="ta_title">Title</label>
+              <select id="ta_title" name="title">
+                <option value="">—</option>
+                <option>Mr</option>
+                <option>Mrs</option>
+                <option>Ms</option>
+                <option>Miss</option>
+                <option>Dr</option>
+                <option>Mx</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="ta_first">First name *</label>
+              <input type="text" id="ta_first" name="firstName" required autocomplete="given-name">
+            </div>
+            <div class="input-group">
+              <label for="ta_middle">Middle name</label>
+              <input type="text" id="ta_middle" name="middleName" autocomplete="additional-name">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="input-group">
+              <label for="ta_last">Last name *</label>
+              <input type="text" id="ta_last" name="lastName" required autocomplete="family-name">
+            </div>
+            <div class="input-group">
+              <label for="ta_pref">Preferred name</label>
+              <input type="text" id="ta_pref" name="preferredName" autocomplete="nickname">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="input-group">
+              <label for="ta_mobile">Mobile phone *</label>
+              <input type="tel" id="ta_mobile" name="mobile" required autocomplete="tel">
+            </div>
+            <div class="input-group">
+              <label for="ta_work_phone">Work phone</label>
+              <input type="tel" id="ta_work_phone" name="workPhone">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="ta_email">Email *</label>
+            <input type="email" id="ta_email" name="email" required autocomplete="email">
+          </div>
+
+          <div class="form-row" data-address-group="current">
+            <div class="input-group" style="flex:2">
+              <label for="ta_street">Current street address *</label>
+              <input type="text" id="ta_street" name="currentStreet" required autocomplete="street-address" data-address-autocomplete="true" data-address-part="street" placeholder="Start typing your street address">
+            </div>
+            <div class="input-group">
+              <label for="ta_suburb">Suburb / city *</label>
+              <input type="text" id="ta_suburb" name="currentSuburb" required autocomplete="address-level2" list="yhh-au-suburbs-list" data-address-part="suburb">
+            </div>
+            <div class="input-group">
+              <label for="ta_postcode">Postcode</label>
+              <input type="text" id="ta_postcode" name="currentPostcode" autocomplete="postal-code" data-address-part="postcode" inputmode="numeric">
+            </div>
+          </div>
+
+          <div class="wizard-nav-row">
+            <button type="button" class="btn btn-primary" data-tenancy-next="2">Continue to identification</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="wizard-step" data-tenancy-step="2">
+          <div class="step-title-box">
+            <h2>Step 2: Identification</h2>
+            <p>Attach ID documents agents typically need (licence and/or passport).</p>
+            <p class="field-hint">Uploads are stored securely and used only to lodge your rental applications.</p>
+          </div>
+
+          <div class="input-group">
+            <label for="ta_dob">Date of birth *</label>
+            <input type="date" id="ta_dob" name="dateOfBirth" required>
+          </div>
+
+          <div class="form-row">
+            <div class="input-group">
+              <label for="ta_licence_no">Driver’s licence number</label>
+              <input type="text" id="ta_licence_no" name="licenceNumber">
+            </div>
+            <div class="input-group">
+              <label for="ta_licence_card">Licence card number</label>
+              <input type="text" id="ta_licence_card" name="licenceCardNumber" placeholder="Number on the physical card">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <label for="ta_licence_state">State of issue</label>
+              <input type="text" id="ta_licence_state" name="licenceState" placeholder="e.g. VIC">
+            </div>
+            <div class="input-group">
+              <label for="ta_licence_expiry">Licence expiry</label>
+              <input type="date" id="ta_licence_expiry" name="licenceExpiry">
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="ta_licence_file">Driver’s licence image upload</label>
+            <input type="file" id="ta_licence_file" name="licenceFile" accept="image/*,.pdf" data-file-key="licence">
+          </div>
+
+          <div class="form-row">
+            <div class="input-group">
+              <label for="ta_passport_no">Passport number</label>
+              <input type="text" id="ta_passport_no" name="passportNumber">
+            </div>
+            <div class="input-group">
+              <label for="ta_passport_country">Country of issue</label>
+              <input type="text" id="ta_passport_country" name="passportCountry">
+            </div>
+            <div class="input-group">
+              <label for="ta_passport_expiry">Passport expiry</label>
+              <input type="date" id="ta_passport_expiry" name="passportExpiry">
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="ta_passport_file">Passport image upload</label>
+            <input type="file" id="ta_passport_file" name="passportFile" accept="image/*,.pdf" data-file-key="passport">
+          </div>
+
+          <div class="input-group">
+            <label for="ta_other_id">Other ID document details</label>
+            <input type="text" id="ta_other_id" name="otherIdDetails" placeholder="e.g. Medicare card">
+          </div>
+          <div class="input-group">
+            <label for="ta_other_id_file">Other ID document upload</label>
+            <input type="file" id="ta_other_id_file" name="otherIdFile" accept="image/*,.pdf" data-file-key="otherId">
+          </div>
+
+          <div class="input-group">
+            <label>Do you have a car?</label>
+            <div class="checkbox-pill-group">
+              <label class="checkbox-pill"><input type="radio" name="hasCar" value="Yes"> Yes</label>
+              <label class="checkbox-pill"><input type="radio" name="hasCar" value="No"> No</label>
+            </div>
+          </div>
+
+          <div class="wizard-nav-row">
+            <button type="button" class="btn btn-outline" data-tenancy-prev="1">&larr; Back</button>
+            <button type="button" class="btn btn-primary" data-tenancy-next="3">Continue to household</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="wizard-step" data-tenancy-step="3">
+          <div class="step-title-box">
+            <h2>Step 3: Household &amp; other applicants</h2>
+            <p>All adults over 18 who will live at the property must be listed.</p>
+          </div>
+
+          <div class="form-row form-row-3">
+            <div class="input-group">
+              <label for="ta_adults">Number of adults *</label>
+              <input type="number" id="ta_adults" name="adults" min="1" value="1" required>
+            </div>
+            <div class="input-group">
+              <label for="ta_children">Number of children (under 18)</label>
+              <input type="number" id="ta_children" name="children" min="0" value="0">
+            </div>
+            <div class="input-group">
+              <label for="ta_pets">Number of pets</label>
+              <input type="number" id="ta_pets" name="petsCount" min="0" value="0">
+            </div>
+          </div>
+
+          <div id="ta-pet-resume-block" class="pet-resume-block" hidden>
+            <h3 class="tenancy-subhead">Optional pet resume</h3>
+            <p class="field-hint" style="margin-top: -4px; margin-bottom: 14px;">
+              Completely optional — helps agents say yes to pets. Fill in what you can; skip anything you do not have.
+            </p>
+
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_pet_name">Pet name</label>
+                <input type="text" id="ta_pet_name" name="petName" placeholder="e.g. Milo">
+              </div>
+              <div class="input-group">
+                <label for="ta_pet_type">Type &amp; breed</label>
+                <input type="text" id="ta_pet_type" name="petType" placeholder="e.g. Cavoodle">
+              </div>
+            </div>
+            <div class="form-row form-row-3">
+              <div class="input-group">
+                <label for="ta_pet_age">Age</label>
+                <input type="text" id="ta_pet_age" name="petAge" placeholder="e.g. 3 years">
+              </div>
+              <div class="input-group">
+                <label for="ta_pet_weight">Weight / size</label>
+                <input type="text" id="ta_pet_weight" name="petWeight" placeholder="e.g. 10kg">
+              </div>
+              <div class="input-group">
+                <label for="ta_pet_colour">Colour</label>
+                <input type="text" id="ta_pet_colour" name="petColour" placeholder="e.g. Apricot">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="input-group">
+                <label>Desexed?</label>
+                <div class="checkbox-pill-group">
+                  <label class="checkbox-pill"><input type="radio" name="petDesexed" value="Yes"> Yes</label>
+                  <label class="checkbox-pill"><input type="radio" name="petDesexed" value="No"> No</label>
+                </div>
+              </div>
+              <div class="input-group">
+                <label>Microchipped?</label>
+                <div class="checkbox-pill-group">
+                  <label class="checkbox-pill"><input type="radio" name="petMicrochipped" value="Yes"> Yes</label>
+                  <label class="checkbox-pill"><input type="radio" name="petMicrochipped" value="No"> No</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label>Vaccinations up to date?</label>
+                <div class="checkbox-pill-group">
+                  <label class="checkbox-pill"><input type="radio" name="petVaccinated" value="Yes"> Yes</label>
+                  <label class="checkbox-pill"><input type="radio" name="petVaccinated" value="No"> No</label>
+                </div>
+              </div>
+              <div class="input-group">
+                <label for="ta_pet_council">Council registration</label>
+                <input type="text" id="ta_pet_council" name="petCouncilReg" placeholder="Council / registration number (if any)">
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="ta_pet_temperament">Temperament &amp; behaviour</label>
+              <textarea id="ta_pet_temperament" name="petTemperament" rows="2" placeholder="e.g. Quiet indoors, good with children, crate-trained, no barking at night"></textarea>
+            </div>
+            <div class="input-group">
+              <label for="ta_pet_training">Training &amp; care routine</label>
+              <textarea id="ta_pet_training" name="petTraining" rows="2" placeholder="e.g. Daily walks, toilet-trained, stays off furniture, always supervised outdoors"></textarea>
+            </div>
+            <div class="input-group">
+              <label for="ta_pet_why">Why they are a good rental pet</label>
+              <textarea id="ta_pet_why" name="petWhyGoodTenant" rows="2" placeholder="e.g. Lived in rentals for 2 years with no complaints or damage; bond always returned in full"></textarea>
+            </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_pet_ref">Pet / landlord reference</label>
+                <input type="text" id="ta_pet_ref" name="petReference" placeholder="Name, relationship, phone or email">
+              </div>
+              <div class="input-group">
+                <label for="ta_pet_other">Other pets in the household</label>
+                <input type="text" id="ta_pet_other" name="petOtherDetails" placeholder="Brief details if more than one pet">
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="ta_pet_file">Optional: vaccination / registration / photo upload</label>
+              <input type="file" id="ta_pet_file" name="petFile" accept="image/*,.pdf" data-file-key="petDocs">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="ta_other1">Other adult — name &amp; relationship</label>
+            <input type="text" id="ta_other1" name="otherApplicant1">
+          </div>
+          <div class="input-group">
+            <label for="ta_other2">Other adult — name &amp; relationship</label>
+            <input type="text" id="ta_other2" name="otherApplicant2">
+          </div>
+          <div class="input-group">
+            <label for="ta_other3">Other adult — name &amp; relationship</label>
+            <input type="text" id="ta_other3" name="otherApplicant3">
+          </div>
+          <div class="input-group">
+            <label for="ta_other4">Other adult — name &amp; relationship</label>
+            <input type="text" id="ta_other4" name="otherApplicant4">
+          </div>
+
+          <div class="wizard-nav-row">
+            <button type="button" class="btn btn-outline" data-tenancy-prev="2">&larr; Back</button>
+            <button type="button" class="btn btn-primary" data-tenancy-next="4">Continue to housing history</button>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="wizard-step" data-tenancy-step="4">
+          <div class="step-title-box">
+            <h2>Step 4: Housing history</h2>
+            <p>A minimum of 2 years living history is usually required.</p>
+          </div>
+
+          <label class="checkbox-pill tenancy-skip-pill">
+            <input type="checkbox" id="ta_own_home" name="livingInOwnHome" value="yes"> Tick if you are living in your own home (skip current rental section)
+          </label>
+
+          <div id="ta-current-rental-block">
+            <h3 class="tenancy-subhead">Current rental</h3>
+            <div class="input-group">
+              <label for="ta_current_agency">Current real estate agent / private landlord</label>
+              <input type="text" id="ta_current_agency" name="currentAgency">
+            </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_current_contact">Contact person / agent</label>
+                <input type="text" id="ta_current_contact" name="currentAgentContact">
+              </div>
+              <div class="input-group">
+                <label for="ta_current_agent_phone">Agent phone</label>
+                <input type="tel" id="ta_current_agent_phone" name="currentAgentPhone">
+              </div>
+              <div class="input-group">
+                <label for="ta_current_agent_email">Agent email</label>
+                <input type="email" id="ta_current_agent_email" name="currentAgentEmail">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_current_rent">Current rent (AUD)</label>
+                <input type="number" id="ta_current_rent" name="currentRent" min="0" step="1">
+              </div>
+              <div class="input-group">
+                <label>Per</label>
+                <div class="checkbox-pill-group">
+                  <label class="checkbox-pill"><input type="radio" name="currentRentPer" value="Week"> Week</label>
+                  <label class="checkbox-pill"><input type="radio" name="currentRentPer" value="Month"> Month</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_lease_start">Lease start date</label>
+                <input type="date" id="ta_lease_start" name="currentLeaseStart">
+              </div>
+              <div class="input-group">
+                <label for="ta_tenancy_length">Length of tenancy (months)</label>
+                <input type="number" id="ta_tenancy_length" name="currentTenancyMonths" min="0">
+              </div>
+            </div>
+            <div class="input-group">
+              <label>Do you expect your bond to be refunded in full?</label>
+              <div class="checkbox-pill-group">
+                <label class="checkbox-pill"><input type="radio" name="bondRefundExpected" value="Yes"> Yes</label>
+                <label class="checkbox-pill"><input type="radio" name="bondRefundExpected" value="No"> No</label>
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="ta_reason_moving">Reason for moving</label>
+              <textarea id="ta_reason_moving" name="reasonForMoving" rows="2"></textarea>
+            </div>
+          </div>
+
+          <h3 class="tenancy-subhead">Previous address</h3>
+          <div class="form-row" data-address-group="previous">
+            <div class="input-group" style="flex:2">
+              <label for="ta_prev_street">Street address</label>
+              <input type="text" id="ta_prev_street" name="prevStreet" autocomplete="street-address" data-address-autocomplete="true" data-address-part="street" placeholder="Start typing the street address">
+            </div>
+            <div class="input-group">
+              <label for="ta_prev_suburb">Suburb / city</label>
+              <input type="text" id="ta_prev_suburb" name="prevSuburb" autocomplete="address-level2" list="yhh-au-suburbs-list" data-address-part="suburb">
+            </div>
+            <div class="input-group">
+              <label for="ta_prev_postcode">Postcode</label>
+              <input type="text" id="ta_prev_postcode" name="prevPostcode" autocomplete="postal-code" data-address-part="postcode" inputmode="numeric">
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="ta_prev_dates">Move in / out dates (month &amp; year)</label>
+            <input type="text" id="ta_prev_dates" name="prevMoveDates" placeholder="e.g. Jan 2022 – Mar 2024">
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <label for="ta_prev_contact">Contact person / agent</label>
+              <input type="text" id="ta_prev_contact" name="prevAgentContact">
+            </div>
+            <div class="input-group">
+              <label for="ta_prev_phone">Agent phone</label>
+              <input type="tel" id="ta_prev_phone" name="prevAgentPhone">
+            </div>
+            <div class="input-group">
+              <label for="ta_prev_email">Agent email</label>
+              <input type="email" id="ta_prev_email" name="prevAgentEmail">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <label for="ta_prev_rent">Previous rent (AUD)</label>
+              <input type="number" id="ta_prev_rent" name="prevRent" min="0">
+            </div>
+            <div class="input-group">
+              <label>Per</label>
+              <div class="checkbox-pill-group">
+                <label class="checkbox-pill"><input type="radio" name="prevRentPer" value="Week"> Week</label>
+                <label class="checkbox-pill"><input type="radio" name="prevRentPer" value="Month"> Month</label>
+              </div>
+            </div>
+          </div>
+          <div class="input-group">
+            <label>Was your bond refunded in full?</label>
+            <div class="checkbox-pill-group">
+              <label class="checkbox-pill"><input type="radio" name="prevBondRefunded" value="Yes"> Yes</label>
+              <label class="checkbox-pill"><input type="radio" name="prevBondRefunded" value="No"> No</label>
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="ta_prev_reason">Reason for moving</label>
+            <textarea id="ta_prev_reason" name="prevReasonMoving" rows="2"></textarea>
+          </div>
+
+          <div id="ta-homeowner-block">
+            <h3 class="tenancy-subhead">Home owner (if applicable)</h3>
+            <div class="input-group">
+              <label for="ta_home_to_be">Home is to be</label>
+              <select id="ta_home_to_be" name="homeToBe">
+                <option value="">—</option>
+                <option>Sold</option>
+                <option>Leased</option>
+                <option>Retained</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="ta_ownership_file">Ownership documents (rates / body corp / insurance)</label>
+              <input type="file" id="ta_ownership_file" name="ownershipFile" accept="image/*,.pdf" data-file-key="ownershipDocs">
+            </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_selling_agent">Selling or leasing agent &amp; contact</label>
+                <input type="text" id="ta_selling_agent" name="sellingAgent">
+              </div>
+              <div class="input-group">
+                <label for="ta_selling_phone">Agent phone</label>
+                <input type="tel" id="ta_selling_phone" name="sellingAgentPhone">
+              </div>
+              <div class="input-group">
+                <label for="ta_selling_email">Agent email</label>
+                <input type="email" id="ta_selling_email" name="sellingAgentEmail">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_sale_amount">Sale amount (AUD)</label>
+                <input type="number" id="ta_sale_amount" name="saleAmount" min="0">
+              </div>
+              <div class="input-group">
+                <label for="ta_lease_amount">Leasing amount per week (AUD)</label>
+                <input type="number" id="ta_lease_amount" name="leasingAmountWeek" min="0">
+              </div>
+              <div class="input-group">
+                <label for="ta_owned_years">Years owned</label>
+                <input type="number" id="ta_owned_years" name="yearsOwned" min="0" step="0.5">
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="ta_owner_reason">Reason for moving</label>
+              <textarea id="ta_owner_reason" name="ownerReasonMoving" rows="2"></textarea>
+            </div>
+          </div>
+
+          <div class="wizard-nav-row">
+            <button type="button" class="btn btn-outline" data-tenancy-prev="3">&larr; Back</button>
+            <button type="button" class="btn btn-primary" data-tenancy-next="5">Continue to income</button>
+          </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="wizard-step" data-tenancy-step="5">
+          <div class="step-title-box">
+            <h2>Step 5: Income &amp; employment</h2>
+            <p>About 2 years of employment history is usually required.</p>
+          </div>
+
+          <label class="checkbox-pill tenancy-skip-pill">
+            <input type="checkbox" id="ta_self_employed" name="isSelfEmployed" value="yes"> Tick if you are self-employed (skip employee section)
+          </label>
+
+          <div id="ta-employee-block">
+            <h3 class="tenancy-subhead">Current employer</h3>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_employer">Employer name</label>
+                <input type="text" id="ta_employer" name="employerName">
+              </div>
+              <div class="input-group">
+                <label for="ta_position">Your position</label>
+                <input type="text" id="ta_position" name="position">
+              </div>
+            </div>
+            <div class="form-row" data-address-group="employer">
+              <div class="input-group" style="flex:2">
+                <label for="ta_emp_street">Employer street address</label>
+                <input type="text" id="ta_emp_street" name="employerStreet" autocomplete="street-address" data-address-autocomplete="true" data-address-part="street" placeholder="Start typing the street address">
+              </div>
+              <div class="input-group">
+                <label for="ta_emp_suburb">Suburb / city</label>
+                <input type="text" id="ta_emp_suburb" name="employerSuburb" autocomplete="address-level2" list="yhh-au-suburbs-list" data-address-part="suburb">
+              </div>
+              <div class="input-group">
+                <label for="ta_emp_postcode">Postcode</label>
+                <input type="text" id="ta_emp_postcode" name="employerPostcode" autocomplete="postal-code" data-address-part="postcode" inputmode="numeric">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_emp_contact">Employer contact person</label>
+                <input type="text" id="ta_emp_contact" name="employerContact">
+              </div>
+              <div class="input-group">
+                <label for="ta_emp_phone">Contact phone</label>
+                <input type="tel" id="ta_emp_phone" name="employerPhone">
+              </div>
+              <div class="input-group">
+                <label for="ta_emp_email">Contact email</label>
+                <input type="email" id="ta_emp_email" name="employerEmail">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_emp_start">Employment start date</label>
+                <input type="date" id="ta_emp_start" name="employmentStart">
+              </div>
+              <div class="input-group">
+                <label>Employment status</label>
+                <div class="checkbox-pill-group">
+                  <label class="checkbox-pill"><input type="radio" name="employmentStatus" value="Full Time"> Full Time</label>
+                  <label class="checkbox-pill"><input type="radio" name="employmentStatus" value="Part Time"> Part Time</label>
+                  <label class="checkbox-pill"><input type="radio" name="employmentStatus" value="Casual"> Casual</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_annual_income">Annual income (AUD)</label>
+                <input type="number" id="ta_annual_income" name="annualIncome" min="0">
+              </div>
+              <div class="input-group">
+                <label for="ta_transfer">Employment transfer?</label>
+                <input type="text" id="ta_transfer" name="employmentTransfer" placeholder="Details if relocating for work">
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="ta_payslips">Attach three most recent payslips</label>
+              <input type="file" id="ta_payslips" name="payslips" accept="image/*,.pdf" multiple data-file-key="payslips">
+            </div>
+
+            <h3 class="tenancy-subhead">Previous employer</h3>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_prev_emp">Employer name</label>
+                <input type="text" id="ta_prev_emp" name="prevEmployerName">
+              </div>
+              <div class="input-group">
+                <label for="ta_prev_pos">Your position</label>
+                <input type="text" id="ta_prev_pos" name="prevPosition">
+              </div>
+            </div>
+            <div class="form-row" data-address-group="prev-employer">
+              <div class="input-group" style="flex:2">
+                <label for="ta_prev_emp_street">Employer street address</label>
+                <input type="text" id="ta_prev_emp_street" name="prevEmployerStreet" autocomplete="street-address" data-address-autocomplete="true" data-address-part="street" placeholder="Start typing the street address">
+              </div>
+              <div class="input-group">
+                <label for="ta_prev_emp_suburb">Suburb / city</label>
+                <input type="text" id="ta_prev_emp_suburb" name="prevEmployerSuburb" autocomplete="address-level2" list="yhh-au-suburbs-list" data-address-part="suburb">
+              </div>
+              <div class="input-group">
+                <label for="ta_prev_emp_postcode">Postcode</label>
+                <input type="text" id="ta_prev_emp_postcode" name="prevEmployerPostcode" autocomplete="postal-code" data-address-part="postcode" inputmode="numeric">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_prev_emp_contact">Contact person</label>
+                <input type="text" id="ta_prev_emp_contact" name="prevEmployerContact">
+              </div>
+              <div class="input-group">
+                <label for="ta_prev_emp_phone">Phone</label>
+                <input type="tel" id="ta_prev_emp_phone" name="prevEmployerPhone">
+              </div>
+              <div class="input-group">
+                <label for="ta_prev_emp_email">Email</label>
+                <input type="email" id="ta_prev_emp_email" name="prevEmployerEmail">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_prev_emp_period">Employment period (from–to)</label>
+                <input type="text" id="ta_prev_emp_period" name="prevEmploymentPeriod" placeholder="e.g. Mar 2020 – Dec 2023">
+              </div>
+              <div class="input-group">
+                <label for="ta_prev_emp_income">Annual income (AUD)</label>
+                <input type="number" id="ta_prev_emp_income" name="prevAnnualIncome" min="0">
+              </div>
+            </div>
+            <div class="input-group">
+              <label>Employment status</label>
+              <div class="checkbox-pill-group">
+                <label class="checkbox-pill"><input type="radio" name="prevEmploymentStatus" value="Full Time"> Full Time</label>
+                <label class="checkbox-pill"><input type="radio" name="prevEmploymentStatus" value="Part Time"> Part Time</label>
+                <label class="checkbox-pill"><input type="radio" name="prevEmploymentStatus" value="Casual"> Casual</label>
+              </div>
+            </div>
+          </div>
+
+          <div id="ta-self-employed-block">
+            <h3 class="tenancy-subhead">Self-employed</h3>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_business">Business / company name</label>
+                <input type="text" id="ta_business" name="businessName">
+              </div>
+              <div class="input-group">
+                <label for="ta_abn">ABN / ACN</label>
+                <input type="text" id="ta_abn" name="abnAcn">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_accountant">Accountant firm / contact</label>
+                <input type="text" id="ta_accountant" name="accountant">
+              </div>
+              <div class="input-group">
+                <label for="ta_accountant_phone">Contact phone</label>
+                <input type="tel" id="ta_accountant_phone" name="accountantPhone">
+              </div>
+              <div class="input-group">
+                <label for="ta_accountant_email">Email</label>
+                <input type="email" id="ta_accountant_email" name="accountantEmail">
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="ta_business_home">Do you intend to operate any part of your business from home?</label>
+              <input type="text" id="ta_business_home" name="businessFromHome">
+            </div>
+          </div>
+
+          <h3 class="tenancy-subhead">Other income / resources</h3>
+          <div class="input-group">
+            <label for="ta_other_income_details">Details of other income</label>
+            <textarea id="ta_other_income_details" name="otherIncomeDetails" rows="2"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <label for="ta_other_income_aud">Annual income (AUD)</label>
+              <input type="number" id="ta_other_income_aud" name="otherIncomeAud" min="0">
+            </div>
+            <div class="input-group">
+              <label for="ta_other_income_freq">Frequency of payments</label>
+              <input type="text" id="ta_other_income_freq" name="otherIncomeFrequency">
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="ta_other_income_file">Supporting documents</label>
+            <input type="file" id="ta_other_income_file" name="otherIncomeFile" accept="image/*,.pdf" multiple data-file-key="otherIncomeDocs">
+          </div>
+
+          <label class="checkbox-pill tenancy-skip-pill">
+            <input type="checkbox" id="ta_not_student" name="notStudent" value="yes" checked> Tick if student section is not applicable
+          </label>
+          <div id="ta-student-block" style="display:none">
+            <h3 class="tenancy-subhead">Student</h3>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_course">Course name</label>
+                <input type="text" id="ta_course" name="courseName">
+              </div>
+              <div class="input-group">
+                <label for="ta_campus">Campus</label>
+                <input type="text" id="ta_campus" name="campus">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_student_contact">Contact name</label>
+                <input type="text" id="ta_student_contact" name="studentContact">
+              </div>
+              <div class="input-group">
+                <label for="ta_student_phone">Contact phone</label>
+                <input type="tel" id="ta_student_phone" name="studentPhone">
+              </div>
+              <div class="input-group">
+                <label for="ta_student_no">Student number</label>
+                <input type="text" id="ta_student_no" name="studentNumber">
+              </div>
+            </div>
+            <div class="input-group">
+              <label>Student status</label>
+              <div class="checkbox-pill-group">
+                <label class="checkbox-pill"><input type="radio" name="studentStatus" value="Full Time"> Full Time</label>
+                <label class="checkbox-pill"><input type="radio" name="studentStatus" value="Part Time"> Part Time</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="wizard-nav-row">
+            <button type="button" class="btn btn-outline" data-tenancy-prev="4">&larr; Back</button>
+            <button type="button" class="btn btn-primary" data-tenancy-next="6">Continue to references</button>
+          </div>
+        </div>
+
+        <!-- STEP 6 -->
+        <div class="wizard-step" data-tenancy-step="6">
+          <div class="step-title-box">
+            <h2>Step 6: References &amp; emergency contact</h2>
+            <p>Emergency contact should not be someone living with you (not required for Victorian rentals).</p>
+          </div>
+
+          <h3 class="tenancy-subhead">Professional reference</h3>
+          <div class="form-row">
+            <div class="input-group">
+              <label for="ta_prof_name">Name</label>
+              <input type="text" id="ta_prof_name" name="profRefName">
+            </div>
+            <div class="input-group">
+              <label for="ta_prof_rel">Relationship</label>
+              <input type="text" id="ta_prof_rel" name="profRefRelationship">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <label for="ta_prof_email">Email</label>
+              <input type="email" id="ta_prof_email" name="profRefEmail">
+            </div>
+            <div class="input-group">
+              <label for="ta_prof_phone">Phone</label>
+              <input type="tel" id="ta_prof_phone" name="profRefPhone">
+            </div>
+          </div>
+
+          <h3 class="tenancy-subhead">Personal reference</h3>
+          <div class="form-row">
+            <div class="input-group">
+              <label for="ta_pers_name">Name</label>
+              <input type="text" id="ta_pers_name" name="persRefName">
+            </div>
+            <div class="input-group">
+              <label for="ta_pers_rel">Relationship</label>
+              <input type="text" id="ta_pers_rel" name="persRefRelationship">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <label for="ta_pers_email">Email</label>
+              <input type="email" id="ta_pers_email" name="persRefEmail">
+            </div>
+            <div class="input-group">
+              <label for="ta_pers_phone">Phone</label>
+              <input type="tel" id="ta_pers_phone" name="persRefPhone">
+            </div>
+          </div>
+
+          <h3 class="tenancy-subhead">Emergency contact</h3>
+          <div class="form-row">
+            <div class="input-group">
+              <label for="ta_em_first">First name</label>
+              <input type="text" id="ta_em_first" name="emergencyFirstName">
+            </div>
+            <div class="input-group">
+              <label for="ta_em_last">Last name</label>
+              <input type="text" id="ta_em_last" name="emergencyLastName">
+            </div>
+            <div class="input-group">
+              <label for="ta_em_rel">Relationship</label>
+              <input type="text" id="ta_em_rel" name="emergencyRelationship">
+            </div>
+          </div>
+          <div class="form-row" data-address-group="emergency">
+            <div class="input-group" style="flex:2">
+              <label for="ta_em_street">Street address</label>
+              <input type="text" id="ta_em_street" name="emergencyStreet" autocomplete="street-address" data-address-autocomplete="true" data-address-part="street" placeholder="Start typing the street address">
+            </div>
+            <div class="input-group">
+              <label for="ta_em_suburb">Suburb / city</label>
+              <input type="text" id="ta_em_suburb" name="emergencySuburb" autocomplete="address-level2" list="yhh-au-suburbs-list" data-address-part="suburb">
+            </div>
+            <div class="input-group">
+              <label for="ta_em_postcode">Postcode</label>
+              <input type="text" id="ta_em_postcode" name="emergencyPostcode" autocomplete="postal-code" data-address-part="postcode" inputmode="numeric">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <label for="ta_em_phone">Phone</label>
+              <input type="tel" id="ta_em_phone" name="emergencyPhone">
+            </div>
+            <div class="input-group">
+              <label for="ta_em_email">Email</label>
+              <input type="email" id="ta_em_email" name="emergencyEmail">
+            </div>
+          </div>
+
+          <div class="form-privacy-block">
+            <p class="form-collection-notice">
+              <small>YHH Pty Ltd (Your Home Hunter) collects identity, housing, income, and supporting documents to lodge tenancy applications on your behalf with agents and portals (for example 2Apply, Snug, Ignite). Details are handled under the <em>Privacy Act 1988</em> (Cth) and Australian Privacy Principles. Read our <button type="button" class="link-style" data-modal-target="collectionNoticeModal">Privacy Collection Notice</button> (APP&nbsp;5) and <button type="button" class="link-style" data-modal-target="privacyDialog">Privacy Policy</button>. We never sell your data.</small>
+            </p>
+            <label class="privacy-consent-label">
+              <input type="checkbox" name="privacyConsent" class="privacy-consent-checkbox" value="yes" required>
+              <span>I have read and understand the Privacy Collection Notice and Privacy Policy *</span>
+            </label>
+          </div>
+
+          <div class="wizard-nav-row">
+            <button type="button" class="btn btn-outline" data-tenancy-prev="5">&larr; Back</button>
+            <button type="submit" class="btn btn-primary" id="ta_submit_btn">Submit rental application</button>
+          </div>
+        </div>
+      </form>
+
+      <div id="tenancy-success-view" class="wishlist-success-view" style="display: none;">
+        <div class="success-icon-badge">&#10003;</div>
+        <h2>Rental submission received</h2>
+        <p>Thank you. Your application pack has been sent to our advocacy team so we can lodge portal applications quickly.</p>
+        <div class="wishlist-success-actions">
+          <a href="fsp-sign-up.html" class="btn btn-primary">Back to Full Service sign-up</a>
+          <a href="index.html" class="btn btn-outline">Home</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="dialogs-container"></div>
+
+  <script src="contact-config.js"></script>
+  <script defer src="analytics.js"></script>
+  <script src="dialogs-bundle.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

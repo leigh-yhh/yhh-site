@@ -1,0 +1,21 @@
+# Copy to .dev.vars for local `wrangler dev` (never commit .dev.vars).
+# Production: npx wrangler secret put <NAME>
+#
+# Previous example webhook URLs returned 404 (flows deleted/rotated).
+# Paste fresh Activepieces webhook URLs after publishing flows from
+# ACTIVEPIECES-ZOHO-MAPPING.md
+
+AP_WEBHOOK_WISHLIST=https://automation.yourhomehunter.com.au/api/v1/webhooks/YOUR_WISHLIST_ID
+AP_WEBHOOK_WISHLIST_AUTH=
+AP_WEBHOOK_INTROCALL=
+AP_WEBHOOK_INTROCALL_AUTH=
+AP_WEBHOOK_CONSULT=
+AP_WEBHOOK_CONSULT_AUTH=
+AP_WEBHOOK_INSPECTOR=
+AP_WEBHOOK_INSPECTOR_AUTH=
+AP_WEBHOOK_INSPECTIONBOOKING=
+AP_WEBHOOK_INSPECTIONBOOKING_AUTH=
+AP_WEBHOOK_TENANCYAPPLICATION=
+AP_WEBHOOK_TENANCYAPPLICATION_AUTH=
+AP_WEBHOOK_SERVICEAGREEMENT=
+AP_WEBHOOK_SERVICEAGREEMENT_AUTH=

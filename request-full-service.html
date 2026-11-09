@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Search | Your Home Hunter</title>
+  <meta name="description" content="Tell us how to reach you and what you need from the search. We will come back to you about next steps.">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://www.yourhomehunter.com.au/request-full-service">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap"></noscript>
+  <link rel="stylesheet" href="/styles.css?v=20261027e">
+</head>
+<body class="wishlist-page search-enquiry">
+
+  <header class="wishlist-page-nav">
+    <div class="container wishlist-page-nav-inner">
+      <a href="/" class="wishlist-brand brand-lockup" aria-label="Your Home Hunter">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3.2 14.7 15.2 3.8 27.4 14.7"/>
+            <path d="M5.5 12.7v13.3h5.6"/>
+            <circle class="brand-lens-glass" cx="17.9" cy="19.85" r="6.15"/>
+            <path d="m22.01 24.42 2.4 2.65"/>
+          </g>
+        </svg>
+        <span class="brand-text">Your Home Hunter</span>
+      </a>
+      <div class="wishlist-page-nav-links">
+        <a href="tel:1800666944">1800 666 944</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wishlist-page-main">
+    <div class="container wishlist-page-shell search-enquiry-shell" id="search-enquiry-root">
+      <header class="wishlist-page-header">
+        <h1>Request a Search</h1>
+        <p class="wishlist-page-lead">Your details and a short brief so we can quote the search properly.</p>
+      </header>
+
+      <form id="search-enquiry-form" class="search-enquiry-form">
+        <div class="form-row">
+          <div class="input-group">
+            <label for="se_first_name">First name</label>
+            <input type="text" id="se_first_name" name="firstName" placeholder="John" autocomplete="given-name" required>
+          </div>
+          <div class="input-group">
+            <label for="se_last_name">Last name</label>
+            <input type="text" id="se_last_name" name="lastName" placeholder="Doe" autocomplete="family-name" required>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="se_current_location">Current location</label>
+          <input type="text" id="se_current_location" name="currentLocation" placeholder="e.g. Singapore, or Sydney NSW" required autocomplete="address-level2">
+        </div>
+
+        <div class="form-row">
+          <div class="input-group">
+            <label for="se_phone">Phone</label>
+            <input type="tel" id="se_phone" name="phone" placeholder="0412 345 678" autocomplete="tel" required>
+          </div>
+          <div class="input-group">
+            <label for="se_email">Email</label>
+            <input type="email" id="se_email" name="email" placeholder="john.doe@email.com" autocomplete="email" required>
+          </div>
+        </div>
+
+        <fieldset class="choice-list choice-list-pills">
+          <legend>Property type</legend>
+          <label><input type="checkbox" name="propertyType" value="All types"><span>All types</span></label>
+          <label><input type="checkbox" name="propertyType" value="House"><span>House</span></label>
+          <label><input type="checkbox" name="propertyType" value="Townhouse"><span>Townhouse</span></label>
+          <label><input type="checkbox" name="propertyType" value="Apartment &amp; Unit"><span>Apartment &amp; Unit</span></label>
+          <label><input type="checkbox" name="propertyType" value="Villa"><span>Villa</span></label>
+        </fieldset>
+
+        <div class="form-row">
+          <div class="input-group">
+            <label for="se_bedrooms">Bedrooms</label>
+            <input type="number" id="se_bedrooms" name="bedrooms" inputmode="numeric" min="1" max="10" step="1" placeholder="2" required>
+          </div>
+          <div class="input-group">
+            <label for="se_bathrooms">Bathrooms</label>
+            <input type="number" id="se_bathrooms" name="bathrooms" inputmode="numeric" min="1" max="10" step="1" placeholder="1" required>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="se_city">Search location</label>
+          <select id="se_city" name="city" required>
+            <option value="" disabled selected>Select a city</option>
+            <option value="Melbourne">Melbourne</option>
+            <option value="Brisbane">Brisbane</option>
+            <option value="Canberra">Canberra</option>
+            <option value="Adelaide">Adelaide</option>
+          </select>
+        </div>
+
+        <div class="input-group" id="se_suburb_wrap" hidden>
+          <label id="se_suburb_label" for="se_suburb_filter">Preferred suburbs</label>
+          <p class="field-hint">Tap up to 4 suburbs. Use the search box to narrow the list.</p>
+          <div class="suburb-selected" id="se_suburb_selected" hidden></div>
+          <input type="search" id="se_suburb_filter" class="suburb-filter" placeholder="e.g. Richmond" autocomplete="off">
+          <div class="suburb-picker" id="se_suburb_picker" role="group" aria-labelledby="se_suburb_label"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="se_budget">Rental budget ($ per week)</label>
+          <input type="number" id="se_budget" name="budgetWeekly" inputmode="numeric" min="100" max="20000" step="1" placeholder="850" required>
+        </div>
+
+        <div class="input-group">
+          <label for="se_move_date">Move by date</label>
+          <input type="date" id="se_move_date" name="moveDate">
+        </div>
+
+        <fieldset class="choice-list choice-list-pills">
+          <legend>Property requirements</legend>
+          <label><input type="checkbox" name="propertyRequirements" value="Furnished"><span>Furnished</span></label>
+          <label><input type="checkbox" name="propertyRequirements" value="Pets"><span>Pets</span></label>
+          <label><input type="checkbox" name="propertyRequirements" value="Off-street parking / garage"><span>Off-street parking / garage</span></label>
+          <label><input type="checkbox" name="propertyRequirements" value="Ensuite"><span>Ensuite</span></label>
+          <label><input type="checkbox" name="propertyRequirements" value="Accessibility"><span>Accessibility</span></label>
+        </fieldset>
+
+        <div class="input-group">
+          <label for="se_notes">Is there anything else we need to know?</label>
+          <textarea id="se_notes" name="notes" rows="4" placeholder="e.g. North-facing living, quiet street, space for a piano, no freeway noise"></textarea>
+        </div>
+
+        <div class="input-group">
+          <label for="se_source">How did you hear about Your Home Hunter?</label>
+          <select id="se_source" name="source" required>
+            <option value="" disabled selected>Select a source</option>
+            <option value="Google Search">Google Search</option>
+            <option value="Chat GPT / AI search">Chat GPT / AI search</option>
+            <option value="Recommendation from a Real Estate Agent">Recommendation from a Real Estate Agent</option>
+            <option value="Recommendation from a friend / colleague">Recommendation from a friend / colleague</option>
+            <option value="Facebook Meta">Facebook Meta</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Linkedin">Linkedin</option>
+            <option value="Fairy Floss">Fairy Floss</option>
+            <option value="Other source">Other source</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="se_referrer">Were you referred to us?</label>
+          <input type="text" id="se_referrer" name="referrer" placeholder="e.g. Sam at Belle Property, or a friend's name">
+        </div>
+
+        <div class="form-privacy-block">
+          <p class="form-collection-notice">
+            <small>YHH Pty Ltd (Your Home Hunter) collects this to reply about your search. Details are handled under the <em>Privacy Act 1988</em> (Cth) and Australian Privacy Principles. Read our <button type="button" class="link-style" data-modal-target="collectionNoticeModal">Privacy Collection Notice</button> and <button type="button" class="link-style" data-modal-target="privacyDialog">Privacy Policy</button>.</small>
+          </p>
+          <label class="privacy-consent-label">
+            <input type="checkbox" name="privacyConsent" class="privacy-consent-checkbox" value="yes" required>
+            <span>I state that I have read and understood the privacy policy and collection notice</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg">Send enquiry</button>
+      </form>
+
+      <div id="search-enquiry-success" class="wishlist-success-view" hidden>
+        <div class="success-icon-badge">&#10003;</div>
+        <h2>Enquiry sent</h2>
+        <p>Thanks. We have this and will be in touch.</p>
+        <div class="wishlist-success-actions">
+          <a href="/" class="btn btn-primary">Back to home</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="dialogs-container"></div>
+
+  <script src="/search-suburbs.js?v=20261027b"></script>
+  <script src="/contact-config.js?v=20261027b"></script>
+  <script defer src="/analytics.js?v=20261027b"></script>
+  <script src="/dialogs-bundle.js?v=20261027b"></script>
+  <script src="/script.js?v=20261028b"></script>
+</body>
+</html>

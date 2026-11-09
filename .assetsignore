@@ -1,0 +1,13 @@
+workers/
+.cursor/
+.agents/
+.git/
+.wrangler/
+node_modules/
+agent-tools/
+*.md
+.dev.vars
+.dev.vars.example
+.gitignore
+wrangler.toml
+.assetsignore

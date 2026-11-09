@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /fsp-sign-up
+Disallow: /fsp-sign-up/
+Disallow: /fsp-sign-up.html
+Disallow: /colour-schemes.html
+Disallow: /dialogs/
+
+Sitemap: https://www.yourhomehunter.com.au/sitemap.xml

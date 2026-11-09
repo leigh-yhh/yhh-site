@@ -1,0 +1,11 @@
+# Static site Worker: https://yhh.leigh-8cd.workers.dev
+name = "yhh"
+compatibility_date = "2026-10-09"
+workers_dev = true
+
+[assets]
+directory = "./"
+not_found_handling = "404-page"
+# Extensionless URLs without a trailing slash: /blog.html redirects to /blog,
+# and /the-rental-rap/index.html is served at /the-rental-rap.
+html_handling = "drop-trailing-slash"
