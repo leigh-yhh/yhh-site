@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap"></noscript>
-  <link rel="stylesheet" href="/styles.css?v=20261027e">
+  <link rel="stylesheet" href="/styles.css?v=20261110r">
 </head>
 <body class="wishlist-page search-enquiry">
 
@@ -71,23 +71,30 @@
           </div>
         </div>
 
-        <fieldset class="choice-list choice-list-pills">
-          <legend>Property type</legend>
-          <label><input type="checkbox" name="propertyType" value="All types"><span>All types</span></label>
-          <label><input type="checkbox" name="propertyType" value="House"><span>House</span></label>
-          <label><input type="checkbox" name="propertyType" value="Townhouse"><span>Townhouse</span></label>
-          <label><input type="checkbox" name="propertyType" value="Apartment &amp; Unit"><span>Apartment &amp; Unit</span></label>
-          <label><input type="checkbox" name="propertyType" value="Villa"><span>Villa</span></label>
-        </fieldset>
+        <div class="input-group">
+          <label id="se_property_type_label">Property type</label>
+          <div class="multi-select" data-placeholder="Select property types">
+            <button type="button" class="multi-select-toggle" aria-expanded="false" aria-labelledby="se_property_type_label">
+              <span class="multi-select-value is-placeholder">Select property types</span>
+            </button>
+            <div class="multi-select-panel" hidden>
+              <label><input type="checkbox" name="propertyType" value="All types"><span>All types</span></label>
+              <label><input type="checkbox" name="propertyType" value="House"><span>House</span></label>
+              <label><input type="checkbox" name="propertyType" value="Townhouse"><span>Townhouse</span></label>
+              <label><input type="checkbox" name="propertyType" value="Apartment &amp; Unit"><span>Apartment &amp; Unit</span></label>
+              <label><input type="checkbox" name="propertyType" value="Villa"><span>Villa</span></label>
+            </div>
+          </div>
+        </div>
 
         <div class="form-row">
           <div class="input-group">
             <label for="se_bedrooms">Bedrooms</label>
-            <input type="number" id="se_bedrooms" name="bedrooms" inputmode="numeric" min="1" max="10" step="1" placeholder="2" required>
+            <input type="number" id="se_bedrooms" name="bedrooms" inputmode="numeric" min="0" max="10" step="1" placeholder="1, 2, 3" required>
           </div>
           <div class="input-group">
             <label for="se_bathrooms">Bathrooms</label>
-            <input type="number" id="se_bathrooms" name="bathrooms" inputmode="numeric" min="1" max="10" step="1" placeholder="1" required>
+            <input type="number" id="se_bathrooms" name="bathrooms" inputmode="numeric" min="0" max="10" step="1" placeholder="1, 2, 3" required>
           </div>
         </div>
 
@@ -103,16 +110,21 @@
         </div>
 
         <div class="input-group" id="se_suburb_wrap" hidden>
-          <label id="se_suburb_label" for="se_suburb_filter">Preferred suburbs</label>
-          <p class="field-hint">Tap up to 4 suburbs. Use the search box to narrow the list.</p>
-          <div class="suburb-selected" id="se_suburb_selected" hidden></div>
-          <input type="search" id="se_suburb_filter" class="suburb-filter" placeholder="e.g. Richmond" autocomplete="off">
-          <div class="suburb-picker" id="se_suburb_picker" role="group" aria-labelledby="se_suburb_label"></div>
+          <label id="se_suburb_label">Preferred suburbs</label>
+          <div class="multi-select" id="se_suburb_select" data-placeholder="Select up to 4 suburbs">
+            <button type="button" class="multi-select-toggle" aria-expanded="false" aria-labelledby="se_suburb_label">
+              <span class="multi-select-value is-placeholder">Select up to 4 suburbs</span>
+            </button>
+            <div class="multi-select-panel" hidden>
+              <input type="search" id="se_suburb_filter" class="suburb-filter" placeholder="e.g. Richmond" autocomplete="off" aria-label="Filter suburbs">
+              <div class="suburb-picker" id="se_suburb_picker" role="group" aria-labelledby="se_suburb_label"></div>
+            </div>
+          </div>
         </div>
 
         <div class="input-group">
           <label for="se_budget">Rental budget ($ per week)</label>
-          <input type="number" id="se_budget" name="budgetWeekly" inputmode="numeric" min="100" max="20000" step="1" placeholder="850" required>
+          <input type="number" id="se_budget" name="budgetWeekly" inputmode="numeric" min="0" max="20000" step="1" placeholder="850" required>
         </div>
 
         <div class="input-group">
@@ -120,14 +132,22 @@
           <input type="date" id="se_move_date" name="moveDate">
         </div>
 
-        <fieldset class="choice-list choice-list-pills">
-          <legend>Property requirements</legend>
-          <label><input type="checkbox" name="propertyRequirements" value="Furnished"><span>Furnished</span></label>
-          <label><input type="checkbox" name="propertyRequirements" value="Pets"><span>Pets</span></label>
-          <label><input type="checkbox" name="propertyRequirements" value="Off-street parking / garage"><span>Off-street parking / garage</span></label>
-          <label><input type="checkbox" name="propertyRequirements" value="Ensuite"><span>Ensuite</span></label>
-          <label><input type="checkbox" name="propertyRequirements" value="Accessibility"><span>Accessibility</span></label>
-        </fieldset>
+        <div class="input-group">
+          <label id="se_requirements_label">Property requirements</label>
+          <div class="multi-select" data-placeholder="Select any that apply">
+            <button type="button" class="multi-select-toggle" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="se_requirements_label">
+              <span class="multi-select-value is-placeholder">Select any that apply</span>
+            </button>
+            <div class="multi-select-panel" hidden>
+              <label><input type="checkbox" name="propertyRequirements" value="Furnished"><span>Furnished</span></label>
+              <label><input type="checkbox" name="propertyRequirements" value="Pets"><span>Pets</span></label>
+              <label><input type="checkbox" name="propertyRequirements" value="Off-street parking / garage"><span>Off-street parking / garage</span></label>
+              <label><input type="checkbox" name="propertyRequirements" value="Ensuite"><span>Ensuite</span></label>
+              <label><input type="checkbox" name="propertyRequirements" value="Accessibility"><span>Accessibility</span></label>
+              <label><input type="checkbox" name="propertyRequirements" value="Amenities"><span>Amenities</span></label>
+            </div>
+          </div>
+        </div>
 
         <div class="input-group">
           <label for="se_notes">Is there anything else we need to know?</label>
@@ -152,7 +172,8 @@
 
         <div class="input-group">
           <label for="se_referrer">Were you referred to us?</label>
-          <input type="text" id="se_referrer" name="referrer" placeholder="e.g. Sam at Belle Property, or a friend's name">
+          <p class="field-hint">If recommended by a real estate agent, friend, or colleague, tell us who so we can thank them.</p>
+          <input type="text" id="se_referrer" name="referrer" placeholder="e.g. Sam at Belle Property">
         </div>
 
         <div class="form-privacy-block">
@@ -185,6 +206,6 @@
   <script src="/contact-config.js?v=20261027b"></script>
   <script defer src="/analytics.js?v=20261027b"></script>
   <script src="/dialogs-bundle.js?v=20261027b"></script>
-  <script src="/script.js?v=20261028b"></script>
+  <script src="/script.js?v=20261110t"></script>
 </body>
 </html>

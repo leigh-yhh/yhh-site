@@ -665,7 +665,7 @@ document.addEventListener('DOMContentLoaded', () => {
         banner = document.createElement('p');
         banner.className = 'prefill-banner';
         banner.setAttribute('data-prefill-banner', '');
-        banner.textContent = 'Filled in from a form on this device.';
+        banner.textContent = 'We filled these in from a form you already sent in this browser. Change anything that isn\u2019t right.';
         if (anchor && anchor.parentNode === host) {
           host.insertBefore(banner, anchor.nextSibling);
         } else if (host.firstChild) {
@@ -2441,7 +2441,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const suburbLabel = form.querySelector('#se_suburb_label');
     const suburbPicker = form.querySelector('#se_suburb_picker');
     const suburbFilter = form.querySelector('#se_suburb_filter');
-    const suburbSelected = form.querySelector('#se_suburb_selected');
     const success = root.querySelector('#search-enquiry-success');
     const MAX_SUBURBS = 4;
     let suburbOptions = [];
@@ -2457,19 +2456,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const selectedSuburbs = () => chosenSuburbs.slice();
 
+    const refreshMultiSelect = (select) => {
+      const valueEl = select.querySelector('.multi-select-value');
+      if (!valueEl) return;
+      const names = Array.from(select.querySelectorAll('input[type="checkbox"]:checked'))
+        .map((el) => el.closest('label')?.querySelector('span')?.textContent?.trim() || el.value);
+      const placeholder = select.dataset.placeholder || 'Select';
+      valueEl.textContent = names.length ? names.join(', ') : placeholder;
+      valueEl.classList.toggle('is-placeholder', !names.length);
+    };
+
+    const closeMultiSelects = () => {
+      form.querySelectorAll('.multi-select.is-open').forEach((select) => {
+        select.classList.remove('is-open');
+        const panel = select.querySelector('.multi-select-panel');
+        const toggle = select.querySelector('.multi-select-toggle');
+        if (panel) panel.hidden = true;
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      });
+    };
+
+    form.querySelectorAll('.multi-select').forEach((select) => {
+      const toggle = select.querySelector('.multi-select-toggle');
+      const panel = select.querySelector('.multi-select-panel');
+      if (!toggle || !panel) return;
+      toggle.addEventListener('click', () => {
+        const willOpen = !select.classList.contains('is-open');
+        closeMultiSelects();
+        if (!willOpen) return;
+        select.classList.add('is-open');
+        panel.hidden = false;
+        toggle.setAttribute('aria-expanded', 'true');
+      });
+      select.addEventListener('change', () => refreshMultiSelect(select));
+      refreshMultiSelect(select);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (event.target.closest('.multi-select')) return;
+      closeMultiSelects();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMultiSelects();
+    });
+
     const syncSuburbSummary = () => {
-      if (!suburbSelected) return;
-      if (!chosenSuburbs.length) {
-        suburbSelected.hidden = true;
-        suburbSelected.innerHTML = '';
-        return;
-      }
-      suburbSelected.hidden = false;
-      suburbSelected.innerHTML = chosenSuburbs.map((name) =>
-        '<button type="button" class="suburb-chip" data-suburb="' + escapeHtml(name) + '">' +
-          escapeHtml(name) + ' <span aria-hidden="true">&times;</span></button>'
-      ).join('') +
-        '<span class="suburb-count">' + chosenSuburbs.length + ' of ' + MAX_SUBURBS + '</span>';
+      const select = form.querySelector('#se_suburb_select');
+      if (select) refreshMultiSelect(select);
     };
 
     const renderSuburbPicker = () => {
@@ -2523,6 +2556,8 @@ document.addEventListener('DOMContentLoaded', () => {
         el.disabled = allOn;
         el.closest('label')?.classList.toggle('is-disabled', allOn);
       });
+      const select = allBox.closest('.multi-select');
+      if (select) refreshMultiSelect(select);
     };
 
     form.querySelectorAll('input[name="propertyType"]').forEach((el) => {
@@ -2556,15 +2591,6 @@ document.addEventListener('DOMContentLoaded', () => {
           chosenSuburbs = chosenSuburbs.filter((name) => name !== box.value);
         }
         syncSuburbSummary();
-      });
-    }
-    if (suburbSelected) {
-      suburbSelected.addEventListener('click', (e) => {
-        const chip = e.target.closest('[data-suburb]');
-        if (!chip) return;
-        const value = chip.getAttribute('data-suburb');
-        chosenSuburbs = chosenSuburbs.filter((name) => name !== value);
-        renderSuburbPicker();
       });
     }
 

@@ -171,7 +171,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,400;1,600&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,400;1,600&amp;display=swap"></noscript>
-  <link rel="stylesheet" href="styles.css?v=20261110o">
+  <link rel="stylesheet" href="styles.css?v=20261111a">
 </head>
 <body>
   <header class="navbar">
@@ -225,7 +225,15 @@
       </div>
       <div class="proof-row">
         <div class="proof-stat">
-          <strong>4.9</strong>
+          <strong class="proof-rating">
+            <svg class="google-g" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            4.9
+          </strong>
           <span>from 204 Google reviews</span>
         </div>
         <div class="proof-stat">
@@ -237,7 +245,7 @@
           <span>agent relationships</span>
         </div>
         <div class="proof-stat">
-          <strong>4</strong>
+          <strong>4 Cities</strong>
           <span>Melbourne, Brisbane, Canberra and Adelaide</span>
         </div>
         <div class="proof-stat">
@@ -483,15 +491,34 @@
         <h2>What clients say</h2>
         <p>A few notes from people we have helped find a home.</p>
       </div>
-      <div class="pull-quote">
-        <blockquote>
+      <ul class="story-list">
+        <li>
+          <h3>Hilda &amp; Otto</h3>
           <p>We tried applying from Germany on our own, but the process was confusing and difficult. YHH became an absolute lifesaver. They took over the entire process clearly, professionally, and with so much heart. Truly worth its weight in gold.</p>
-          <footer>
-            <strong>Hilda &amp; Otto</strong>
-            <span>International Relocation, Europe to Brisbane</span>
-          </footer>
-        </blockquote>
-        <button type="button" class="btn btn-outline" data-modal-target="caseStudiesModal">Read client stories</button>
+        </li>
+        <li>
+          <h3>Natasha</h3>
+          <p>Wendy found us the ideal home very quickly. It was off market and we wouldn’t have found it without her. We are very impressed! She also referred me to some other helpful service providers to assist with unpacking and moving in. Thanks Wendy!</p>
+        </li>
+        <li>
+          <h3>Chris</h3>
+          <p>Very grateful to Wendy and the team at Your Home Hunter for seamlessly finding and securing our new property in Melbourne. Having a trusted, well-respected team working on our behalf took the stress out of finding a rental property, and gave us access to off-market properties that we would not have been able to. Would highly recommend Wendy and the YHH team. Thank you.</p>
+        </li>
+        <li>
+          <h3>Conor</h3>
+          <p>I had to move to Brisbane on very short notice for work and Wendy and her team helped me find an amazing place in a very short turnaround. Excellent service and lovely people.</p>
+        </li>
+        <li>
+          <h3>Jodie</h3>
+          <p>We’ve recently relocated from Newcastle to Melbourne and struggled with logistics around securing a property to rent. From flights down and back, physically inspecting properties and then suffering through a multitude of application forms. It was impossible. Then we discovered Wendy at Your Home Hunter and I cannot recommend them enough. She simplified the whole process. Attended inspections, handled applications and took care of all communications between us and the real estate agents. She secured us our perfect property within 2 weeks and made the whole experience stress free and seamless. Well worth the modest expense. Highly recommend.</p>
+        </li>
+        <li>
+          <h3>JD Bell</h3>
+          <p>Wendy and her team went the extra mile to find the perfect home for us. Moving internationally with there teenage children, combined with other unique needs, was overwhelming and anxiety inducing for us. Wendy and her staff were just the cool, call, and collected voices we needed. They zeroed in on several properties that matched our needs and then guided us through the application process. We are so happy with where we ended up.</p>
+        </li>
+      </ul>
+      <div class="story-list-actions">
+        <button type="button" class="btn btn-outline btn-lg" data-modal-target="caseStudiesModal">Read client stories</button>
       </div>
     </div>
   </section>
@@ -779,6 +806,6 @@
   <script src="contact-config.js"></script>
   <script defer src="analytics.js"></script>
   <script src="dialogs-bundle.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js?v=20261110w"></script>
 </body>
 </html>
