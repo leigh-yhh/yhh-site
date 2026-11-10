@@ -2,6 +2,8 @@
 
 Hides Activepieces webhook URLs from the browser. The site POSTs `{ flow, data, pageUrl }` to this Worker; the Worker forwards to Activepieces using secrets.
 
+Tenancy applications are split: `tenancyApplication` (form JSON) then `tenancyApplicationFiles` (one base64 file per request) so payloads stay manageable.
+
 Zoho CRM field mapping for Activepieces: see [ACTIVEPIECES-ZOHO-MAPPING.md](./ACTIVEPIECES-ZOHO-MAPPING.md).
 
 ## Setup

@@ -1,6 +1,8 @@
 # Activepieces → Zoho CRM field mapping
 
-Use this when configuring the Activepieces flows behind `AP_WEBHOOK_WISHLIST` and `AP_WEBHOOK_INTROCALL`.
+Use this when configuring the Activepieces flows behind the submit-proxy webhooks.
+
+**Sample webhook bodies (all flows):** [ACTIVEPIECES-SAMPLE-PAYLOADS.json](./ACTIVEPIECES-SAMPLE-PAYLOADS.json) — paste into Catch Webhook → sample / test data. Fields are at `trigger.body.*` (flat).
 
 **Status (2026-10-27):** Production secrets for wishlist + introCall are set, but the webhook URLs currently resolve to **HTTP 404**. Publish new AP flows, then `wrangler secret put` the new URLs. See [SMOKE-TEST-RESULTS.md](./SMOKE-TEST-RESULTS.md).
 
@@ -13,15 +15,14 @@ Every submit arrives as a **flat JSON body**: form fields at the root, plus meta
   "firstName": "…",
   "lastName": "…",
   "email": "…",
-  "form": "wishlistLight",
-  "flow": "wishlist | introCall | …",
   "source": "yourhomehunter.com.au",
   "pageUrl": "https://…",
-  "submittedAt": "2026-10-27T11:00:00.000Z"
+  "submittedAt": "2026-10-27T11:00:00.000Z",
+  "userCountry": "Australia"
 }
 ```
 
-In Activepieces, map from `trigger.body.firstName` (etc.). Do **not** expect a nested `data` object.
+In Activepieces, map from `trigger.body.firstName` (etc.). Do **not** expect a nested `data` object. Do **not** expect a `flow` field — routing is Worker-side only (separate webhook URL per flow).
 
 ## Flow: `wishlist` (Request a Search / WishListLight)
 
@@ -51,7 +52,7 @@ Native form body matches the existing Zoho Forms JSON (flat on `trigger.body`).
 | `referer` | optional | Browser referrer URL |
 | `userCountry` | optional | Set by Worker from Cloudflare IP geo (e.g. `Australia`) |
 
-Worker also appends: `flow`, `source` (`yourhomehunter.com.au`), `pageUrl`, `submittedAt`.
+Worker also appends: `source` (`yourhomehunter.com.au`), `pageUrl`, `submittedAt`, `userCountry`.
 
 ### Sample body (wishlist)
 
@@ -132,11 +133,44 @@ Same as wishlist, behind `AP_WEBHOOK_INTROCALL`, without suburb/budget fields.
 |---|---|---|
 | `consult` | `AP_WEBHOOK_CONSULT` | Lead + Task / Meeting note |
 | `inspectionBooking` | `AP_WEBHOOK_INSPECTIONBOOKING` | Lead/Contact + Task |
-| `tenancyApplication` | `AP_WEBHOOK_TENANCYAPPLICATION` | Contacts + Applications module; files via Drive |
+| `tenancyApplication` | `AP_WEBHOOK_TENANCYAPPLICATION` | Contacts + Applications (form fields only) |
+| `tenancyApplicationFiles` | `AP_WEBHOOK_TENANCYAPPLICATIONFILES` | Google Drive upload (one file per webhook) |
 | `serviceAgreement` | `AP_WEBHOOK_SERVICEAGREEMENT` | Prefer DocuSign; if used, Contacts checklist fields |
 | `inspector` | `AP_WEBHOOK_INSPECTOR` | Vendors or custom |
 
-Empty secrets cause the Worker to respond `{ ok: true, skipped: true }` — the site now treats that as a **failed** submit.
+### tenancyApplication (nested form — no file bytes)
+
+Top-level: `submissionId`, `fileCount`, then groups:
+
+| Group | Key paths |
+|---|---|
+| `lease` | `portalsUsed`, `commencementDate`, `termMonths` |
+| `applicant` | `title`, `firstName`, `middleName`, `lastName`, `preferredName`, `dateOfBirth`, `mobile`, `workPhone`, `email`, `hasCar` |
+| `currentAddress` | `country`, `street`, `suburb`, `postcode` |
+| `identity` | `licence.{number,cardNumber,state,expiry}`, `passport.{number,country,expiry}`, `otherIdDetails` |
+| `household` | `adults`, `children`, `petsCount`, `otherApplicants[]`, `pet.*` |
+| `housing` | `livingInOwnHome`, `currentRental` \| `null`, `previousRental`, `ownHome` \| `null` |
+| `income` | `isSelfEmployed`, `employment` \| `null`, `previousEmployment`, `selfEmployed` \| `null`, `otherIncome`, `student` \| `null` |
+| `references` | `professional`, `personal`, `emergency` |
+| `privacy` | `consent`, `consentAt`, `noticeVersion`, `policyVersion` |
+
+Map in AP from e.g. `trigger.body.applicant.email`, `trigger.body.housing.currentRental.agency`. Full sample: [ACTIVEPIECES-SAMPLE-PAYLOADS.json](./ACTIVEPIECES-SAMPLE-PAYLOADS.json).
+
+### tenancyApplicationFiles (one file per request)
+
+| Path | Notes |
+|---|---|
+| `submissionId` | Same UUID as the application |
+| `applicant.{firstName,lastName,email}` | Correlation — build folder name in AP from these |
+| `file.index` / `file.count` | e.g. `2` of `5` |
+| `file.docKey` | `licence` \| `medicare` \| `payslips` \| `ownership` \| `pet` \| `other` |
+| `file.name` / `type` / `size` | Original metadata |
+| `file.safeFileName` / `file.driveFileName` | Sanitised (`docKey__safeFileName`) |
+| `file.base64` | File contents (PDF/image) |
+
+**Activepieces recipe (files):** Webhook → derive folder name from `applicant` → decode `file.base64` → Google Drive create/reuse folder under parent `14mLBubv5HiboJl7htycLq_RHwISsL5Md` → upload as `file.driveFileName`. Use the Activepieces Google Drive OAuth connection (no service-account JSON key).
+
+Empty secrets cause the Worker to respond `{ ok: false, skipped: true }` — the site treats that as a **failed** submit.
 
 ---
 

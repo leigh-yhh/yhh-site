@@ -12,10 +12,12 @@ ALLOWED_ORIGINS = "https://www.yourhomehunter.com.au,https://yourhomehunter.com.
 # Set webhook URLs as secrets (not committed):
 #   npx wrangler secret put AP_WEBHOOK_WISHLIST
 #   npx wrangler secret put AP_WEBHOOK_INTROCALL
+#   npx wrangler secret put AP_WEBHOOK_TENANCYAPPLICATION
+#   npx wrangler secret put AP_WEBHOOK_TENANCYAPPLICATIONFILES
 #   …
 # Optional Activepieces header auth (sent as header "Authentication"):
 #   npx wrangler secret put AP_WEBHOOK_WISHLIST_AUTH
-#   npx wrangler secret put AP_WEBHOOK_INTROCALL_AUTH
+#   npx wrangler secret put AP_WEBHOOK_TENANCYAPPLICATIONFILES_AUTH
 #   …
 #
 # Local dev: copy .dev.vars.example → .dev.vars and fill values.

@@ -1490,33 +1490,45 @@ document.addEventListener('DOMContentLoaded', () => {
         const raw = formDataToObject(formData);
         if (!requirePrivacyConsent(wishlistForm)) return;
 
+        // Same Zoho-parity shape as the request-full-service wishlist page.
+        const suburbs = [raw.SingleLine1, raw.SingleLine2, raw.SingleLine3]
+          .map((s) => String(s || '').trim())
+          .filter(Boolean);
+        const mustHave = [].concat(raw.mustHave || []).filter(Boolean);
+        const locationPriorities = [].concat(raw.MultipleChoice || []).filter(Boolean);
+        const propertyType = raw.Dropdown3 ? [raw.Dropdown3] : [];
+        const extraBits = [
+          raw.SingleLine ? `Preferred name: ${raw.SingleLine}` : '',
+          raw.Dropdown1 ? `Furnished: ${raw.Dropdown1}` : '',
+          raw.SingleLine4 ? `Parking: ${raw.SingleLine4}` : '',
+          raw.SingleLine6 ? `Parking spec: ${raw.SingleLine6}` : '',
+          raw.SingleLine7 ? `Pets: ${raw.SingleLine7}` : '',
+          locationPriorities.length ? `Location priorities: ${locationPriorities.join(', ')}` : '',
+          [].concat(raw.Checkbox || []).filter(Boolean).length
+            ? `Contact methods: ${[].concat(raw.Checkbox || []).filter(Boolean).join(', ')}`
+            : ''
+        ].filter(Boolean);
+        const notes = String(raw.MultiLine1 || '').trim();
+        const otherDetails = [notes, ...extraBits].filter(Boolean).join('\n');
+
         const payload = {
           firstName: raw.Name_First || '',
           lastName: raw.Name_Last || '',
-          preferredName: raw.SingleLine || '',
-          phone: raw.PhoneNumber || '',
           email: raw.Email || '',
-          contactMethods: [].concat(raw.Checkbox || []),
-          relocationFrom: raw.Address || '',
-          city: raw.Dropdown || '',
-          suburb1: raw.SingleLine1 || '',
-          suburb2: raw.SingleLine2 || '',
-          suburb3: raw.SingleLine3 || '',
-          locationPriorities: [].concat(raw.MultipleChoice || []),
-          propertyType: raw.Dropdown3 || '',
-          furnished: raw.Dropdown1 || '',
+          phone: raw.PhoneNumber || '',
+          currentLocation: raw.Address || '',
+          location: raw.Dropdown || '',
+          propertyType,
           bedrooms: raw.Number1 || '',
           bathrooms: raw.Number || '',
-          parking: raw.SingleLine4 || '',
-          parkingSpec: raw.SingleLine6 || '',
-          pets: raw.SingleLine7 || '',
-          mustHave: [].concat(raw.mustHave || []).filter(Boolean),
-          budgetWeekly: raw.Number2 || '',
-          moveDate: raw.Date || '',
-          source: raw.Dropdown2 || '',
-          referrer: raw.SingleLine8 || '',
-          notes: raw.MultiLine1 || '',
-          raw: raw,
+          suburbs,
+          rentalBudget: raw.Number2 || '',
+          moveByDate: raw.Date || '',
+          propertyRequirements: mustHave,
+          otherDetails,
+          formSource: raw.Dropdown2 || '',
+          referral: raw.SingleLine8 || '',
+          referer: document.referrer || '',
           ...privacyConsentFields(wishlistForm)
         };
 
@@ -1526,13 +1538,13 @@ document.addEventListener('DOMContentLoaded', () => {
           saveClientProfile({
             firstName: payload.firstName,
             lastName: payload.lastName,
-            preferredName: payload.preferredName,
+            preferredName: raw.SingleLine || '',
             phone: payload.phone,
             email: payload.email,
-            city: payload.city,
-            relocationFrom: payload.relocationFrom,
-            budgetWeekly: payload.budgetWeekly,
-            searchLocations: payload.city ? [payload.city] : []
+            city: payload.location,
+            relocationFrom: payload.currentLocation,
+            budgetWeekly: payload.rentalBudget,
+            searchLocations: payload.location ? [payload.location] : []
           });
           try {
             localStorage.setItem('yhh_wishlist_submission', JSON.stringify({
@@ -2032,6 +2044,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
   const TENANCY_MAX_FILE_BYTES = 8 * 1024 * 1024;
 
+  function setTenancyUploadStatus(root, message) {
+    const el = root.querySelector('#ta_upload_status');
+    if (!el) return;
+    if (!message) {
+      el.hidden = true;
+      el.textContent = '';
+      return;
+    }
+    el.hidden = false;
+    el.textContent = message;
+  }
+
   function sanitizeDriveFileName(name) {
     const base = String(name || 'file').trim() || 'file';
     return base
@@ -2041,64 +2065,289 @@ document.addEventListener('DOMContentLoaded', () => {
       .slice(0, 120);
   }
 
-  function sanitizeDriveFolderPart(value) {
-    return String(value || '')
-      .trim()
-      .replace(/[\\/:*?"<>|]+/g, '')
-      .replace(/\s+/g, '_')
-      .replace(/_+/g, '_')
-      .replace(/^_+|_+$/g, '')
-      .slice(0, 40);
+  function newTenancySubmissionId() {
+    if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+      return crypto.randomUUID();
+    }
+    return `ta_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
   }
 
-  /** e.g. Smith_Jane_2026-10-09 — used by Activepieces Google Drive folder naming */
-  function buildDriveFolderLabel(firstName, lastName, when = new Date()) {
-    const last = sanitizeDriveFolderPart(lastName) || 'Applicant';
-    const first = sanitizeDriveFolderPart(firstName) || 'Unknown';
-    const yyyy = when.getFullYear();
-    const mm = String(when.getMonth() + 1).padStart(2, '0');
-    const dd = String(when.getDate()).padStart(2, '0');
-    return `${last}_${first}_${yyyy}-${mm}-${dd}`;
-  }
-
-  function readFileAsBase64(file, docKey) {
+  function readFileAsBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = () => {
         const result = String(reader.result || '');
         const base64 = result.includes(',') ? result.split(',')[1] : result;
-        const safeFileName = sanitizeDriveFileName(file.name);
-        resolve({
-          name: file.name,
-          type: file.type || 'application/octet-stream',
-          size: file.size,
-          base64,
-          docKey: docKey || '',
-          safeFileName,
-          driveFileName: docKey ? `${docKey}__${safeFileName}` : safeFileName
-        });
+        resolve(base64);
       };
       reader.onerror = () => reject(new Error('Could not read file: ' + file.name));
       reader.readAsDataURL(file);
     });
   }
 
-  async function collectTenancyFiles(form) {
-    const files = {};
+  /** Gather selected files (validated); bytes encoded later one-at-a-time. */
+  function collectTenancyFileEntries(form) {
+    const entries = [];
     const inputs = form.querySelectorAll('input[type="file"][data-file-key]');
     for (const input of inputs) {
       const key = input.getAttribute('data-file-key');
       if (!key || !input.files || !input.files.length) continue;
-      const list = [];
       for (const file of Array.from(input.files)) {
         if (file.size > TENANCY_MAX_FILE_BYTES) {
           throw new Error(`"${file.name}" is over 8 MB. Please upload a smaller file.`);
         }
-        list.push(await readFileAsBase64(file, key));
+        entries.push({ docKey: key, file });
       }
-      files[key] = input.multiple ? list : list[0];
     }
-    return files;
+    return entries;
+  }
+
+  function tenancyStr(value) {
+    return value == null ? '' : String(value).trim();
+  }
+
+  function tenancyOtherApplicants(raw) {
+    return [1, 2, 3, 4]
+      .map((n) => tenancyStr(raw[`otherApplicant${n}`]))
+      .filter(Boolean);
+  }
+
+  /** Nested tenancy application body for Activepieces (not a flat field dump). */
+  function buildTenancyApplicationPayload(raw, options = {}) {
+    const privacy = options.privacy || {};
+    const livingInOwnHome = !!options.livingInOwnHome;
+    const isSelfEmployed = !!options.isSelfEmployed;
+    const notStudent = options.notStudent !== false;
+
+    return {
+      submissionId: options.submissionId || '',
+      fileCount: Number(options.fileCount) || 0,
+
+      lease: {
+        portalsUsed: [].concat(raw.portalsUsed || []).filter(Boolean),
+        commencementDate: tenancyStr(raw.commencementDate),
+        termMonths: tenancyStr(raw.leaseTermMonths)
+      },
+
+      applicant: {
+        title: tenancyStr(raw.title),
+        firstName: tenancyStr(raw.firstName),
+        middleName: tenancyStr(raw.middleName),
+        lastName: tenancyStr(raw.lastName),
+        preferredName: tenancyStr(raw.preferredName),
+        dateOfBirth: tenancyStr(raw.dateOfBirth),
+        mobile: tenancyStr(raw.mobile),
+        workPhone: tenancyStr(raw.workPhone),
+        email: tenancyStr(raw.email),
+        hasCar: tenancyStr(raw.hasCar)
+      },
+
+      currentAddress: {
+        country: tenancyStr(raw.currentCountry),
+        street: tenancyStr(raw.currentStreet),
+        suburb: tenancyStr(raw.currentSuburb),
+        postcode: tenancyStr(raw.currentPostcode)
+      },
+
+      identity: {
+        licence: {
+          number: tenancyStr(raw.licenceNumber),
+          cardNumber: tenancyStr(raw.licenceCardNumber),
+          state: tenancyStr(raw.licenceState),
+          expiry: tenancyStr(raw.licenceExpiry)
+        },
+        passport: {
+          number: tenancyStr(raw.passportNumber),
+          country: tenancyStr(raw.passportCountry),
+          expiry: tenancyStr(raw.passportExpiry)
+        },
+        otherIdDetails: tenancyStr(raw.otherIdDetails)
+      },
+
+      household: {
+        adults: tenancyStr(raw.adults),
+        children: tenancyStr(raw.children),
+        petsCount: tenancyStr(raw.petsCount),
+        otherApplicants: tenancyOtherApplicants(raw),
+        pet: {
+          name: tenancyStr(raw.petName),
+          type: tenancyStr(raw.petType),
+          age: tenancyStr(raw.petAge),
+          weight: tenancyStr(raw.petWeight),
+          colour: tenancyStr(raw.petColour),
+          desexed: tenancyStr(raw.petDesexed),
+          microchipped: tenancyStr(raw.petMicrochipped),
+          vaccinated: tenancyStr(raw.petVaccinated),
+          councilReg: tenancyStr(raw.petCouncilReg),
+          temperament: tenancyStr(raw.petTemperament),
+          training: tenancyStr(raw.petTraining),
+          whyGoodTenant: tenancyStr(raw.petWhyGoodTenant),
+          reference: tenancyStr(raw.petReference),
+          otherDetails: tenancyStr(raw.petOtherDetails)
+        }
+      },
+
+      housing: {
+        livingInOwnHome,
+        currentRental: livingInOwnHome ? null : {
+          agency: tenancyStr(raw.currentAgency),
+          agentContact: tenancyStr(raw.currentAgentContact),
+          agentPhone: tenancyStr(raw.currentAgentPhone),
+          agentEmail: tenancyStr(raw.currentAgentEmail),
+          rent: tenancyStr(raw.currentRent),
+          rentPer: tenancyStr(raw.currentRentPer),
+          leaseStart: tenancyStr(raw.currentLeaseStart),
+          tenancyMonths: tenancyStr(raw.currentTenancyMonths),
+          bondRefundExpected: tenancyStr(raw.bondRefundExpected),
+          reasonForMoving: tenancyStr(raw.reasonForMoving)
+        },
+        previousRental: {
+          street: tenancyStr(raw.prevStreet),
+          suburb: tenancyStr(raw.prevSuburb),
+          postcode: tenancyStr(raw.prevPostcode),
+          moveDates: tenancyStr(raw.prevMoveDates),
+          agentContact: tenancyStr(raw.prevAgentContact),
+          agentPhone: tenancyStr(raw.prevAgentPhone),
+          agentEmail: tenancyStr(raw.prevAgentEmail),
+          rent: tenancyStr(raw.prevRent),
+          rentPer: tenancyStr(raw.prevRentPer),
+          bondRefunded: tenancyStr(raw.prevBondRefunded),
+          reasonMoving: tenancyStr(raw.prevReasonMoving)
+        },
+        ownHome: livingInOwnHome ? {
+          homeToBe: tenancyStr(raw.homeToBe),
+          sellingAgent: tenancyStr(raw.sellingAgent),
+          sellingAgentPhone: tenancyStr(raw.sellingAgentPhone),
+          sellingAgentEmail: tenancyStr(raw.sellingAgentEmail),
+          saleAmount: tenancyStr(raw.saleAmount),
+          leasingAmountWeek: tenancyStr(raw.leasingAmountWeek),
+          yearsOwned: tenancyStr(raw.yearsOwned),
+          reasonMoving: tenancyStr(raw.ownerReasonMoving)
+        } : null
+      },
+
+      income: {
+        isSelfEmployed,
+        employment: isSelfEmployed ? null : {
+          employerName: tenancyStr(raw.employerName),
+          position: tenancyStr(raw.position),
+          street: tenancyStr(raw.employerStreet),
+          suburb: tenancyStr(raw.employerSuburb),
+          postcode: tenancyStr(raw.employerPostcode),
+          contact: tenancyStr(raw.employerContact),
+          phone: tenancyStr(raw.employerPhone),
+          email: tenancyStr(raw.employerEmail),
+          startDate: tenancyStr(raw.employmentStart),
+          status: tenancyStr(raw.employmentStatus),
+          annualIncome: tenancyStr(raw.annualIncome),
+          transfer: tenancyStr(raw.employmentTransfer)
+        },
+        previousEmployment: {
+          employerName: tenancyStr(raw.prevEmployerName),
+          position: tenancyStr(raw.prevPosition),
+          street: tenancyStr(raw.prevEmployerStreet),
+          suburb: tenancyStr(raw.prevEmployerSuburb),
+          postcode: tenancyStr(raw.prevEmployerPostcode),
+          contact: tenancyStr(raw.prevEmployerContact),
+          phone: tenancyStr(raw.prevEmployerPhone),
+          email: tenancyStr(raw.prevEmployerEmail),
+          period: tenancyStr(raw.prevEmploymentPeriod),
+          annualIncome: tenancyStr(raw.prevAnnualIncome),
+          status: tenancyStr(raw.prevEmploymentStatus)
+        },
+        selfEmployed: isSelfEmployed ? {
+          businessName: tenancyStr(raw.businessName),
+          abnAcn: tenancyStr(raw.abnAcn),
+          accountant: tenancyStr(raw.accountant),
+          accountantPhone: tenancyStr(raw.accountantPhone),
+          accountantEmail: tenancyStr(raw.accountantEmail),
+          businessFromHome: tenancyStr(raw.businessFromHome)
+        } : null,
+        otherIncome: {
+          details: tenancyStr(raw.otherIncomeDetails),
+          annualAud: tenancyStr(raw.otherIncomeAud),
+          frequency: tenancyStr(raw.otherIncomeFrequency)
+        },
+        student: notStudent ? null : {
+          courseName: tenancyStr(raw.courseName),
+          campus: tenancyStr(raw.campus),
+          contact: tenancyStr(raw.studentContact),
+          phone: tenancyStr(raw.studentPhone),
+          studentNumber: tenancyStr(raw.studentNumber),
+          status: tenancyStr(raw.studentStatus)
+        }
+      },
+
+      references: {
+        professional: {
+          name: tenancyStr(raw.profRefName),
+          relationship: tenancyStr(raw.profRefRelationship),
+          email: tenancyStr(raw.profRefEmail),
+          phone: tenancyStr(raw.profRefPhone)
+        },
+        personal: {
+          name: tenancyStr(raw.persRefName),
+          relationship: tenancyStr(raw.persRefRelationship),
+          email: tenancyStr(raw.persRefEmail),
+          phone: tenancyStr(raw.persRefPhone)
+        },
+        emergency: {
+          firstName: tenancyStr(raw.emergencyFirstName),
+          lastName: tenancyStr(raw.emergencyLastName),
+          relationship: tenancyStr(raw.emergencyRelationship),
+          street: tenancyStr(raw.emergencyStreet),
+          suburb: tenancyStr(raw.emergencySuburb),
+          postcode: tenancyStr(raw.emergencyPostcode),
+          phone: tenancyStr(raw.emergencyPhone),
+          email: tenancyStr(raw.emergencyEmail)
+        }
+      },
+
+      privacy: {
+        consent: !!privacy.privacyConsent,
+        consentAt: privacy.privacyConsentAt || '',
+        noticeVersion: privacy.privacyNoticeVersion || '',
+        policyVersion: privacy.privacyPolicyVersion || ''
+      }
+    };
+  }
+
+  /**
+   * Send each document as its own Activepieces webhook call (via submit proxy).
+   * Keeps payloads manageable vs one giant multi-file JSON body.
+   */
+  async function submitTenancyFilesViaActivepieces(entries, meta, onProgress) {
+    const total = entries.length;
+    let sent = 0;
+    for (let i = 0; i < entries.length; i += 1) {
+      const { docKey, file } = entries[i];
+      if (typeof onProgress === 'function') {
+        onProgress(i + 1, total, file.name);
+      }
+      const safeFileName = sanitizeDriveFileName(file.name);
+      const base64 = await readFileAsBase64(file);
+      await submitActivepiecesFlow('tenancyApplicationFiles', {
+        submissionId: meta.submissionId,
+        applicant: {
+          firstName: meta.firstName || '',
+          lastName: meta.lastName || '',
+          email: meta.email || ''
+        },
+        file: {
+          index: i + 1,
+          count: total,
+          docKey,
+          name: file.name,
+          type: file.type || 'application/octet-stream',
+          size: file.size,
+          safeFileName,
+          driveFileName: `${docKey}__${safeFileName}`,
+          base64
+        }
+      });
+      sent += 1;
+    }
+    return sent;
   }
 
   function initTenancyApplicationForm(root) {
@@ -2223,39 +2472,62 @@ document.addEventListener('DOMContentLoaded', () => {
           if (typeof File !== 'undefined' && raw[key] instanceof File) delete raw[key];
         });
 
-        const files = await collectTenancyFiles(form);
-        const driveFolderLabel = buildDriveFolderLabel(raw.firstName, raw.lastName);
-        const payload = {
-          ...raw,
-          portalsUsed: [].concat(raw.portalsUsed || []).filter(Boolean),
+        const fileEntries = collectTenancyFileEntries(form);
+        const submissionId = newTenancySubmissionId();
+
+        const payload = buildTenancyApplicationPayload(raw, {
+          submissionId,
+          fileCount: fileEntries.length,
           livingInOwnHome: !!(ownHome && ownHome.checked),
           isSelfEmployed: !!(selfEmployed && selfEmployed.checked),
           notStudent: !!(notStudent && notStudent.checked),
-          files,
-          driveFolderLabel,
-          ...privacyConsentFields(form)
-        };
+          privacy: privacyConsentFields(form)
+        });
 
-        // Remove non-serialisable File entries if any slipped through
-        ['licenceFile', 'passportFile', 'otherIdFile', 'petFile', 'ownershipFile', 'payslips', 'otherIncomeFile']
-          .forEach((k) => { delete payload[k]; });
-
+        setTenancyUploadStatus(root, 'Submitting application…');
         await submitActivepiecesFlow('tenancyApplication', payload);
+
+        let filesFailed = 0;
+        if (fileEntries.length) {
+          try {
+            await submitTenancyFilesViaActivepieces(
+              fileEntries,
+              {
+                submissionId,
+                email: payload.applicant.email || '',
+                firstName: payload.applicant.firstName || '',
+                lastName: payload.applicant.lastName || ''
+              },
+              (index, total, name) => {
+                setTenancyUploadStatus(root, `Uploading document ${index} of ${total}: ${name}`);
+              }
+            );
+          } catch (fileErr) {
+            console.error(fileErr);
+            filesFailed = 1;
+          }
+        }
+
+        setTenancyUploadStatus(root, '');
         saveClientProfile({
-          firstName: payload.firstName,
-          lastName: payload.lastName,
-          preferredName: payload.preferredName,
-          phone: payload.mobile || payload.phone,
-          email: payload.email,
-          city: payload.currentSuburb || payload.city
+          firstName: payload.applicant.firstName,
+          lastName: payload.applicant.lastName,
+          preferredName: payload.applicant.preferredName,
+          phone: payload.applicant.mobile,
+          email: payload.applicant.email,
+          city: payload.currentAddress.suburb
         });
 
         form.style.display = 'none';
         if (stepper) stepper.style.display = 'none';
         if (successView) successView.style.display = 'block';
+        if (filesFailed) {
+          alert('Your application was submitted, but one or more documents did not upload. Please email them to info@yourhomehunter.com.au with your name.');
+        }
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } catch (err) {
         console.error(err);
+        setTenancyUploadStatus(root, '');
         alert(err && err.message
           ? err.message
           : 'Sorry — we could not submit your application. Please try again or email info@yourhomehunter.com.au.');

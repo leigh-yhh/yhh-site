@@ -53,13 +53,12 @@ window.YHH_CONTACT_CONFIG = {
    *
    * Browser POSTs: { flow, data, pageUrl }
    * flow values: wishlist | introCall | consult | inspector | inspectionBooking |
-   *              tenancyApplication | serviceAgreement
+   *              tenancyApplication | tenancyApplicationFiles | serviceAgreement
    *
-   * --- tenancyApplication + Google Drive (ID / docs) ---
-   * Site still sends files as base64 under data.files.{licence|passport|otherId|...}:
-   *   { name, type, size, base64, docKey, safeFileName, driveFileName }
-   * Plus data.driveFolderLabel e.g. "Smith_Jane_2026-10-09".
-   * Activepieces Drive steps run after the Worker forwards to the tenancy webhook.
+   * --- tenancyApplication (split submit) ---
+   * 1) tenancyApplication — nested form JSON (+ submissionId, fileCount)
+   * 2) tenancyApplicationFiles — one file per request ({ applicant, file: { base64, docKey, … } })
+   * Activepieces Google Drive connection writes files into folder label / parent folder.
    */
   submitApiUrl: 'https://yhh-submit-proxy.leigh-8cd.workers.dev/api/submit'
 };

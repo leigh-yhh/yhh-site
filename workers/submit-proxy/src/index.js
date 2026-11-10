@@ -13,6 +13,8 @@ const FLOW_SECRET_KEYS = {
   inspector: 'AP_WEBHOOK_INSPECTOR',
   inspectionBooking: 'AP_WEBHOOK_INSPECTIONBOOKING',
   tenancyApplication: 'AP_WEBHOOK_TENANCYAPPLICATION',
+  /** One file per request (base64) — keeps payloads smaller than bundling all docs. */
+  tenancyApplicationFiles: 'AP_WEBHOOK_TENANCYAPPLICATIONFILES',
   serviceAgreement: 'AP_WEBHOOK_SERVICEAGREEMENT'
 };
 
@@ -24,6 +26,7 @@ const FLOW_AUTH_SECRET_KEYS = {
   inspector: 'AP_WEBHOOK_INSPECTOR_AUTH',
   inspectionBooking: 'AP_WEBHOOK_INSPECTIONBOOKING_AUTH',
   tenancyApplication: 'AP_WEBHOOK_TENANCYAPPLICATION_AUTH',
+  tenancyApplicationFiles: 'AP_WEBHOOK_TENANCYAPPLICATIONFILES_AUTH',
   serviceAgreement: 'AP_WEBHOOK_SERVICEAGREEMENT_AUTH'
 };
 
@@ -133,7 +136,7 @@ export default {
       ...formData,
       // Always set from CF IP geo (do not trust client spoof of userCountry)
       userCountry: userCountryFromRequest(request),
-      flow,
+      // `flow` is used only to pick the webhook secret — not forwarded to Activepieces
       source: 'yourhomehunter.com.au',
       pageUrl: typeof body.pageUrl === 'string' ? body.pageUrl : '',
       submittedAt: new Date().toISOString()

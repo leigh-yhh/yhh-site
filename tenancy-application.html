@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261111f">
+  <link rel="stylesheet" href="styles.css?v=20261110-drive">
 </head>
 <body class="wishlist-page tenancy-page">
 
@@ -964,12 +964,33 @@
 
           <div class="form-block">
             <h3 class="form-block-title">Upload</h3>
+            <p class="field-hint">PDF or images, max 8&nbsp;MB each. Documents are sent securely after the application (one file at a time). You can submit without documents if you will send them later.</p>
+
             <div class="input-group">
-              <label>Secure document upload</label>
-              <p class="field-hint">Files are captured through a secure upload, separate from this form.</p>
-              <button type="button" class="btn btn-outline" disabled aria-disabled="true">Secure document upload</button>
-              <p class="field-hint">Upload link coming soon. You can still submit this form now — we will send the secure upload link separately if needed.</p>
+              <label for="ta_file_licence">Passport / driver’s licence (front &amp; back)</label>
+              <input type="file" id="ta_file_licence" name="licenceFile" data-file-key="licence" accept=".pdf,image/*" multiple>
             </div>
+            <div class="input-group">
+              <label for="ta_file_medicare">Medicare card</label>
+              <input type="file" id="ta_file_medicare" name="medicareFile" data-file-key="medicare" accept=".pdf,image/*" multiple>
+            </div>
+            <div class="input-group">
+              <label for="ta_file_payslips">Payslips / income proof</label>
+              <input type="file" id="ta_file_payslips" name="payslips" data-file-key="payslips" accept=".pdf,image/*" multiple>
+            </div>
+            <div class="input-group">
+              <label for="ta_file_ownership">Ownership documents (if living in your own home)</label>
+              <input type="file" id="ta_file_ownership" name="ownershipFile" data-file-key="ownership" accept=".pdf,image/*" multiple>
+            </div>
+            <div class="input-group">
+              <label for="ta_file_pet">Pet documents / photo (optional)</label>
+              <input type="file" id="ta_file_pet" name="petFile" data-file-key="pet" accept=".pdf,image/*" multiple>
+            </div>
+            <div class="input-group">
+              <label for="ta_file_other">Other supporting documents</label>
+              <input type="file" id="ta_file_other" name="otherIncomeFile" data-file-key="other" accept=".pdf,image/*" multiple>
+            </div>
+            <p class="field-hint" id="ta_upload_status" hidden></p>
           </div>
 
           <div class="form-privacy-block">
@@ -1006,6 +1027,6 @@
   <script src="contact-config.js"></script>
   <script defer src="analytics.js"></script>
   <script src="dialogs-bundle.js"></script>
-  <script src="script.js?v=20261111f"></script>
+  <script src="script.js?v=20261110-nofolder"></script>
 </body>
 </html>

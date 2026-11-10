@@ -1,0 +1,349 @@
+{
+  "_readme": [
+    "Sample bodies as received by Activepieces Catch Webhook (trigger.body).",
+    "The Cloudflare submit-proxy flattens site { flow, data, pageUrl } so form fields sit at the ROOT — not under data.",
+    "Worker also appends: source=yourhomehunter.com.au, pageUrl, submittedAt, userCountry (from CF geo).",
+    "In AP: create one flow per key below → Catch Webhook → enable Authentication header → paste matching secret into wrangler.",
+    "Secret map: wishlist→AP_WEBHOOK_WISHLIST, introCall→AP_WEBHOOK_INTROCALL, consult→AP_WEBHOOK_CONSULT,",
+    "inspector→AP_WEBHOOK_INSPECTOR, inspectionBooking→AP_WEBHOOK_INSPECTIONBOOKING,",
+    "tenancyApplication→AP_WEBHOOK_TENANCYAPPLICATION, tenancyApplicationFiles→AP_WEBHOOK_TENANCYAPPLICATIONFILES,",
+    "serviceAgreement→AP_WEBHOOK_SERVICEAGREEMENT."
+  ],
+
+  "wishlist": {
+    "firstName": "Bianca",
+    "lastName": "Evans",
+    "email": "bianca.evans79@yahoo.com.au",
+    "phone": "0435677850",
+    "currentLocation": "Canberra",
+    "location": "Canberra",
+    "propertyType": ["House", "Townhouse"],
+    "bedrooms": "2",
+    "bathrooms": "1",
+    "suburbs": ["Chifley", "Curtin"],
+    "rentalBudget": "550",
+    "moveByDate": "29-Oct-2026",
+    "propertyRequirements": ["Pets", "Parking"],
+    "otherDetails": "Need fenced yard for dog.",
+    "formSource": "Google Search",
+    "referral": "",
+    "referer": "https://www.yourhomehunter.com.au/",
+    "privacyConsent": true,
+    "privacyConsentAt": "2026-11-10T10:00:00.000Z",
+    "privacyNoticeVersion": "collection-notice-2026-09-14",
+    "privacyPolicyVersion": "privacy-policy-2026-09-14",
+    "userCountry": "Australia",
+    "source": "yourhomehunter.com.au",
+    "pageUrl": "https://www.yourhomehunter.com.au/request-full-service",
+    "submittedAt": "2026-11-10T10:00:01.000Z"
+  },
+
+  "introCall": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@email.com",
+    "phone": "0412 345 678",
+    "city": "Melbourne",
+    "service": "Full Service Package",
+    "notes": "Relocating in January",
+    "privacyConsent": true,
+    "privacyConsentAt": "2026-11-10T10:10:00.000Z",
+    "privacyNoticeVersion": "collection-notice-2026-09-14",
+    "privacyPolicyVersion": "privacy-policy-2026-09-14",
+    "userCountry": "Australia",
+    "source": "yourhomehunter.com.au",
+    "pageUrl": "https://www.yourhomehunter.com.au/",
+    "submittedAt": "2026-11-10T10:10:01.000Z"
+  },
+
+  "consult": {
+    "firstName": "Priya",
+    "lastName": "Sharma",
+    "email": "priya.sharma@example.com",
+    "phone": "0400111222",
+    "platform": "Zoom",
+    "topics": ["Lease review", "Bond dispute", "Other question about notices"],
+    "notes": "Landlord selling — need advice before responding.",
+    "signature": "Priya Sharma",
+    "agreementDate": "10-Nov-2026",
+    "feePayableAud": 165,
+    "calendarUrl": "https://calendar.google.com/calendar/u/0/appointments/schedules/EXAMPLE",
+    "termsAccepted": true,
+    "privacyConsent": true,
+    "privacyConsentAt": "2026-11-10T10:15:00.000Z",
+    "privacyNoticeVersion": "collection-notice-2026-09-14",
+    "privacyPolicyVersion": "privacy-policy-2026-09-14",
+    "userCountry": "Australia",
+    "source": "yourhomehunter.com.au",
+    "pageUrl": "https://www.yourhomehunter.com.au/",
+    "submittedAt": "2026-11-10T10:15:01.000Z"
+  },
+
+  "inspector": {
+    "firstName": "Alex",
+    "lastName": "Chen",
+    "email": "alex.chen@example.com",
+    "phone": "0499888777",
+    "suburbTravel": "Inner north Melbourne — Brunswick, Carlton, Fitzroy",
+    "background": "Former leasing agent, 4 years inspecting rentals.",
+    "availability": "Weekday evenings and Saturday mornings",
+    "privacyConsent": true,
+    "privacyConsentAt": "2026-11-10T10:20:00.000Z",
+    "privacyNoticeVersion": "collection-notice-2026-09-14",
+    "privacyPolicyVersion": "privacy-policy-2026-09-14",
+    "userCountry": "Australia",
+    "source": "yourhomehunter.com.au",
+    "pageUrl": "https://www.yourhomehunter.com.au/",
+    "submittedAt": "2026-11-10T10:20:01.000Z"
+  },
+
+  "inspectionBooking": {
+    "packageKey": "express",
+    "package": "Express 3-Pack ($726 inc. GST)",
+    "extraInspections": 1,
+    "totalPayableAud": 946,
+    "firstName": "Morgan",
+    "lastName": "Lee",
+    "email": "morgan.lee@example.com",
+    "phone": "0411002200",
+    "platform": "Google Meet",
+    "city": "Melbourne",
+    "suburbs": "South Yarra, Prahran, Windsor",
+    "criteria": "2 bed, pet-friendly, under $650/week",
+    "shortlistedProperties": [
+      {
+        "index": 1,
+        "address": "12 Example St, South Yarra VIC 3141",
+        "url": "https://www.realestate.com.au/property-example-1"
+      },
+      {
+        "index": 2,
+        "address": "4 Sample Rd, Prahran VIC 3181",
+        "url": "https://www.domain.com.au/property-example-2"
+      }
+    ],
+    "signature": "Morgan Lee",
+    "agreementDate": "10-Nov-2026",
+    "termsAccepted": true,
+    "privacyConsent": true,
+    "privacyConsentAt": "2026-11-10T10:25:00.000Z",
+    "privacyNoticeVersion": "collection-notice-2026-09-14",
+    "privacyPolicyVersion": "privacy-policy-2026-09-14",
+    "userCountry": "Australia",
+    "source": "yourhomehunter.com.au",
+    "pageUrl": "https://www.yourhomehunter.com.au/",
+    "submittedAt": "2026-11-10T10:25:01.000Z"
+  },
+
+  "tenancyApplication": {
+    "_notes": "Nested form body — no file bytes. Docs follow via tenancyApplicationFiles (same submissionId). Build Drive folder name in Activepieces from applicant fields. Inactive branches are null (ownHome / employment / selfEmployed / student).",
+    "submissionId": "8f3c2a1e-4b5d-6e7f-8091-a2b3c4d5e6f7",
+    "fileCount": 3,
+    "lease": {
+      "portalsUsed": ["2Apply", "Snug"],
+      "commencementDate": "2026-12-01",
+      "termMonths": "12"
+    },
+    "applicant": {
+      "title": "Ms",
+      "firstName": "Jane",
+      "middleName": "Anne",
+      "lastName": "Smith",
+      "preferredName": "Jane",
+      "dateOfBirth": "1990-05-15",
+      "mobile": "0411222333",
+      "workPhone": "0399998888",
+      "email": "jane.smith@example.com",
+      "hasCar": "Yes"
+    },
+    "currentAddress": {
+      "country": "Australia",
+      "street": "10 Example Street",
+      "suburb": "Richmond",
+      "postcode": "3121"
+    },
+    "identity": {
+      "licence": {
+        "number": "0123456789",
+        "cardNumber": "123456",
+        "state": "VIC",
+        "expiry": "2028-05-15"
+      },
+      "passport": {
+        "number": "",
+        "country": "",
+        "expiry": ""
+      },
+      "otherIdDetails": "Medicare 1234 56789 0"
+    },
+    "household": {
+      "adults": "2",
+      "children": "0",
+      "petsCount": "1",
+      "otherApplicants": ["John Smith"],
+      "pet": {
+        "name": "Milo",
+        "type": "Cavoodle",
+        "age": "3 years",
+        "weight": "10kg",
+        "colour": "Apricot",
+        "desexed": "Yes",
+        "microchipped": "Yes",
+        "vaccinated": "Yes",
+        "councilReg": "RIC-99887",
+        "temperament": "Quiet indoors, good with children",
+        "training": "Toilet-trained, crate-trained",
+        "whyGoodTenant": "No complaints in previous rental",
+        "reference": "Previous landlord — 0400000000",
+        "otherDetails": ""
+      }
+    },
+    "housing": {
+      "livingInOwnHome": false,
+      "currentRental": {
+        "agency": "Example Real Estate",
+        "agentContact": "Pat Agent",
+        "agentPhone": "0391112222",
+        "agentEmail": "pat@examplere.com.au",
+        "rent": "520",
+        "rentPer": "Week",
+        "leaseStart": "2024-01-15",
+        "tenancyMonths": "22",
+        "bondRefundExpected": "Yes",
+        "reasonForMoving": "Closer to work"
+      },
+      "previousRental": {
+        "street": "22 Former Ave",
+        "suburb": "Hawthorn",
+        "postcode": "3122",
+        "moveDates": "Jan 2022 – Dec 2023",
+        "agentContact": "Alex Agent",
+        "agentPhone": "0393334444",
+        "agentEmail": "alex@formerre.com.au",
+        "rent": "480",
+        "rentPer": "Week",
+        "bondRefunded": "Yes",
+        "reasonMoving": "Lease ended"
+      },
+      "ownHome": null
+    },
+    "income": {
+      "isSelfEmployed": false,
+      "employment": {
+        "employerName": "Acme Pty Ltd",
+        "position": "Analyst",
+        "street": "100 Collins St",
+        "suburb": "Melbourne",
+        "postcode": "3000",
+        "contact": "HR Desk",
+        "phone": "0388887777",
+        "email": "hr@acme.example",
+        "startDate": "2021-03-01",
+        "status": "Full Time",
+        "annualIncome": "95000",
+        "transfer": ""
+      },
+      "previousEmployment": {
+        "employerName": "",
+        "position": "",
+        "street": "",
+        "suburb": "",
+        "postcode": "",
+        "contact": "",
+        "phone": "",
+        "email": "",
+        "period": "",
+        "annualIncome": "",
+        "status": ""
+      },
+      "selfEmployed": null,
+      "otherIncome": {
+        "details": "",
+        "annualAud": "",
+        "frequency": ""
+      },
+      "student": null
+    },
+    "references": {
+      "professional": {
+        "name": "Casey Mentor",
+        "relationship": "Manager",
+        "email": "casey@acme.example",
+        "phone": "0411555666"
+      },
+      "personal": {
+        "name": "Riley Friend",
+        "relationship": "Friend",
+        "email": "riley@example.com",
+        "phone": "0411777888"
+      },
+      "emergency": {
+        "firstName": "Pat",
+        "lastName": "Smith",
+        "relationship": "Sibling",
+        "street": "5 Safety Lane",
+        "suburb": "Richmond",
+        "postcode": "3121",
+        "phone": "0411999000",
+        "email": "pat.smith@example.com"
+      }
+    },
+    "privacy": {
+      "consent": true,
+      "consentAt": "2026-11-10T10:30:00.000Z",
+      "noticeVersion": "collection-notice-2026-09-14",
+      "policyVersion": "privacy-policy-2026-09-14"
+    },
+    "userCountry": "Australia",
+    "source": "yourhomehunter.com.au",
+    "pageUrl": "https://www.yourhomehunter.com.au/tenancy-application",
+    "submittedAt": "2026-11-10T10:30:01.000Z"
+  },
+
+  "tenancyApplicationFiles": {
+    "_notes": "One file per webhook. Decode file.base64 → upload under parent 14mLBubv5HiboJl7htycLq_RHwISsL5Md (folder naming is yours in AP). docKey: licence|medicare|payslips|ownership|pet|other.",
+    "submissionId": "8f3c2a1e-4b5d-6e7f-8091-a2b3c4d5e6f7",
+    "applicant": {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "jane.smith@example.com"
+    },
+    "file": {
+      "index": 1,
+      "count": 3,
+      "docKey": "licence",
+      "name": "licence-front.pdf",
+      "type": "application/pdf",
+      "size": 245760,
+      "safeFileName": "licence-front.pdf",
+      "driveFileName": "licence__licence-front.pdf",
+      "base64": "JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9UeXBlL1BhZ2UvUGFyZW50IDIgMCBSL01lZGlhQm94WzAgMCA2MTIgNzkyXS9Db250ZW50cyA0IDAgUj4+CmVuZG9iago="
+    },
+    "userCountry": "Australia",
+    "source": "yourhomehunter.com.au",
+    "pageUrl": "https://www.yourhomehunter.com.au/tenancy-application",
+    "submittedAt": "2026-11-10T10:30:15.000Z"
+  },
+
+  "serviceAgreement": {
+    "agreementDate": "2026-11-10",
+    "firstName": "Taylor",
+    "lastName": "Brooks",
+    "email": "taylor.brooks@example.com",
+    "phone": "0422333444",
+    "searchLocations": ["Melbourne", "Geelong"],
+    "feeAcknowledged": true,
+    "termsAccepted": true,
+    "signatureName": "Taylor Brooks",
+    "signatureImagePngBase64": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==",
+    "signatureImageDataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==",
+    "privacyConsent": true,
+    "privacyConsentAt": "2026-11-10T10:40:00.000Z",
+    "privacyNoticeVersion": "collection-notice-2026-09-14",
+    "privacyPolicyVersion": "privacy-policy-2026-09-14",
+    "userCountry": "Australia",
+    "source": "yourhomehunter.com.au",
+    "pageUrl": "https://www.yourhomehunter.com.au/fsp-sign-up",
+    "submittedAt": "2026-11-10T10:40:01.000Z"
+  }
+}
