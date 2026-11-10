@@ -497,6 +497,19 @@ p {
   margin-top: 16px;
 }
 
+.about-panel {
+  margin: 36px auto 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 40px 12px;
+}
+
+.about-team-heading {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
 .about-who {
   margin-top: 16px;
 }
@@ -803,6 +816,14 @@ p {
   margin-left: 2px;
 }
 
+.fee-terms {
+  margin: 8px 0 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--text-dark);
+}
+
 .price-subtext {
   font-size: 0.92rem;
   color: var(--text-muted);
@@ -1103,6 +1124,10 @@ p {
   text-align: left;
 }
 
+.team-list .person:nth-child(n + 3) {
+  border-bottom: none;
+}
+
 @media (min-width: 769px) {
   .team-list {
     grid-template-columns: 1fr 1fr;
@@ -1144,18 +1169,30 @@ p {
 }
 
 .pull-quote {
-  max-width: 44rem;
   margin: 8px auto 0;
   text-align: center;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 48px 64px 36px;
+}
+
+.pull-quote blockquote {
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+.pull-quote .btn {
+  margin-top: 28px;
 }
 
 .pull-quote p {
   font-family: var(--font-serif);
-  font-size: clamp(1.45rem, 2.5vw, 1.9rem);
-  font-weight: 600;
+  font-size: clamp(1.25rem, 2.1vw, 1.6rem);
+  font-weight: 400;
   font-style: italic;
   line-height: 1.35;
-  color: var(--text-dark);
+  color: var(--text-muted);
   margin: 0;
 }
 
@@ -2990,6 +3027,12 @@ a.press-item:hover .press-note {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+  .pull-quote {
+    padding: 32px 22px 28px;
+  }
+  .about-panel {
+    padding: 32px 22px 20px;
+  }
   .hero-grid, .grid-3, .grid-4, .locations-grid, .footer-grid, .help-steps {
     grid-template-columns: 1fr;
   }

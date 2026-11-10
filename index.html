@@ -169,9 +169,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap"></noscript>
-  <link rel="stylesheet" href="styles.css?v=20261110c">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,400;1,600&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,400;1,600&amp;display=swap"></noscript>
+  <link rel="stylesheet" href="styles.css?v=20261110l">
 </head>
 <body>
   <header class="navbar">
@@ -229,8 +229,8 @@
           <span>from 204 Google reviews</span>
         </div>
         <div class="proof-stat">
-          <strong>2018</strong>
-          <span>when the company started</span>
+          <strong>Since 2018</strong>
+          <span>helping renters</span>
         </div>
         <div class="proof-stat">
           <strong>Direct</strong>
@@ -238,7 +238,7 @@
         </div>
         <div class="proof-stat">
           <strong>4</strong>
-          <span>cities we inspect in</span>
+          <span>Melbourne, Brisbane, Canberra and Adelaide</span>
         </div>
         <div class="proof-stat">
           <strong>Independent</strong>
@@ -298,11 +298,15 @@
           <h3>Full Service Package</h3>
           <p class="tier-desc">We run the search and application from initial brief through to getting the keys.</p>
           <p class="price-line">Custom quote</p>
-          <p class="price-subtext">Location, timing, suburb list, and how competitive the market is all change the work involved, so we quote from your brief rather than a flat fee.</p>
+          <p class="fee-terms">Engagement fee payable upfront. Remainder payable at the end.</p>
+          <p class="price-subtext">Quoted from your brief. Location, timing, and the market change the fee.</p>
           <ul class="features-list-lp">
+            <li>Wish list and search brief</li>
             <li>On- and off-market search</li>
             <li>Shortlist and live video from inspections</li>
             <li>Applications lodged with the agent</li>
+            <li>Lease review and terms</li>
+            <li>Pre-move advice</li>
           </ul>
           <div class="card-actions-lp">
             <button type="button" data-modal-target="searchDialog" class="btn btn-primary btn-action-lp">Request a Search</button>
@@ -423,11 +427,9 @@
         <p>Since 2018 we have helped hundreds of renters across Melbourne, Brisbane, Canberra, and Adelaide. That includes executives, officials, athletes, young professionals, growing families, and people relocating from interstate or overseas.</p>
         <p>Wendy, a licensed real estate agent, started the business. Brittany now leads the team day to day, with Wendy still involved in an advisory role.</p>
       </div>
-    </div>
-
-    <div class="container" style="margin-top: 48px;">
-      <h3 class="subheading text-center" style="margin-bottom: 8px;">The Team</h3>
-      <div class="team-list">
+      <div class="about-panel">
+        <h3 class="subheading text-center about-team-heading">The Team</h3>
+        <div class="team-list">
         <article class="person">
           <img class="person-avatar" src="images/brittany.jpg" alt="Brittany - Director &amp; Tenant Advocate at Your Home Hunter" width="88" height="88">
           <div>
@@ -469,6 +471,7 @@
             <button type="button" class="service-details-link" data-modal-target="inspectorNetworkModal">Join Our Inspector Network</button>
           </div>
         </article>
+        </div>
       </div>
     </div>
   </section>
@@ -480,14 +483,14 @@
         <h2>What clients say</h2>
         <p>A few notes from people we have helped find a home.</p>
       </div>
-      <blockquote class="pull-quote">
-        <p>We tried applying from Germany on our own, but the process was confusing and difficult. YHH became an absolute lifesaver. They took over the entire process clearly, professionally, and with so much heart. Truly worth its weight in gold.</p>
-        <footer>
-          <strong>Hilda &amp; Otto</strong>
-          <span>International Relocation, Europe to Brisbane</span>
-        </footer>
-      </blockquote>
-      <div style="text-align: center; margin-top: 36px;">
+      <div class="pull-quote">
+        <blockquote>
+          <p>We tried applying from Germany on our own, but the process was confusing and difficult. YHH became an absolute lifesaver. They took over the entire process clearly, professionally, and with so much heart. Truly worth its weight in gold.</p>
+          <footer>
+            <strong>Hilda &amp; Otto</strong>
+            <span>International Relocation, Europe to Brisbane</span>
+          </footer>
+        </blockquote>
         <button type="button" class="btn btn-outline" data-modal-target="caseStudiesModal">Read client stories</button>
       </div>
     </div>
@@ -744,7 +747,7 @@
         <li><a href="dialogs/inspection-details.html">Inspection Service Details</a></li>
         <li><a href="dialogs/consult-booking.html">1-on-1 Consultation Booking</a></li>
         <li><a href="dialogs/consult-details.html">Consultation Service Inclusions</a></li>
-        <li><a href="request-full-service.html" target="_blank" rel="noopener noreferrer">Start Your Search Wishlist</a></li>
+        <li><a href="request-full-service.html" target="_blank" rel="noopener noreferrer">Request a Search</a></li>
         <li><a href="dialogs/enquiry.html">Obligation-Free Enquiry</a></li>
         <li><a href="dialogs/case-studies.html">Client Case Studies &amp; Stories</a></li>
         <li><a href="dialogs/inspector-network.html">Join Our Inspector Network</a></li>
