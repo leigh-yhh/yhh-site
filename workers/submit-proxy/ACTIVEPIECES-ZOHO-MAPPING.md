@@ -4,7 +4,7 @@ Use this when configuring the Activepieces flows behind the submit-proxy webhook
 
 **Sample webhook bodies (all flows):** [ACTIVEPIECES-SAMPLE-PAYLOADS.json](./ACTIVEPIECES-SAMPLE-PAYLOADS.json) — paste into Catch Webhook → sample / test data. Fields are at `trigger.body.*` (flat).
 
-**Status (2026-10-27):** Production secrets for wishlist + introCall are set, but the webhook URLs currently resolve to **HTTP 404**. Publish new AP flows, then `wrangler secret put` the new URLs. See [SMOKE-TEST-RESULTS.md](./SMOKE-TEST-RESULTS.md).
+**Status:** Publish Activepieces webhook flows, then `wrangler secret put` the URLs (and optional `*_AUTH` tokens).
 
 ## Envelope (Worker → Activepieces)
 
