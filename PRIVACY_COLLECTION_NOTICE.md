@@ -5,7 +5,7 @@
 **Email:** [info@yourhomehunter.com.au](mailto:info@yourhomehunter.com.au)  
 **Phone:** 1800 666 944  
 **Effective Date:** 20 September 2026  
-**Statutory Framework:** Australian Privacy Principle 5 (Privacy Act 1988 Cth) • General Data Protection Regulation (GDR Art. 13) • United States State Privacy Laws (CCPA/CPRA, CPA, VCDPA)
+**Statutory Framework:** Australian Privacy Principle 5 (Privacy Act 1988 Cth), General Data Protection Regulation (GDR Art. 13), United States State Privacy Laws (CCPA/CPRA, CPA, VCDPA)
 
 ---
 

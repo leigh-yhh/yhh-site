@@ -2840,7 +2840,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const bodyLen = post.bodyHtml ? post.bodyHtml.length : 500;
       const readMins = Math.max(3, Math.ceil(bodyLen / 1800));
-      if (readerReadTime) readerReadTime.textContent = `• ${readMins} min read`;
+      if (readerReadTime) readerReadTime.textContent = `${readMins} min read`;
 
       if (readerImage && readerImageContainer) {
         if (post.assetUrl) {
