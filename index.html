@@ -171,7 +171,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap"></noscript>
-  <link rel="stylesheet" href="styles.css?v=20261104a">
+  <link rel="stylesheet" href="styles.css?v=20261110c">
 </head>
 <body>
   <header class="navbar">
@@ -194,9 +194,11 @@
         <a href="#testimonials">Reviews</a>
         <a href="#faq">FAQ</a>
         <a href="/the-rental-rap">Blog</a>
+        <a href="tel:1800666944" class="nav-menu-phone">1800 666 944</a>
       </nav>
       <div class="nav-actions">
         <a href="tel:1800666944" class="phone-link">1800 666 944</a>
+        <button type="button" data-modal-target="searchDialog" class="btn btn-primary nav-search">Request a Search</button>
         <button type="button" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
           <span class="nav-toggle-bar"></span>
           <span class="nav-toggle-bar"></span>
@@ -208,35 +210,39 @@
 
   <section class="hero">
     <div class="container">
-      <div class="hero-content">
-        <h1>Stop competing with the crowd. <br><em>Allow us to secure a home you'll love.</em></h1>
-        <p class="hero-subtext">
-          Independent renters advocates helping people find a home in a competitive market. We search on and off the market, attend inspections, and lodge applications across Melbourne, Brisbane, Canberra, and Adelaide.
-        </p>
-        <div class="hero-ctas">
-          <a href="#services" class="btn btn-primary btn-lg">See how we can help</a>
-          <button type="button" data-modal-target="searchDialog" class="btn btn-outline btn-lg">Request a Search</button>
+      <div class="hero-panel">
+        <div class="hero-copy">
+          <h1>Stop competing with the crowd. <br><em>Allow us to secure a home you'll love.</em></h1>
+          <p class="hero-subtext">
+            Independent renters advocates in Melbourne, Brisbane, Canberra, and Adelaide. We search on and off the market, attend inspections, and lodge applications.
+          </p>
+          <div class="hero-ctas">
+            <button type="button" data-modal-target="searchDialog" class="btn btn-primary btn-lg">Request a Search</button>
+            <a href="#services" class="btn btn-outline btn-lg">See how we can help</a>
+          </div>
         </div>
+        <img class="hero-photo" src="images/blog/1770963954311-5WQWGUZCHZ-Leased.jpg" alt="A for-lease sign with a leased sticker across it, outside a home" width="1016" height="763">
       </div>
-      <div class="trust-indicators">
-        <div class="stat">
+      <div class="proof-row">
+        <div class="proof-stat">
+          <strong>4.9</strong>
+          <span>from 204 Google reviews</span>
+        </div>
+        <div class="proof-stat">
+          <strong>2018</strong>
+          <span>when the company started</span>
+        </div>
+        <div class="proof-stat">
+          <strong>Direct</strong>
+          <span>agent relationships</span>
+        </div>
+        <div class="proof-stat">
+          <strong>4</strong>
+          <span>cities we inspect in</span>
+        </div>
+        <div class="proof-stat">
           <strong>Independent</strong>
-          <span>We act for tenants, not landlords</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <strong>On- and off-market</strong>
-          <span>Agent relationships since 2018</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <strong>Four cities</strong>
-          <span>Melbourne, Brisbane, Canberra, Adelaide</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <strong>Who we help</strong>
-          <span>Executives, officials, workers, families</span>
+          <span>we act for tenants, not landlords</span>
         </div>
       </div>
     </div>
@@ -247,22 +253,9 @@
     <div class="container press-container">
       <span class="press-title">Featured in</span>
       <div class="press-logos">
-        <a href="https://www.realestate.com.au/news/melbourne-rent-crisis-available-homes-to-rental-seekers-drops-to-worrying-new-low/" target="_blank" rel="noopener noreferrer" class="press-item" title="Read Herald Sun / realestate.com.au feature on YHH">
-          <span class="press-name">Herald Sun</span>
-          <span class="press-note">Rental Market Commentary </span>
-        </a>
-        <a href="https://www.realestatebusiness.com.au/property-management/27686-rental-application-system-broken-convoluted" target="_blank" rel="noopener noreferrer" class="press-item" title="Read Real Estate Business feature on YHH">
-          <span class="press-name">Real Estate Business</span>
-          <span class="press-note">Application Systems Analysis </span>
-        </a>
-        <a href="https://www.disrupt.radio/programs/startup-nation" target="_blank" rel="noopener noreferrer" class="press-item" title="Listen to Wendy on Disrupt Radio's Startup Nation">
-          <span class="press-name">Disrupt Radio</span>
-          <span class="press-note">Startup Nation with Jules Lund </span>
-        </a>
-        <a href="https://www.google.com/maps/place/Your+Home+Hunter/@-37.9725665,145.0531353,9z/data=!4m5!3m4!1s0x0:0xc0f730ffb362fe47!8m2!3d-37.9725665!4d145.0531353" target="_blank" rel="noopener noreferrer" class="press-item" title="Read 204 Google reviews">
-          <span class="press-rating">★★★★★ 4.9</span>
-          <span class="press-note">204 Google reviews</span>
-        </a>
+        <a href="https://www.realestate.com.au/news/melbourne-rent-crisis-available-homes-to-rental-seekers-drops-to-worrying-new-low/" target="_blank" rel="noopener noreferrer" class="press-item press-herald" title="Read Herald Sun / realestate.com.au feature on YHH">Herald Sun</a>
+        <a href="https://www.realestatebusiness.com.au/property-management/27686-rental-application-system-broken-convoluted" target="_blank" rel="noopener noreferrer" class="press-item" title="Read Real Estate Business feature on YHH">Real Estate Business</a>
+        <a href="https://www.disrupt.radio/programs/startup-nation" target="_blank" rel="noopener noreferrer" class="press-item" title="Listen to Wendy on Disrupt Radio's Startup Nation">Disrupt Radio</a>
       </div>
     </div>
   </section>
@@ -307,12 +300,9 @@
           <p class="price-line">Custom quote</p>
           <p class="price-subtext">Location, timing, suburb list, and how competitive the market is all change the work involved, so we quote from your brief rather than a flat fee.</p>
           <ul class="features-list-lp">
-            <li>Wish list and search brief</li>
             <li>On- and off-market search</li>
             <li>Shortlist and live video from inspections</li>
             <li>Applications lodged with the agent</li>
-            <li>Lease review and terms</li>
-            <li>Pre-move advice</li>
           </ul>
           <div class="card-actions-lp">
             <button type="button" data-modal-target="searchDialog" class="btn btn-primary btn-action-lp">Request a Search</button>
@@ -490,32 +480,13 @@
         <h2>What clients say</h2>
         <p>A few notes from people we have helped find a home.</p>
       </div>
-      <div class="grid grid-3">
-        <div class="quote-card">
-          <div class="stars">★★★★★</div>
-          <p class="quote">"We tried applying from Germany on our own, but the process was confusing and difficult. YHH became an absolute lifesaver. They took over the entire process clearly, professionally, and with so much heart. Truly worth its weight in gold."</p>
-          <div class="quote-author">
-            <strong>Hilda &amp; Otto</strong>
-            <span>International Relocation &bull; Europe to Brisbane</span>
-          </div>
-        </div>
-        <div class="quote-card">
-          <div class="stars">★★★★★</div>
-          <p class="quote">"Entering the Australian rental market as an expat is really challenging. Wendy and her team were fantastic, walking us through tenancy requirements and liaising with agents was the key to finding our perfect landing pad in weeks."</p>
-          <div class="quote-author">
-            <strong>Nico &amp; Family</strong>
-            <span>Expat Healthcare Relocation &bull; Canberra</span>
-          </div>
-        </div>
-        <div class="quote-card">
-          <div class="stars">★★★★★</div>
-          <p class="quote">"As a first-time student renter with no ledger facing 60+ person queues and rent bidding, getting a home seemed impossible. YHH found an off-market South Melbourne property and secured our lease before semester started."</p>
-          <div class="quote-author">
-            <strong>Michelle &amp; Lea</strong>
-            <span>Student &amp; Parent Move &bull; Melbourne</span>
-          </div>
-        </div>
-      </div>
+      <blockquote class="pull-quote">
+        <p>We tried applying from Germany on our own, but the process was confusing and difficult. YHH became an absolute lifesaver. They took over the entire process clearly, professionally, and with so much heart. Truly worth its weight in gold.</p>
+        <footer>
+          <strong>Hilda &amp; Otto</strong>
+          <span>International Relocation, Europe to Brisbane</span>
+        </footer>
+      </blockquote>
       <div style="text-align: center; margin-top: 36px;">
         <button type="button" class="btn btn-outline" data-modal-target="caseStudiesModal">Read client stories</button>
       </div>
