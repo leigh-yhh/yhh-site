@@ -1593,6 +1593,35 @@ dialog::backdrop {
   margin: 0;
 }
 
+.id-privacy-note {
+  margin: 0 0 28px;
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.id-privacy-note p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.id-privacy-note p + p {
+  margin-top: 10px;
+}
+
+.id-privacy-note .link-style {
+  font: inherit;
+  color: var(--primary);
+  text-decoration: underline;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
 .checkbox-pill-group {
   display: flex;
   flex-wrap: wrap;
@@ -4746,7 +4775,7 @@ input[data-address-autocomplete="true"] {
 }
 
 .search-enquiry-shell {
-  max-width: 640px;
+  max-width: 820px;
 }
 
 .search-enquiry-form {
@@ -4762,7 +4791,7 @@ input[data-address-autocomplete="true"] {
 }
 
 .search-enquiry .field-hint {
-  margin: 0 0 8px;
+  margin: 8px 0 0;
   font-size: 0.84rem;
   color: var(--text-muted);
 }
@@ -5013,8 +5042,13 @@ input[data-address-autocomplete="true"] {
   accent-color: var(--primary);
 }
 
-@media (max-width: 640px) {
-  .search-enquiry .form-row {
+.search-enquiry .search-location-row:has(#se_suburb_wrap[hidden]) {
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 720px) {
+  .search-enquiry .form-row,
+  .search-enquiry .form-row-3 {
     grid-template-columns: 1fr;
   }
 }
@@ -5234,6 +5268,38 @@ input[data-address-autocomplete="true"] {
 .tenancy-page .form-row > .input-group {
   flex: 1;
   min-width: 160px;
+}
+
+.tenancy-page .form-block {
+  margin: 0 0 36px;
+  padding: 0 0 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tenancy-page .form-block:has(+ .wizard-nav-row) {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 12px;
+}
+
+.tenancy-page .form-block-title {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-dark);
+}
+
+.tenancy-page .doc-upload-list {
+  margin: 0;
+  padding: 0 0 0 1.15rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.tenancy-page .doc-upload-list li + li {
+  margin-top: 8px;
 }
 
 @media (max-width: 720px) {

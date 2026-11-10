@@ -957,13 +957,38 @@ document.addEventListener('DOMContentLoaded', () => {
       || getAddressComponent(components, 'administrative_area_level_2');
     const postcode = getAddressComponent(components, 'postal_code');
     const state = getAddressComponent(components, 'administrative_area_level_1', true);
+    const countryCode = (getAddressComponent(components, 'country', true) || '').toUpperCase();
     return {
       street: street || place?.name || '',
       suburb,
       postcode,
       state,
+      countryCode,
       formatted: place?.formatted_address || ''
     };
+  }
+
+  function getAddressGroupCountryCode(groupOrInput) {
+    const group = groupOrInput?.closest?.('[data-address-group]') || groupOrInput;
+    const countryEl = group?.querySelector?.('[data-address-part="country"]');
+    const code = String(countryEl?.value || 'AU').trim().toUpperCase();
+    if (!code || code === 'OTHER') return '';
+    return code.toLowerCase();
+  }
+
+  function syncAddressGroupCountry(group) {
+    if (!group) return;
+    const code = getAddressGroupCountryCode(group);
+    const suburbEl = group.querySelector('[data-address-part="suburb"]');
+    if (suburbEl) {
+      if (code === 'au') suburbEl.setAttribute('list', 'yhh-au-suburbs-list');
+      else suburbEl.removeAttribute('list');
+    }
+    const streetEl = group.querySelector('[data-address-part="street"], [data-address-autocomplete="true"]');
+    const autocomplete = streetEl && streetEl._yhhAutocomplete;
+    if (autocomplete && typeof autocomplete.setComponentRestrictions === 'function') {
+      autocomplete.setComponentRestrictions(code ? { country: code } : { country: [] });
+    }
   }
 
   function fillAddressGroup(input, parts) {
@@ -977,14 +1002,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const streetEl = group.querySelector('[data-address-part="street"]');
     const suburbEl = group.querySelector('[data-address-part="suburb"]');
     const postcodeEl = group.querySelector('[data-address-part="postcode"]');
+    const countryEl = group.querySelector('[data-address-part="country"]');
 
     if (streetEl && parts.street) streetEl.value = parts.street;
     else if (parts.formatted) input.value = parts.formatted;
 
     if (suburbEl && parts.suburb) suburbEl.value = parts.suburb;
     if (postcodeEl && parts.postcode) postcodeEl.value = parts.postcode;
+    if (countryEl && parts.countryCode) {
+      const match = Array.from(countryEl.options).find((opt) => opt.value === parts.countryCode);
+      if (match) {
+        countryEl.value = parts.countryCode;
+        syncAddressGroupCountry(group);
+      }
+    }
 
-    [streetEl, suburbEl, postcodeEl, input].filter(Boolean).forEach((el) => {
+    [streetEl, suburbEl, postcodeEl, countryEl, input].filter(Boolean).forEach((el) => {
       el.dispatchEvent(new Event('input', { bubbles: true }));
       el.dispatchEvent(new Event('change', { bubbles: true }));
     });
@@ -999,6 +1032,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isSuburbOnly = input.getAttribute('list') === 'yhh-au-suburbs-list';
     const isRelocation = input.getAttribute('list') === 'yhh-relocation-origins-list';
+    const group = input.closest('[data-address-group]');
+    const groupCountry = group ? getAddressGroupCountryCode(group) : 'au';
     const options = {
       fields: ['formatted_address', 'name', 'address_components']
     };
@@ -1009,12 +1044,13 @@ document.addEventListener('DOMContentLoaded', () => {
       options.componentRestrictions = { country: 'au' };
       options.types = ['(regions)'];
     } else {
-      options.componentRestrictions = { country: 'au' };
+      if (groupCountry) options.componentRestrictions = { country: groupCountry };
       options.types = ['address'];
     }
 
     try {
       const autocomplete = new google.maps.places.Autocomplete(input, options);
+      input._yhhAutocomplete = autocomplete;
       autocomplete.addListener('place_changed', () => {
         const place = autocomplete.getPlace();
         if (!place) return;
@@ -1139,16 +1175,18 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       try {
+        const countryCode = getAddressGroupCountryCode(input) || 'au';
         const url = 'https://photon.komoot.io/api/?q='
           + encodeURIComponent(query)
-          + '&limit=8&lang=en&lat=-37.8136&lon=144.9631';
+          + '&limit=8&lang=en'
+          + (countryCode === 'au' ? '&lat=-37.8136&lon=144.9631' : '');
         const res = await fetch(url);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         const features = (data.features || []).filter((f) => {
-          const country = (f.properties?.country || '').toLowerCase();
+          if (!countryCode) return true;
           const countrycode = (f.properties?.countrycode || '').toLowerCase();
-          return !country || country.includes('australia') || countrycode === 'au';
+          return !countrycode || countrycode === countryCode;
         });
         render(features.slice(0, 6));
       } catch (err) {
@@ -1202,6 +1240,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const apiKey = window.YHH_CONTACT_CONFIG?.googlePlacesApiKey?.trim();
     const addressInputs = collectAddressInputs(scope);
+
+    scope.querySelectorAll('[data-address-group]').forEach((group) => {
+      const countryEl = group.querySelector('[data-address-part="country"]');
+      if (!countryEl || countryEl.dataset.countrySyncBound === 'true') return;
+      countryEl.dataset.countrySyncBound = 'true';
+      syncAddressGroupCountry(group);
+      countryEl.addEventListener('change', () => syncAddressGroupCountry(group));
+    });
 
     if (apiKey) {
       if (!googlePlacesLoaded && !googlePlacesLoading) {
@@ -2153,7 +2199,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const lastStep = form.querySelector('[data-tenancy-step="6"]');
+      const lastStep = form.querySelector('[data-tenancy-step="7"]');
       if (lastStep) {
         const required = lastStep.querySelectorAll('input[required], select[required], textarea[required]');
         for (const input of required) {

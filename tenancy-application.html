@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20261111f">
 </head>
 <body class="wishlist-page tenancy-page">
 
@@ -42,7 +42,7 @@
         <h1>Rental submission form</h1>
         <p class="wishlist-page-lead">
           This collects the details agents need for portals such as REA Ignite, 2Apply, Snug, Sorted, and Tenant Options.
-          Complete one form per adult who will live at the property. File uploads: PDF or images, max 8&nbsp;MB each.
+          Complete one form per adult who will live at the property. Supporting documents are collected securely at the end.
         </p>
       </header>
 
@@ -58,6 +58,8 @@
         <div class="step-indicator" data-tenancy-indicator="5"><span class="step-circle">5</span><span class="step-text">Income</span></div>
         <div class="step-connector"></div>
         <div class="step-indicator" data-tenancy-indicator="6"><span class="step-circle">6</span><span class="step-text">Refs</span></div>
+        <div class="step-connector"></div>
+        <div class="step-indicator" data-tenancy-indicator="7"><span class="step-circle">7</span><span class="step-text">Docs</span></div>
       </div>
 
       <form id="tenancy-application-form" class="wishlist-wizard-form" novalidate>
@@ -69,91 +71,149 @@
             <p>Lease preferences and your contact details.</p>
           </div>
 
-          <div class="input-group">
-            <label>Have you recently filled out an online rental application form? *</label>
-            <div class="checkbox-pill-group">
-              <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="REA Ignite"> REA Ignite</label>
-              <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="2Apply"> 2Apply</label>
-              <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="Snug"> Snug</label>
-              <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="Sorted"> Sorted</label>
-              <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="Tenant Options"> Tenant Options</label>
-              <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="No" data-exclusive-portal> No</label>
+          <div class="form-block">
+            <h3 class="form-block-title">Portals &amp; lease</h3>
+            <div class="input-group">
+              <label>Have you recently filled out an online rental application form? *</label>
+              <div class="checkbox-pill-group">
+                <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="REA Ignite"> REA Ignite</label>
+                <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="2Apply"> 2Apply</label>
+                <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="Snug"> Snug</label>
+                <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="Sorted"> Sorted</label>
+                <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="Tenant Options"> Tenant Options</label>
+                <label class="checkbox-pill"><input type="checkbox" name="portalsUsed" value="No" data-exclusive-portal> No</label>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_commencement">Preferred commencement date</label>
+                <input type="date" id="ta_commencement" name="commencementDate">
+              </div>
+              <div class="input-group">
+                <label for="ta_lease_term">Term of lease (months)</label>
+                <input type="number" id="ta_lease_term" name="leaseTermMonths" min="1" max="36" placeholder="e.g. 12">
+              </div>
             </div>
           </div>
 
-          <div class="form-row">
-            <div class="input-group">
-              <label for="ta_commencement">Preferred commencement date</label>
-              <input type="date" id="ta_commencement" name="commencementDate">
+          <div class="form-block">
+            <h3 class="form-block-title">Name</h3>
+            <div class="form-row form-row-3">
+              <div class="input-group">
+                <label for="ta_title">Title</label>
+                <select id="ta_title" name="title">
+                  <option value="">—</option>
+                  <option>Mr</option>
+                  <option>Mrs</option>
+                  <option>Ms</option>
+                  <option>Miss</option>
+                  <option>Dr</option>
+                  <option>Mx</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="ta_first">First name *</label>
+                <input type="text" id="ta_first" name="firstName" required autocomplete="given-name">
+              </div>
+              <div class="input-group">
+                <label for="ta_last">Last name *</label>
+                <input type="text" id="ta_last" name="lastName" required autocomplete="family-name">
+              </div>
             </div>
-            <div class="input-group">
-              <label for="ta_lease_term">Term of lease (months)</label>
-              <input type="number" id="ta_lease_term" name="leaseTermMonths" min="1" max="36" placeholder="e.g. 12">
+
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_middle">Middle name</label>
+                <input type="text" id="ta_middle" name="middleName" autocomplete="additional-name">
+              </div>
+              <div class="input-group">
+                <label for="ta_pref">Preferred name</label>
+                <input type="text" id="ta_pref" name="preferredName" autocomplete="nickname">
+              </div>
             </div>
           </div>
 
-          <div class="form-row form-row-3">
-            <div class="input-group">
-              <label for="ta_title">Title</label>
-              <select id="ta_title" name="title">
-                <option value="">—</option>
-                <option>Mr</option>
-                <option>Mrs</option>
-                <option>Ms</option>
-                <option>Miss</option>
-                <option>Dr</option>
-                <option>Mx</option>
-              </select>
+          <div class="form-block">
+            <h3 class="form-block-title">Phone &amp; email</h3>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_mobile">Mobile phone *</label>
+                <input type="tel" id="ta_mobile" name="mobile" required autocomplete="tel">
+              </div>
+              <div class="input-group">
+                <label for="ta_work_phone">Work phone</label>
+                <input type="tel" id="ta_work_phone" name="workPhone">
+              </div>
             </div>
+
             <div class="input-group">
-              <label for="ta_first">First name *</label>
-              <input type="text" id="ta_first" name="firstName" required autocomplete="given-name">
-            </div>
-            <div class="input-group">
-              <label for="ta_middle">Middle name</label>
-              <input type="text" id="ta_middle" name="middleName" autocomplete="additional-name">
+              <label for="ta_email">Email *</label>
+              <input type="email" id="ta_email" name="email" required autocomplete="email">
             </div>
           </div>
 
-          <div class="form-row">
-            <div class="input-group">
-              <label for="ta_last">Last name *</label>
-              <input type="text" id="ta_last" name="lastName" required autocomplete="family-name">
+          <div class="form-block" data-address-group="current">
+            <h3 class="form-block-title">Current address</h3>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_country">Country *</label>
+                <select id="ta_country" name="currentCountry" required autocomplete="country" data-address-part="country">
+                  <option value="AU" selected>Australia</option>
+                  <option value="NZ">New Zealand</option>
+                  <option value="SG">Singapore</option>
+                  <option value="GB">United Kingdom</option>
+                  <option value="IE">Ireland</option>
+                  <option value="US">United States</option>
+                  <option value="CA">Canada</option>
+                  <option value="DE">Germany</option>
+                  <option value="FR">France</option>
+                  <option value="NL">Netherlands</option>
+                  <option value="CH">Switzerland</option>
+                  <option value="AT">Austria</option>
+                  <option value="BE">Belgium</option>
+                  <option value="SE">Sweden</option>
+                  <option value="NO">Norway</option>
+                  <option value="DK">Denmark</option>
+                  <option value="FI">Finland</option>
+                  <option value="IT">Italy</option>
+                  <option value="ES">Spain</option>
+                  <option value="PT">Portugal</option>
+                  <option value="HK">Hong Kong</option>
+                  <option value="JP">Japan</option>
+                  <option value="KR">South Korea</option>
+                  <option value="CN">China</option>
+                  <option value="IN">India</option>
+                  <option value="MY">Malaysia</option>
+                  <option value="ID">Indonesia</option>
+                  <option value="TH">Thailand</option>
+                  <option value="PH">Philippines</option>
+                  <option value="VN">Vietnam</option>
+                  <option value="AE">United Arab Emirates</option>
+                  <option value="QA">Qatar</option>
+                  <option value="SA">Saudi Arabia</option>
+                  <option value="ZA">South Africa</option>
+                  <option value="BR">Brazil</option>
+                  <option value="AR">Argentina</option>
+                  <option value="CL">Chile</option>
+                  <option value="MX">Mexico</option>
+                  <option value="OTHER">Other</option>
+                </select>
+              </div>
+              <div class="input-group" style="flex:2">
+                <label for="ta_street">Street address *</label>
+                <input type="text" id="ta_street" name="currentStreet" required autocomplete="street-address" data-address-autocomplete="true" data-address-part="street" placeholder="Start typing your street address">
+              </div>
             </div>
-            <div class="input-group">
-              <label for="ta_pref">Preferred name</label>
-              <input type="text" id="ta_pref" name="preferredName" autocomplete="nickname">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="input-group">
-              <label for="ta_mobile">Mobile phone *</label>
-              <input type="tel" id="ta_mobile" name="mobile" required autocomplete="tel">
-            </div>
-            <div class="input-group">
-              <label for="ta_work_phone">Work phone</label>
-              <input type="tel" id="ta_work_phone" name="workPhone">
-            </div>
-          </div>
-
-          <div class="input-group">
-            <label for="ta_email">Email *</label>
-            <input type="email" id="ta_email" name="email" required autocomplete="email">
-          </div>
-
-          <div class="form-row" data-address-group="current">
-            <div class="input-group" style="flex:2">
-              <label for="ta_street">Current street address *</label>
-              <input type="text" id="ta_street" name="currentStreet" required autocomplete="street-address" data-address-autocomplete="true" data-address-part="street" placeholder="Start typing your street address">
-            </div>
-            <div class="input-group">
-              <label for="ta_suburb">Suburb / city *</label>
-              <input type="text" id="ta_suburb" name="currentSuburb" required autocomplete="address-level2" list="yhh-au-suburbs-list" data-address-part="suburb">
-            </div>
-            <div class="input-group">
-              <label for="ta_postcode">Postcode</label>
-              <input type="text" id="ta_postcode" name="currentPostcode" autocomplete="postal-code" data-address-part="postcode" inputmode="numeric">
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_suburb">Suburb / city *</label>
+                <input type="text" id="ta_suburb" name="currentSuburb" required autocomplete="address-level2" list="yhh-au-suburbs-list" data-address-part="suburb">
+              </div>
+              <div class="input-group">
+                <label for="ta_postcode">Postcode</label>
+                <input type="text" id="ta_postcode" name="currentPostcode" autocomplete="postal-code" data-address-part="postcode">
+              </div>
             </div>
           </div>
 
@@ -166,78 +226,85 @@
         <div class="wizard-step" data-tenancy-step="2">
           <div class="step-title-box">
             <h2>Step 2: Identification</h2>
-            <p>Attach ID documents agents typically need (licence and/or passport).</p>
-            <p class="field-hint">Uploads are stored securely and used only to lodge your rental applications.</p>
+            <p>Enter the ID details agents typically need. Document images are uploaded in the final step.</p>
           </div>
 
-          <div class="input-group">
-            <label for="ta_dob">Date of birth *</label>
-            <input type="date" id="ta_dob" name="dateOfBirth" required>
+          <div class="id-privacy-note" role="note">
+            <p>We know this is a lot of personal information. We only ask for what agents need to assess an application, and we treat it carefully.</p>
+            <p>Your ID details are used to lodge applications on your behalf. They are handled under the <em>Privacy Act 1988</em> (Cth) and our <button type="button" class="link-style" data-modal-target="collectionNoticeModal">Privacy Collection Notice</button> and <button type="button" class="link-style" data-modal-target="privacyDialog">Privacy Policy</button>. We never sell your data.</p>
           </div>
 
-          <div class="form-row">
+          <div class="form-block">
+            <h3 class="form-block-title">Personal</h3>
             <div class="input-group">
-              <label for="ta_licence_no">Driver’s licence number</label>
-              <input type="text" id="ta_licence_no" name="licenceNumber">
+              <label for="ta_dob">Date of birth *</label>
+              <input type="date" id="ta_dob" name="dateOfBirth" required>
             </div>
-            <div class="input-group">
-              <label for="ta_licence_card">Licence card number</label>
-              <input type="text" id="ta_licence_card" name="licenceCardNumber" placeholder="Number on the physical card">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="input-group">
-              <label for="ta_licence_state">State of issue</label>
-              <input type="text" id="ta_licence_state" name="licenceState" placeholder="e.g. VIC">
-            </div>
-            <div class="input-group">
-              <label for="ta_licence_expiry">Licence expiry</label>
-              <input type="date" id="ta_licence_expiry" name="licenceExpiry">
-            </div>
-          </div>
-          <div class="input-group">
-            <label for="ta_licence_file">Driver’s licence image upload</label>
-            <input type="file" id="ta_licence_file" name="licenceFile" accept="image/*,.pdf" data-file-key="licence">
           </div>
 
-          <div class="form-row">
-            <div class="input-group">
-              <label for="ta_passport_no">Passport number</label>
-              <input type="text" id="ta_passport_no" name="passportNumber">
+          <div class="form-block">
+            <h3 class="form-block-title">Driver’s licence</h3>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_licence_no">Licence number</label>
+                <input type="text" id="ta_licence_no" name="licenceNumber">
+              </div>
+              <div class="input-group">
+                <label for="ta_licence_card">Card number</label>
+                <input type="text" id="ta_licence_card" name="licenceCardNumber" placeholder="Number on the physical card">
+              </div>
             </div>
-            <div class="input-group">
-              <label for="ta_passport_country">Country of issue</label>
-              <input type="text" id="ta_passport_country" name="passportCountry">
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_licence_state">State of issue</label>
+                <input type="text" id="ta_licence_state" name="licenceState" placeholder="e.g. VIC">
+              </div>
+              <div class="input-group">
+                <label for="ta_licence_expiry">Expiry</label>
+                <input type="date" id="ta_licence_expiry" name="licenceExpiry">
+              </div>
             </div>
-            <div class="input-group">
-              <label for="ta_passport_expiry">Passport expiry</label>
-              <input type="date" id="ta_passport_expiry" name="passportExpiry">
-            </div>
-          </div>
-          <div class="input-group">
-            <label for="ta_passport_file">Passport image upload</label>
-            <input type="file" id="ta_passport_file" name="passportFile" accept="image/*,.pdf" data-file-key="passport">
           </div>
 
-          <div class="input-group">
-            <label for="ta_other_id">Other ID document details</label>
-            <input type="text" id="ta_other_id" name="otherIdDetails" placeholder="e.g. Medicare card">
-          </div>
-          <div class="input-group">
-            <label for="ta_other_id_file">Other ID document upload</label>
-            <input type="file" id="ta_other_id_file" name="otherIdFile" accept="image/*,.pdf" data-file-key="otherId">
+          <div class="form-block">
+            <h3 class="form-block-title">Passport</h3>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="ta_passport_no">Number</label>
+                <input type="text" id="ta_passport_no" name="passportNumber">
+              </div>
+              <div class="input-group">
+                <label for="ta_passport_country">Country of issue</label>
+                <input type="text" id="ta_passport_country" name="passportCountry">
+              </div>
+              <div class="input-group">
+                <label for="ta_passport_expiry">Expiry</label>
+                <input type="date" id="ta_passport_expiry" name="passportExpiry">
+              </div>
+            </div>
           </div>
 
-          <div class="input-group">
-            <label>Do you have a car?</label>
-            <div class="checkbox-pill-group">
-              <label class="checkbox-pill"><input type="radio" name="hasCar" value="Yes"> Yes</label>
-              <label class="checkbox-pill"><input type="radio" name="hasCar" value="No"> No</label>
+          <div class="form-block">
+            <h3 class="form-block-title">Other ID</h3>
+            <div class="input-group">
+              <label for="ta_other_id">Other ID document details</label>
+              <input type="text" id="ta_other_id" name="otherIdDetails" placeholder="e.g. Medicare card">
+            </div>
+          </div>
+
+          <div class="form-block">
+            <h3 class="form-block-title">Vehicle</h3>
+            <div class="input-group">
+              <label>Do you have a car?</label>
+              <div class="checkbox-pill-group">
+                <label class="checkbox-pill"><input type="radio" name="hasCar" value="Yes"> Yes</label>
+                <label class="checkbox-pill"><input type="radio" name="hasCar" value="No"> No</label>
+              </div>
             </div>
           </div>
 
           <div class="wizard-nav-row">
-            <button type="button" class="btn btn-outline" data-tenancy-prev="1">&larr; Back</button>
+            <button type="button" class="btn btn-outline" data-tenancy-prev="1">Back</button>
             <button type="button" class="btn btn-primary" data-tenancy-next="3">Continue to household</button>
           </div>
         </div>
@@ -347,10 +414,7 @@
                 <input type="text" id="ta_pet_other" name="petOtherDetails" placeholder="Brief details if more than one pet">
               </div>
             </div>
-            <div class="input-group">
-              <label for="ta_pet_file">Optional: vaccination / registration / photo upload</label>
-              <input type="file" id="ta_pet_file" name="petFile" accept="image/*,.pdf" data-file-key="petDocs">
-            </div>
+            <p class="field-hint">Optional pet papers and photos can be added in the document upload step.</p>
           </div>
 
           <div class="input-group">
@@ -371,7 +435,7 @@
           </div>
 
           <div class="wizard-nav-row">
-            <button type="button" class="btn btn-outline" data-tenancy-prev="2">&larr; Back</button>
+            <button type="button" class="btn btn-outline" data-tenancy-prev="2">Back</button>
             <button type="button" class="btn btn-primary" data-tenancy-next="4">Continue to housing history</button>
           </div>
         </div>
@@ -513,10 +577,7 @@
                 <option>Other</option>
               </select>
             </div>
-            <div class="input-group">
-              <label for="ta_ownership_file">Ownership documents (rates / body corp / insurance)</label>
-              <input type="file" id="ta_ownership_file" name="ownershipFile" accept="image/*,.pdf" data-file-key="ownershipDocs">
-            </div>
+            <p class="field-hint">Ownership documents (rates, body corp, insurance) can be added in the document upload step.</p>
             <div class="form-row">
               <div class="input-group">
                 <label for="ta_selling_agent">Selling or leasing agent &amp; contact</label>
@@ -552,7 +613,7 @@
           </div>
 
           <div class="wizard-nav-row">
-            <button type="button" class="btn btn-outline" data-tenancy-prev="3">&larr; Back</button>
+            <button type="button" class="btn btn-outline" data-tenancy-prev="3">Back</button>
             <button type="button" class="btn btn-primary" data-tenancy-next="5">Continue to income</button>
           </div>
         </div>
@@ -632,10 +693,7 @@
                 <input type="text" id="ta_transfer" name="employmentTransfer" placeholder="Details if relocating for work">
               </div>
             </div>
-            <div class="input-group">
-              <label for="ta_payslips">Attach three most recent payslips</label>
-              <input type="file" id="ta_payslips" name="payslips" accept="image/*,.pdf" multiple data-file-key="payslips">
-            </div>
+            <p class="field-hint">Payslips are uploaded in the document upload step.</p>
 
             <h3 class="tenancy-subhead">Previous employer</h3>
             <div class="form-row">
@@ -743,10 +801,7 @@
               <input type="text" id="ta_other_income_freq" name="otherIncomeFrequency">
             </div>
           </div>
-          <div class="input-group">
-            <label for="ta_other_income_file">Supporting documents</label>
-            <input type="file" id="ta_other_income_file" name="otherIncomeFile" accept="image/*,.pdf" multiple data-file-key="otherIncomeDocs">
-          </div>
+          <p class="field-hint">Other income supporting documents can be added in the document upload step.</p>
 
           <label class="checkbox-pill tenancy-skip-pill">
             <input type="checkbox" id="ta_not_student" name="notStudent" value="yes" checked> Tick if student section is not applicable
@@ -787,7 +842,7 @@
           </div>
 
           <div class="wizard-nav-row">
-            <button type="button" class="btn btn-outline" data-tenancy-prev="4">&larr; Back</button>
+            <button type="button" class="btn btn-outline" data-tenancy-prev="4">Back</button>
             <button type="button" class="btn btn-primary" data-tenancy-next="6">Continue to references</button>
           </div>
         </div>
@@ -883,6 +938,40 @@
             </div>
           </div>
 
+          <div class="wizard-nav-row">
+            <button type="button" class="btn btn-outline" data-tenancy-prev="5">Back</button>
+            <button type="button" class="btn btn-primary" data-tenancy-next="7">Continue to documents</button>
+          </div>
+        </div>
+
+        <!-- STEP 7 -->
+        <div class="wizard-step" data-tenancy-step="7">
+          <div class="step-title-box">
+            <h2>Step 7: Secure document upload</h2>
+            <p>Upload everything agents usually need in one place. PDF or images, max 8&nbsp;MB each.</p>
+          </div>
+
+          <div class="form-block">
+            <h3 class="form-block-title">What to include</h3>
+            <ul class="doc-upload-list">
+              <li>Passport and/or driver’s licence (front and back)</li>
+              <li>Medicare card</li>
+              <li>Three most recent payslips (or other income proof)</li>
+              <li>Ownership documents if living in your own home (rates, body corp, or insurance)</li>
+              <li>Optional: pet vaccination, registration, or photo</li>
+            </ul>
+          </div>
+
+          <div class="form-block">
+            <h3 class="form-block-title">Upload</h3>
+            <div class="input-group">
+              <label>Secure document upload</label>
+              <p class="field-hint">Files are captured through a secure upload, separate from this form.</p>
+              <button type="button" class="btn btn-outline" disabled aria-disabled="true">Secure document upload</button>
+              <p class="field-hint">Upload link coming soon. You can still submit this form now — we will send the secure upload link separately if needed.</p>
+            </div>
+          </div>
+
           <div class="form-privacy-block">
             <p class="form-collection-notice">
               <small>YHH Pty Ltd (Your Home Hunter) collects identity, housing, income, and supporting documents to lodge tenancy applications on your behalf with agents and portals (for example 2Apply, Snug, Ignite). Details are handled under the <em>Privacy Act 1988</em> (Cth) and Australian Privacy Principles. Read our <button type="button" class="link-style" data-modal-target="collectionNoticeModal">Privacy Collection Notice</button> (APP&nbsp;5) and <button type="button" class="link-style" data-modal-target="privacyDialog">Privacy Policy</button>. We never sell your data.</small>
@@ -894,7 +983,7 @@
           </div>
 
           <div class="wizard-nav-row">
-            <button type="button" class="btn btn-outline" data-tenancy-prev="5">&larr; Back</button>
+            <button type="button" class="btn btn-outline" data-tenancy-prev="6">Back</button>
             <button type="submit" class="btn btn-primary" id="ta_submit_btn">Submit rental application</button>
           </div>
         </div>
@@ -917,6 +1006,6 @@
   <script src="contact-config.js"></script>
   <script defer src="analytics.js"></script>
   <script src="dialogs-bundle.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js?v=20261111f"></script>
 </body>
 </html>

@@ -38,10 +38,9 @@ window.YHH_CONTACT_CONFIG = {
   // Stripe Payment Link — Full Service engagement fee ($1,100)
   stripeEngagementFeeUrl: 'https://buy.stripe.com/7sY28k9GE6JvgaS6yM4ZG02',
 
-  // DocuSign (legal signing). Paste PowerForm / envelope links when ready.
-  // Empty = FSP page shows a clear placeholder CTA until configured.
-  docusignServiceAgreementUrl: '',
-  docusignDisclosureUrl: '',
+  // Legal signing links. Empty = FSP page shows a placeholder CTA until configured.
+  docusignServiceAgreementUrl: 'https://forms.zohopublic.com.au/YHH/form/ServiceAgreement/formperma/ZetJPTQZ7wOIrLKHNqTl9Gsj7o7a-5bJRqK8NUqvrwI',
+  docusignDisclosureUrl: 'https://forms.zohopublic.com.au/YHH/form/DisclosureandDeclarationStatement/formperma/FsgIdHKX9yXKEt_yIpZ-5k8tILjox4LZ0lmvx_FL0lw',
 
   /**
    * Cloudflare Worker submit proxy (hides Activepieces webhook URLs from the browser).

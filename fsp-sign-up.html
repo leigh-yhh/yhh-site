@@ -62,11 +62,11 @@
       <div class="fsp-tracker-steps">
         <label class="fsp-tracker-step-item">
           <input type="checkbox" class="fsp-step-checkbox" data-step="1" id="chkStep1">
-          <span>1. Service agreement</span>
+          <span>1. Service Agreement</span>
         </label>
         <label class="fsp-tracker-step-item">
           <input type="checkbox" class="fsp-step-checkbox" data-step="2" id="chkStep2">
-          <span>2. Engagement fee ($1,100)</span>
+          <span>2. Engagement fee ($1,100 AUD)</span>
         </label>
         <label class="fsp-tracker-step-item">
           <input type="checkbox" class="fsp-step-checkbox" data-step="3" id="chkStep3">
@@ -78,7 +78,7 @@
         </label>
         <label class="fsp-tracker-step-item">
           <input type="checkbox" class="fsp-step-checkbox" data-step="5" id="chkStep5">
-          <span>5. Disclosure &amp; declaration</span>
+          <span>5. Disclosure &amp; Declaration</span>
         </label>
       </div>
     </div>
@@ -87,11 +87,11 @@
       <div class="fsp-step-card-header">
         <div class="fsp-step-number-circle">1</div>
         <div class="fsp-step-title-group">
-          <h2>Service agreement</h2>
+          <h2>Service Agreement</h2>
         </div>
       </div>
       <p class="fsp-step-desc">
-        Sign the Full Service Package agreement in DocuSign so we can search, inspect, and speak with agents for you. Please read the full agreement before signing.
+        This is the terms of the Full Service Package. Sign it so we can search, inspect, and speak with agents for you. Please read it before signing.
       </p>
       <div class="fsp-action-box">
         <a href="#docusign-service-agreement"
@@ -101,9 +101,9 @@
            class="fsp-btn-cta"
            data-config-url="docusignServiceAgreementUrl"
            onclick="markStepDone(1)">
-          Sign with DocuSign
+          Sign the Service Agreement
         </a>
-        <span class="fsp-action-meta" id="fspDocusignAgreementMeta">Secure e-signature via DocuSign. Link will be confirmed shortly if this still shows as a placeholder.</span>
+        <span class="fsp-action-meta" id="fspDocusignAgreementMeta">Opens the signing form in a new tab.</span>
       </div>
     </article>
 
@@ -111,11 +111,11 @@
       <div class="fsp-step-card-header">
         <div class="fsp-step-number-circle">2</div>
         <div class="fsp-step-title-group">
-          <h2>Engagement fee: $1,100</h2>
+          <h2>Engagement fee: $1,100 AUD</h2>
         </div>
       </div>
       <p class="fsp-step-desc">
-        The engagement fee is $1,100 including GST. We start the search once this is paid. The remaining service fee is invoiced after you sign a lease. Choose <strong>one</strong> of the payment options below.
+        The engagement fee is $1,100 AUD including GST. We start the search once this is paid. The remaining service fee is invoiced after you sign a lease. Choose <strong>one</strong> of the payment options below.
       </p>
 
       <div class="fsp-payment-options" role="group" aria-label="Payment options">
@@ -131,16 +131,16 @@
              rel="noopener noreferrer"
              class="fsp-btn-cta fsp-stripe-btn"
              onclick="markStepDone(2)">
-            Pay $1,100 with card
+            Pay $1,100 AUD with card
           </a>
         </div>
 
         <div class="fsp-payment-card">
           <div class="fsp-payment-card-title">
             <span>Option 2 · Bank transfer</span>
-            <span class="fsp-payment-card-badge">No surcharge</span>
+            <span class="fsp-payment-card-badge">Direct / Osko</span>
           </div>
-          <p class="fsp-payment-note">Use your full name as the payment reference.</p>
+          <p class="fsp-payment-note">Direct bank payment only: Osko or another immediate transfer. Use your full name as the payment reference.</p>
           <div class="fsp-bank-rows">
             <div class="fsp-bank-row">
               <span class="fsp-bank-label">Bank</span>
@@ -212,7 +212,7 @@
         </div>
       </div>
       <p class="fsp-step-desc">
-        We need a completed Rental Submission for each adult who will live at the property. We use it to lodge applications with agents when the right place comes up, and we also run our own reference checks — the same kind of checks you would expect in any standard rental application — so we can advocate for you with confidence.
+        Each adult who will live at the property needs a completed Rental Submission. We use it to lodge applications with agents, and to run the same kind of reference checks you would see on a normal rental application.
       </p>
       <ul class="fsp-doc-list">
         <li>ID: passport and/or driver’s licence (front and back), plus Medicare card</li>
@@ -234,11 +234,11 @@
       <div class="fsp-step-card-header">
         <div class="fsp-step-number-circle">5</div>
         <div class="fsp-step-title-group">
-          <h2>Disclosure &amp; declaration</h2>
+          <h2>Disclosure &amp; Declaration</h2>
         </div>
       </div>
       <p class="fsp-step-desc">
-        Complete the Disclosure and Declaration Statement in DocuSign. This is a legal document and must be signed electronically — it replaces the previous Zoho form.
+        This form lets us run reference checks and shows we are allowed to ask for the information in your Rental Submission. Sign it so we can proceed.
       </p>
       <div class="fsp-action-box">
         <a href="#docusign-disclosure"
@@ -248,9 +248,9 @@
            class="fsp-btn-cta"
            data-config-url="docusignDisclosureUrl"
            onclick="markStepDone(5)">
-          Sign disclosure with DocuSign
+          Sign the Disclosure &amp; Declaration
         </a>
-        <span class="fsp-action-meta" id="fspDocusignDisclosureMeta">Placeholder until your DocuSign PowerForm link is added in contact-config.js.</span>
+        <span class="fsp-action-meta" id="fspDocusignDisclosureMeta">Opens the signing form in a new tab.</span>
       </div>
     </article>
 
@@ -425,14 +425,14 @@
         'fspDocusignAgreement',
         'fspDocusignAgreementMeta',
         'docusignServiceAgreementUrl',
-        'Opens DocuSign in a new tab. Sign to authorise the search.',
+        'Opens the Service Agreement in a new tab. Sign to authorise the search.',
         '#docusign-service-agreement'
       );
       wireDocusign(
         'fspDocusignDisclosure',
         'fspDocusignDisclosureMeta',
         'docusignDisclosureUrl',
-        'Opens DocuSign in a new tab for the Disclosure and Declaration Statement.',
+        'Opens the Disclosure & Declaration in a new tab.',
         '#docusign-disclosure'
       );
     }
