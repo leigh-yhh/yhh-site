@@ -6,7 +6,8 @@
 # ACTIVEPIECES-ZOHO-MAPPING.md
 
 AP_WEBHOOK_WISHLIST=https://automation.yourhomehunter.com.au/api/v1/webhooks/YOUR_WISHLIST_ID
-AP_WEBHOOK_WISHLIST_AUTH=
+# Full Authorization header value for wishlist (include Bearer prefix)
+AP_WEBHOOK_WISHLIST_AUTH=Bearer YOUR_TOKEN
 AP_WEBHOOK_INTROCALL=
 AP_WEBHOOK_INTROCALL_AUTH=
 AP_WEBHOOK_CONSULT=

@@ -14,7 +14,7 @@ npm i -g wrangler   # if needed
 cp .dev.vars.example .dev.vars
 # paste Activepieces webhook URLs into .dev.vars
 npx wrangler secret put AP_WEBHOOK_WISHLIST
-npx wrangler secret put AP_WEBHOOK_WISHLIST_AUTH   # Activepieces "Authentication" header token
+npx wrangler secret put AP_WEBHOOK_WISHLIST_AUTH   # full Authorization value, e.g. Bearer …
 # …repeat for each flow used
 npx wrangler deploy
 ```
@@ -23,7 +23,7 @@ Then set `submitApiUrl` in site `contact-config.js` to the Worker URL (or `https
 
 If a flow’s webhook secret is empty, the Worker returns **503** `{ ok: false, skipped: true }` and the site shows an error (it will not pretend the submit succeeded).
 
-Activepieces header auth: when `AP_WEBHOOK_*_AUTH` is set, the Worker forwards with header `Authentication: <token>`.
+Activepieces header auth: when `AP_WEBHOOK_*_AUTH` is set, the Worker forwards that value as-is. Wishlist uses `Authorization`; other flows default to `Authentication`.
 
 ## Local
 

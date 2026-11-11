@@ -18,7 +18,7 @@ const FLOW_SECRET_KEYS = {
   serviceAgreement: 'AP_WEBHOOK_SERVICEAGREEMENT'
 };
 
-/** Optional Activepieces header-auth tokens (header name: Authentication). */
+/** Optional Activepieces header-auth tokens (secret holds full header value). */
 const FLOW_AUTH_SECRET_KEYS = {
   wishlist: 'AP_WEBHOOK_WISHLIST_AUTH',
   introCall: 'AP_WEBHOOK_INTROCALL_AUTH',
@@ -29,6 +29,12 @@ const FLOW_AUTH_SECRET_KEYS = {
   tenancyApplicationFiles: 'AP_WEBHOOK_TENANCYAPPLICATIONFILES_AUTH',
   serviceAgreement: 'AP_WEBHOOK_SERVICEAGREEMENT_AUTH'
 };
+
+/** Per-flow upstream auth header name. Wishlist uses Authorization (Bearer …). */
+const FLOW_AUTH_HEADER_NAMES = {
+  wishlist: 'Authorization'
+};
+const DEFAULT_AUTH_HEADER_NAME = 'Authentication';
 
 function parseAllowedOrigins(env) {
   return String(env.ALLOWED_ORIGINS || '')
@@ -149,7 +155,9 @@ export default {
     const authKey = FLOW_AUTH_SECRET_KEYS[flow];
     const authToken = authKey ? String(env[authKey] || '').trim() : '';
     if (authToken) {
-      upstreamHeaders.Authentication = authToken;
+      const authHeader =
+        FLOW_AUTH_HEADER_NAMES[flow] || DEFAULT_AUTH_HEADER_NAME;
+      upstreamHeaders[authHeader] = authToken;
     }
 
     let upstream;
