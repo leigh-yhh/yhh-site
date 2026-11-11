@@ -288,6 +288,13 @@ p {
   margin: 0;
 }
 
+.hero-cta-note {
+  margin: 14px 0 0;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
 .proof-row {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
