@@ -3,7 +3,7 @@
     "Sample bodies as received by Activepieces Catch Webhook (trigger.body).",
     "The Cloudflare submit-proxy flattens site { flow, data, pageUrl } so form fields sit at the ROOT — not under data.",
     "Worker also appends: source=yourhomehunter.com.au, pageUrl, submittedAt, userCountry (from CF geo).",
-    "In AP: create one flow per key below → Catch Webhook → enable Authentication header → paste matching secret into wrangler.",
+    "In AP: create one flow per key below → Catch Webhook → Authorization Bearer → paste full Bearer value into wrangler *_AUTH secret.",
     "Secret map: wishlist→AP_WEBHOOK_WISHLIST, introCall→AP_WEBHOOK_INTROCALL, consult→AP_WEBHOOK_CONSULT,",
     "inspector→AP_WEBHOOK_INSPECTOR, inspectionBooking→AP_WEBHOOK_INSPECTIONBOOKING,",
     "tenancyApplication→AP_WEBHOOK_TENANCYAPPLICATION, tenancyApplicationFiles→AP_WEBHOOK_TENANCYAPPLICATIONFILES,",

@@ -23,7 +23,7 @@ Then set `submitApiUrl` in site `contact-config.js` to the Worker URL (or `https
 
 If a flow’s webhook secret is empty, the Worker returns **503** `{ ok: false, skipped: true }` and the site shows an error (it will not pretend the submit succeeded).
 
-Activepieces header auth: when `AP_WEBHOOK_*_AUTH` is set, the Worker forwards that value as-is. Wishlist uses `Authorization`; other flows default to `Authentication`.
+Activepieces header auth: when `AP_WEBHOOK_*_AUTH` is set, the Worker forwards that value as-is on `Authorization` (include the `Bearer ` prefix in the secret).
 
 ## Local
 

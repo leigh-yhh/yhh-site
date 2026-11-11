@@ -30,12 +30,6 @@ const FLOW_AUTH_SECRET_KEYS = {
   serviceAgreement: 'AP_WEBHOOK_SERVICEAGREEMENT_AUTH'
 };
 
-/** Per-flow upstream auth header name. Wishlist uses Authorization (Bearer …). */
-const FLOW_AUTH_HEADER_NAMES = {
-  wishlist: 'Authorization'
-};
-const DEFAULT_AUTH_HEADER_NAME = 'Authentication';
-
 function parseAllowedOrigins(env) {
   return String(env.ALLOWED_ORIGINS || '')
     .split(',')
@@ -155,9 +149,7 @@ export default {
     const authKey = FLOW_AUTH_SECRET_KEYS[flow];
     const authToken = authKey ? String(env[authKey] || '').trim() : '';
     if (authToken) {
-      const authHeader =
-        FLOW_AUTH_HEADER_NAMES[flow] || DEFAULT_AUTH_HEADER_NAME;
-      upstreamHeaders[authHeader] = authToken;
+      upstreamHeaders.Authorization = authToken;
     }
 
     let upstream;

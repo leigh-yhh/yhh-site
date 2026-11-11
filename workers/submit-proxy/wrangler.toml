@@ -15,7 +15,7 @@ ALLOWED_ORIGINS = "https://www.yourhomehunter.com.au,https://yourhomehunter.com.
 #   npx wrangler secret put AP_WEBHOOK_TENANCYAPPLICATION
 #   npx wrangler secret put AP_WEBHOOK_TENANCYAPPLICATIONFILES
 #   …
-# Optional Activepieces header auth (sent as header "Authentication"):
+# Optional Activepieces header auth (sent as Authorization; include Bearer prefix):
 #   npx wrangler secret put AP_WEBHOOK_WISHLIST_AUTH
 #   npx wrangler secret put AP_WEBHOOK_TENANCYAPPLICATIONFILES_AUTH
 #   …

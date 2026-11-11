@@ -81,7 +81,7 @@ Worker also appends: `source` (`yourhomehunter.com.au`), `pageUrl`, `submittedAt
 
 ### Activepieces recipe (wishlist)
 
-1. **Webhook** trigger (`AP_WEBHOOK_WISHLIST` + `Authentication` header).
+1. **Webhook** trigger (`AP_WEBHOOK_WISHLIST` + `Authorization` Bearer header).
 2. Map `trigger.body.*` the same way as the Zoho Form payload.
 3. **Zoho CRM** upsert Lead (or existing Forms destination).
 4. Optional team notify.
