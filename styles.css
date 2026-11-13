@@ -259,12 +259,15 @@ p {
   display: inline-block;
   padding: 10px 22px;
   border-radius: 8px;
+  font-family: inherit;
   font-weight: 600;
   font-size: 0.95rem;
+  line-height: inherit;
   text-decoration: none;
   text-align: center;
   cursor: pointer;
   border: 1px solid transparent;
+  appearance: none;
   transition: all 0.2s ease;
 }
 
@@ -563,12 +566,15 @@ p {
   overflow: hidden;
 }
 
-.help-step-photo,
 .service-photo {
   display: block;
   width: 100%;
   height: 176px;
   object-fit: cover;
+}
+
+.service-photo-consult {
+  object-position: center 22%;
 }
 
 .help-step-body {
@@ -1526,6 +1532,8 @@ dialog::backdrop {
 
 .location-card-other {
   grid-column: 1 / -1;
+  background: #EFEEEA;
+  border: none;
 }
 
 .city-meta {
