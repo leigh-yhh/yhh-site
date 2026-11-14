@@ -559,11 +559,10 @@ p {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 0;
+  padding: 22px 24px;
   background: #ffffff;
   border-radius: 20px;
   border: 1px solid var(--border);
-  overflow: hidden;
 }
 
 .service-photo {
@@ -578,7 +577,6 @@ p {
 }
 
 .help-step-body {
-  padding: 22px 24px 22px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -601,6 +599,7 @@ p {
   color: var(--text-dark);
 }
 
+.help-steps li > p,
 .help-step-body > p {
   margin: 0;
   font-size: 0.95rem;
