@@ -634,8 +634,8 @@ p {
 
 .diy-resource .btn {
   white-space: nowrap;
-  background: transparent;
-  border-color: #C8C4BC;
+  background: #fff;
+  border-color: var(--border);
   color: var(--text-dark);
 }
 
