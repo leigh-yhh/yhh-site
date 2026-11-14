@@ -5,6 +5,8 @@ workers/
 .wrangler/
 node_modules/
 agent-tools/
+_*/
+_*.js
 *.md
 .dev.vars
 .dev.vars.example

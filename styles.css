@@ -538,14 +538,6 @@ p {
   margin-top: 16px;
 }
 
-.about-panel {
-  margin: 36px auto 0;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 28px 40px 12px;
-}
-
 .help-steps {
   list-style: none;
   display: grid;
@@ -2686,9 +2678,6 @@ a.press-item:hover .press-note {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .about-panel {
-    padding: 32px 22px 20px;
-  }
   .grid-3, .locations-grid, .footer-grid, .help-steps, .story-list {
     grid-template-columns: 1fr;
   }
@@ -2768,9 +2757,6 @@ a.press-item:hover .press-note {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-  .about-panel {
-    padding: 24px 18px 12px;
   }
   .diy-resource {
     flex-direction: column;
